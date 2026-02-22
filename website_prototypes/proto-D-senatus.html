@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLEINVICTVS — Senatus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0806;--gold:#c9a84c;--bronze:#8b6914;--text:#f2ede4;--muted:#9e9589;--dim:#5a5248}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.8}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.5rem 0;transition:background .3s,border-bottom .3s}
+nav.scrolled{background:rgba(10,8,6,.97);border-bottom:1px solid rgba(201,168,76,.15)}
+.ni{max-width:680px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
+.nb{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.38em;color:var(--muted);text-decoration:none;text-transform:uppercase}
+.nl{display:flex;gap:2rem;list-style:none}
+.nl a{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.28em;color:var(--dim);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.nl a:hover{color:var(--gold)}
+
+/* LAYOUT */
+.pg{max-width:680px;margin:0 auto;padding:0 2rem}
+section{padding:8rem 0}
+.sep{height:1px;background:rgba(201,168,76,.1);margin:0}
+.sey{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.45em;color:var(--bronze);text-transform:uppercase;display:block;margin-bottom:4rem;text-align:center}
+
+/* HERO */
+.hero{padding-top:18vh;padding-bottom:14vh}
+.wm{font-family:'Cinzel',serif;font-size:clamp(3rem,15vw,10rem);font-weight:900;color:var(--text);letter-spacing:.04em;line-height:.95;display:block;margin-bottom:2rem}
+.hr{display:block;height:1px;background:var(--gold);margin-bottom:2rem}
+.htag{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.45em;color:var(--bronze);text-transform:uppercase;display:block;margin-bottom:1.25rem}
+.hsub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2.2vw,1.25rem);font-style:italic;color:var(--muted);line-height:1.7;margin-bottom:3rem}
+.ctag{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
+.btn{font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;text-decoration:none;padding:.8rem 1.75rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .2s;display:inline-block}
+.btn:hover{background:var(--gold);color:var(--bg)}
+.blink{font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.28em;color:var(--dim);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.blink:hover{color:var(--gold)}
+
+/* VIRTUES — 4 HUGE WORDS */
+.vrow{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:1rem}
+.vw{font-family:'Cinzel',serif;font-size:clamp(1.2rem,3.5vw,2rem);font-weight:700;color:var(--text);letter-spacing:.12em;text-align:center;flex:1;min-width:120px}
+.vw span{display:block;font-size:.46rem;letter-spacing:.38em;color:var(--dim);font-weight:400;margin-top:.4rem;text-transform:uppercase}
+
+/* PILLARS — TYPOGRAPHY ONLY */
+.pe{margin-bottom:5rem;position:relative}
+.pe:last-child{margin-bottom:0}
+.pnum{font-family:'Cinzel',serif;font-size:5rem;font-weight:900;color:var(--text);opacity:.06;position:absolute;top:-1.5rem;left:-1rem;line-height:1;user-select:none}
+.pname{font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.4em;color:var(--bronze);text-transform:uppercase;display:block;margin-bottom:.75rem;position:relative}
+.ptxt{font-size:1.05rem;color:var(--muted);line-height:1.8;position:relative}
+
+/* VAULT TABLE */
+.vg{display:grid;grid-template-columns:1.5rem 1fr auto auto;align-items:center}
+.vh{display:contents}
+.vhc{font-family:'Cinzel',serif;font-size:.45rem;letter-spacing:.38em;color:var(--dim);text-transform:uppercase;padding:0 1.5rem 1rem 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.vhc:last-child{padding-right:0}
+.vhc:nth-child(3),.vhc:nth-child(4){text-align:right}
+.vrd{grid-column:1/-1;height:1px;background:rgba(255,255,255,.04)}
+.vrd.a{background:rgba(201,168,76,.03)}
+.vc{padding:1.4rem 1.5rem 1.4rem 0}
+.vc:last-child{padding-right:0}
+.vcn{font-family:'Cinzel',serif;font-size:.55rem;color:var(--dim);letter-spacing:.1em}
+.vct{font-family:'Cinzel',serif;font-size:.85rem;color:var(--text);letter-spacing:.04em;line-height:1.3}
+.vcp{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold);text-align:right;white-space:nowrap}
+.vcta{text-align:right}
+.vcta a{font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.25em;color:var(--dim);text-decoration:none;text-transform:uppercase;transition:color .2s;white-space:nowrap}
+.vcta a:hover{color:var(--gold)}
+
+/* FLAGSHIP */
+.vf{margin-top:4rem;text-align:center}
+.fl{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.45em;color:var(--bronze);text-transform:uppercase;margin-bottom:1rem;display:block}
+.ft{font-family:'Cinzel',serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--text);letter-spacing:.06em;margin-bottom:.75rem}
+.fd{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted);line-height:1.7;max-width:440px;margin:0 auto 2rem}
+.fp{font-family:'Cinzel',serif;font-size:2.5rem;color:var(--gold);margin-bottom:1.5rem;display:block}
+
+/* QUOTE */
+.qs{padding:8rem 0;text-align:center}
+.bq{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.5rem);font-style:italic;color:var(--text);line-height:1.35;margin-bottom:1.75rem}
+.qa{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.38em;color:var(--bronze);text-transform:uppercase}
+
+/* NEWSLETTER */
+.ns{padding:8rem 0;text-align:center}
+.ne{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.45em;color:var(--bronze);text-transform:uppercase;display:block;margin-bottom:1rem}
+.nh{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--text);letter-spacing:.06em;margin-bottom:.5rem}
+.nsu{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:1rem;margin-bottom:2.5rem}
+.nf{display:flex;max-width:420px;margin:0 auto}
+.nf input{flex:1;background:transparent;border:1px solid rgba(201,168,76,.2);border-right:none;color:var(--text);font-family:'Cormorant Garamond',serif;font-size:1rem;padding:.75rem 1.25rem;outline:none;transition:border-color .2s}
+.nf input:focus{border-color:var(--gold)}
+.nf input::placeholder{color:var(--dim)}
+.nf button{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;background:var(--gold);color:var(--bg);border:1px solid var(--gold);padding:.75rem 1.25rem;cursor:pointer;transition:background .2s;white-space:nowrap}
+.nf button:hover{background:var(--bronze);border-color:var(--bronze)}
+
+/* FOOTER */
+footer{padding:2.5rem 0;text-align:center;border-top:1px solid rgba(201,168,76,.08)}
+.fc{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.28em;color:var(--dim);text-transform:uppercase;margin-bottom:1rem}
+.fs{display:flex;gap:2rem;justify-content:center}
+.fs a{font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.25em;color:var(--dim);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.fs a:hover{color:var(--gold)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nl{display:none}
+  .hero{padding-top:10rem;padding-bottom:8rem}
+  .wm{font-size:clamp(2.8rem,18vw,5rem)}
+  section{padding:5rem 0}
+  .vrow{justify-content:flex-start;gap:1.5rem}
+  .vw{font-size:1.1rem;min-width:90px}
+  .vg{grid-template-columns:1fr}
+  .vh{display:none}
+  .vrd{display:none}
+  .vc{padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
+  .vcp,.vcta{text-align:left}
+  .nf{flex-direction:column}
+  .nf input{border-right:1px solid rgba(201,168,76,.2);border-bottom:none}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="ni">
+    <a href="#" class="nb">SI</a>
+    <ul class="nl">
+      <li><a href="#virtues">Virtues</a></li>
+      <li><a href="#pillars">Pillars</a></li>
+      <li><a href="#vault">Vault</a></li>
+      <li><a href="#newsletter">Legion</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="pg">
+  <section class="hero" id="hero">
+    <span class="wm">SOLE<br>INVICTVS</span>
+    <span class="hr"></span>
+    <span class="htag">Sol Invictus · The Unconquered Sun · Forged in Discipline</span>
+    <p class="hsub">A philosophy, a practice, and a community — for those who have decided to stop drifting and start building a life equal to their potential.</p>
+    <div class="ctag">
+      <a href="#vault" class="btn">Enter the Vault</a>
+      <a href="#pillars" class="blink">The Doctrine</a>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <section id="virtues">
+    <span class="sey reveal">The Four Virtues</span>
+    <div class="vrow reveal">
+      <div class="vw">Sapientia<span>Wisdom</span></div>
+      <div class="vw">Iustitia<span>Justice</span></div>
+      <div class="vw">Fortitudo<span>Courage</span></div>
+      <div class="vw">Temperantia<span>Temperance</span></div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <section id="pillars">
+    <span class="sey reveal">Three Pillars</span>
+    <div class="pe reveal"><div class="pnum">I</div><span class="pname">Philosophia</span><p class="ptxt">The examined life is the precondition for all else. Stoic philosophy is not an academic exercise — it is a combat doctrine, tested against plague, exile, empire, and time. We do not read the Meditations for comfort. We read them for architecture.</p></div>
+    <div class="pe reveal"><div class="pnum">II</div><span class="pname">Disciplina</span><p class="ptxt">Empires are not built on inspiration. They are built on relentless systematic discipline, applied daily without exception. The legionary did not feel like training. He trained. That same principle applied to the individual life produces results that motivation never could.</p></div>
+    <div class="pe reveal"><div class="pnum">III</div><span class="pname">Legio</span><p class="ptxt">No legionary stood alone. The cohort was the unit of effectiveness — not the individual. We are a community bound not by sentiment but by shared standards and mutual accountability. The Legion holds the standard when individual will falters.</p></div>
+  </section>
+
+  <div class="sep"></div>
+
+  <section id="vault">
+    <span class="sey reveal">The Vault</span>
+    <div class="vg reveal">
+      <div class="vh">
+        <div class="vhc"></div><div class="vhc">Title</div><div class="vhc">Price</div><div class="vhc">Access</div>
+      </div>
+      <div class="vrd"></div>
+      <div class="vc vcn">I</div><div class="vc vct">The Stoic Morning Protocol</div><div class="vc vcp">$9</div><div class="vc vcta"><a href="#newsletter">Join Waitlist</a></div>
+      <div class="vrd a"></div>
+      <div class="vc vcn">II</div><div class="vc vct">The Marcus Method</div><div class="vc vcp">$17</div><div class="vc vcta"><a href="#newsletter">Join Waitlist</a></div>
+      <div class="vrd"></div>
+      <div class="vc vcn">III</div><div class="vc vct">30 Days of Deliberate Hardship</div><div class="vc vcp">$27</div><div class="vc vcta"><a href="#newsletter">Join Waitlist</a></div>
+      <div class="vrd a"></div>
+    </div>
+    <div class="vf reveal">
+      <span class="fl">Flagship — Complete System</span>
+      <div class="ft">Build an Unconquered Life</div>
+      <p class="fd">Twelve months of philosophy, physical discipline, and a community of those building something that lasts. The complete system, without compromise.</p>
+      <span class="fp">$297</span>
+      <a href="#newsletter" class="btn">Join the Waitlist</a>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <section class="qs">
+    <p class="bq reveal">You have power over your mind — not outside events.<br>Realize this, and you will find strength.</p>
+    <span class="qa reveal">Marcus Aurelius</span>
+  </section>
+
+  <div class="sep"></div>
+
+  <section class="ns" id="newsletter">
+    <span class="ne reveal">Join the Legion</span>
+    <h2 class="nh reveal">The Dispatch</h2>
+    <p class="nsu reveal">Weekly doctrine. No noise. No weakness.</p>
+    <form class="nf reveal" onsubmit="handleSignup(event)">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Enlist</button>
+    </form>
+  </section>
+</div>
+
+<footer>
+  <div class="pg">
+    <div class="fc">&copy; 2024 SOLEINVICTVS · All rights reserved</div>
+    <div class="fs"><a href="#">Instagram</a><a href="#">Twitter</a><a href="#">YouTube</a></div>
+  </div>
+</footer>
+
+<script>
+const n=document.getElementById('nav');
+window.addEventListener('scroll',()=>n.classList.toggle('scrolled',scrollY>40));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function handleSignup(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='Enlisted ✦';b.style.background='var(--bronze)';b.style.borderColor='var(--bronze)'}
+</script>
+</body>
+</html>

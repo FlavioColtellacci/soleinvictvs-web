@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLEINVICTVS — Aquila</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0806;--gold:#c9a84c;--bronze:#8b6914;--text:#f2ede4;--muted:#9e9589;--surface:#0e0c0a;--max:820px}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.75}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.25rem 2rem;transition:background .3s,border-bottom .3s}
+nav.scrolled{background:rgba(10,8,6,.96);border-bottom:1px solid rgba(201,168,76,.18);backdrop-filter:blur(6px)}
+.ni{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.nb{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.35em;color:var(--gold);text-decoration:none;text-transform:uppercase}
+.nl{display:flex;gap:2rem;list-style:none}
+.nl a{font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.25em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.nl a:hover{color:var(--gold)}
+
+/* LAYOUT */
+.ms{max-width:var(--max);margin:0 auto;padding:0 2rem}
+section{padding:5.5rem 0;border-bottom:1px solid rgba(201,168,76,.1)}
+section:last-of-type{border-bottom:none}
+.sh{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.4em;color:var(--bronze);text-transform:uppercase;margin-bottom:2.5rem}
+
+/* HERO */
+.hero{padding-top:10rem;padding-bottom:6rem;border-bottom:1px solid rgba(201,168,76,.15)}
+.wm{font-family:'Cinzel',serif;font-size:clamp(3.5rem,9vw,6.5rem);font-weight:900;color:var(--text);letter-spacing:.08em;line-height:1;display:block}
+.er{display:block;height:1px;background:var(--gold);margin:1.5rem 0;max-width:280px}
+.htag{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.35em;color:var(--bronze);text-transform:uppercase;margin-bottom:1.75rem}
+.hm{font-size:clamp(1.05rem,2.5vw,1.25rem);color:var(--muted);max-width:580px;line-height:1.75;margin-bottom:2rem}
+.ctai{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.btn{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;padding:.8rem 1.8rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .2s;display:inline-block}
+.btn:hover{background:var(--gold);color:var(--bg)}
+.blink{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.25em;color:var(--muted);text-decoration:none;text-transform:uppercase;border-bottom:1px solid rgba(201,168,76,.3);padding-bottom:1px;transition:color .2s,border-color .2s}
+.blink:hover{color:var(--gold);border-color:var(--gold)}
+
+/* VIRTUES INLINE */
+.vi{display:flex;flex-wrap:wrap;align-items:center;margin-bottom:3rem}
+.vii{font-family:'Cinzel',serif;font-size:.9rem;letter-spacing:.12em;color:var(--text);padding:0 1.5rem;position:relative}
+.vii:first-child{padding-left:0}
+.vii:not(:last-child)::after{content:'·';position:absolute;right:0;top:50%;transform:translateY(-50%);color:var(--gold);font-size:1.2rem}
+.vie{display:block;font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.35em;color:var(--bronze);text-transform:uppercase;margin-top:.2rem}
+.vdb{font-size:.95rem;color:var(--muted);max-width:600px;line-height:1.7}
+
+/* PILLARS */
+.pb{margin-bottom:3.5rem;overflow:hidden}
+.pb:last-child{margin-bottom:0}
+.pdn{font-family:'Cinzel',serif;font-size:3rem;font-weight:900;color:var(--gold);float:left;line-height:.85;margin-right:.3rem;margin-top:.15rem}
+.pn{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:.5rem}
+.pt{font-size:1rem;color:var(--muted);line-height:1.75}
+
+/* VAULT DEF LIST */
+.vdi{display:grid;grid-template-columns:1fr auto;align-items:start;gap:1rem;padding:1.75rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.vdi:first-child{border-top:1px solid rgba(255,255,255,.05)}
+.vdt{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--text);display:block;margin-bottom:.25rem}
+.vdd{font-size:.88rem;color:var(--muted);line-height:1.5;display:block}
+.vdr{text-align:right}
+.vdp{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);display:block;margin-bottom:.5rem}
+.vdc{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.25em;color:var(--muted);text-decoration:none;text-transform:uppercase;border-bottom:1px solid rgba(201,168,76,.3);padding-bottom:1px;transition:color .2s,border-color .2s}
+.vdc:hover{color:var(--gold);border-color:var(--gold)}
+
+/* FLAGSHIP */
+.vf{margin-top:2rem;padding:2.5rem;border-left:4px solid var(--gold);background:rgba(201,168,76,.03)}
+.fl{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.4em;color:var(--bronze);text-transform:uppercase;margin-bottom:.75rem}
+.ft{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--text);margin-bottom:.5rem}
+.fd{font-size:.95rem;color:var(--muted);line-height:1.65;max-width:520px;margin-bottom:1.5rem}
+.ff{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.fp{font-family:'Cinzel',serif;font-size:1.8rem;color:var(--gold)}
+
+/* BLOCKQUOTE */
+.bqs{padding:5rem 0}
+blockquote{padding:0 0 0 3rem;border-left:2px solid rgba(201,168,76,.3)}
+blockquote p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-style:italic;color:var(--text);line-height:1.55;margin-bottom:1rem}
+blockquote cite{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.3em;color:var(--bronze);text-transform:uppercase;font-style:normal}
+
+/* NEWSLETTER 2-COL */
+.nlg{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(201,168,76,.2)}
+.nll{padding:2.5rem;border-right:1px solid rgba(201,168,76,.2)}
+.nlr{padding:2.5rem}
+.nlt{font-family:'Cinzel',serif;font-size:1rem;color:var(--text);margin-bottom:1.25rem}
+.nlb{list-style:none}
+.nlb li{font-size:.9rem;color:var(--muted);padding:.4rem 0 .4rem 1.25rem;position:relative;line-height:1.5}
+.nlb li::before{content:'·';position:absolute;left:0;color:var(--gold)}
+.nlet{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;color:var(--bronze);text-transform:uppercase;margin-bottom:1.25rem}
+.nlf{display:flex;flex-direction:column;gap:.75rem}
+.nlf input{background:var(--surface);border:1px solid rgba(201,168,76,.2);color:var(--text);font-family:'Cormorant Garamond',serif;font-size:1rem;padding:.75rem 1rem;outline:none;transition:border-color .2s}
+.nlf input:focus{border-color:var(--gold)}
+.nlf input::placeholder{color:var(--muted)}
+.nlf button{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;background:var(--gold);color:var(--bg);border:none;padding:.9rem 1.5rem;cursor:pointer;transition:background .2s;align-self:flex-start}
+.nlf button:hover{background:var(--bronze)}
+
+/* FOOTER */
+footer{max-width:var(--max);margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(201,168,76,.1)}
+.fc{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.fs{display:flex;gap:1.5rem}
+.fs a{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.2em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.fs a:hover{color:var(--gold)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nl{display:none}
+  section{padding:4rem 0}
+  .vi{flex-direction:column;align-items:flex-start;gap:1.25rem}
+  .vii{padding:0}
+  .vii:not(:last-child)::after{display:none}
+  .vdi{grid-template-columns:1fr}
+  .vdr{text-align:left}
+  .nlg{grid-template-columns:1fr}
+  .nll{border-right:none;border-bottom:1px solid rgba(201,168,76,.2)}
+  footer{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="ni">
+    <a href="#" class="nb">SOLEINVICTVS</a>
+    <ul class="nl">
+      <li><a href="#virtues">Virtues</a></li>
+      <li><a href="#pillars">Pillars</a></li>
+      <li><a href="#vault">Vault</a></li>
+      <li><a href="#newsletter">Legion</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="ms">
+  <section class="hero" id="hero">
+    <span class="wm">SOLEINVICTVS</span>
+    <span class="er"></span>
+    <p class="htag">The Unconquered Sun · A Life Forged in Discipline</p>
+    <p class="hm">We do not sell motivation. We do not trade in inspiration. We offer a philosophy, a practice, and a community built on the same principles that governed the greatest civilization the world has ever known — applied, without compromise, to the way you live today.</p>
+    <div class="ctai">
+      <a href="#vault" class="btn">Enter the Vault</a>
+      <a href="#pillars" class="blink">Read the Doctrine</a>
+    </div>
+  </section>
+
+  <section id="virtues">
+    <div class="sh reveal">The Four Virtues</div>
+    <div class="vi reveal">
+      <div class="vii">Sapientia<span class="vie">Wisdom</span></div>
+      <div class="vii">Iustitia<span class="vie">Justice</span></div>
+      <div class="vii">Fortitudo<span class="vie">Courage</span></div>
+      <div class="vii">Temperantia<span class="vie">Temperance</span></div>
+    </div>
+    <p class="vdb reveal">These are not aspirations. They are the architecture of the examined life — the operating system of every man and woman who has ever built something that outlasted them. We apply them not as decoration, but as structure.</p>
+  </section>
+
+  <section id="pillars">
+    <div class="sh reveal">Three Pillars</div>
+    <div class="pb reveal"><div class="pdn">I</div><span class="pn">Philosophia</span><p class="pt">The examined life is not a luxury — it is the precondition for everything else. Stoic philosophy is not a library subject. It is a combat philosophy, tested against plague, exile, war, and the slow corruption of comfort. We read it because it works, not because it is old.</p></div>
+    <div class="pb reveal"><div class="pdn">II</div><span class="pn">Disciplina</span><p class="pt">The Romans did not build an empire on inspiration. They built it on relentless, systematic discipline repeated across decades. Morning routines. Physical training. Financial austerity. Mental fortitude under pressure. We apply the same logic to the individual life — not as punishment, but as liberation.</p></div>
+    <div class="pb reveal"><div class="pdn">III</div><span class="pn">Legio</span><p class="pt">No legionary stood alone. The cohort was the unit of effectiveness. We are a community of those who refuse mediocrity — bound not by sentimentality, but by shared standards and mutual accountability. The Legion holds you to the standard when your own will falters.</p></div>
+  </section>
+
+  <section id="vault">
+    <div class="sh reveal">The Vault</div>
+    <div class="vdi reveal"><div><span class="vdt">The Stoic Morning Protocol</span><span class="vdd">A structured, 45-minute morning practice drawn from Marcus Aurelius, Epictetus, and Seneca.</span></div><div class="vdr"><span class="vdp">$9</span><a href="#newsletter" class="vdc">Join Waitlist</a></div></div>
+    <div class="vdi reveal"><div><span class="vdt">The Marcus Method</span><span class="vdd">Decision-making and leadership principles from the Meditations, applied to modern life.</span></div><div class="vdr"><span class="vdp">$17</span><a href="#newsletter" class="vdc">Join Waitlist</a></div></div>
+    <div class="vdi reveal"><div><span class="vdt">30 Days of Deliberate Hardship</span><span class="vdd">A month-long challenge protocol. Cold, fasting, silence, physical stress. Voluntary difficulty.</span></div><div class="vdr"><span class="vdp">$27</span><a href="#newsletter" class="vdc">Join Waitlist</a></div></div>
+    <div class="vf reveal">
+      <div class="fl">Complete Program — Flagship</div>
+      <div class="ft">Build an Unconquered Life</div>
+      <p class="fd">Twelve months. Philosophy, physical discipline, and a community of people building lives that matter. This is the complete system — not a course, not a program. A transformation in how you think and how you live.</p>
+      <div class="ff"><span class="fp">$297</span><a href="#newsletter" class="btn">Join the Waitlist</a></div>
+    </div>
+  </section>
+
+  <section class="bqs">
+    <blockquote class="reveal">
+      <p>"It is not that I'm so smart. It is just that I stay with problems longer. Apply this to the self, and watch what happens."</p>
+      <cite>— Marcus Aurelius, Meditations IV.3</cite>
+    </blockquote>
+  </section>
+
+  <section id="newsletter">
+    <div class="sh reveal">Join the Legion</div>
+    <div class="nlg reveal">
+      <div class="nll">
+        <p class="nlt">What you receive</p>
+        <ul class="nlb">
+          <li>Weekly Stoic dispatch — no filler, no inspiration porn</li>
+          <li>Early access to every vault release</li>
+          <li>Legion-only protocols and practice guides</li>
+        </ul>
+      </div>
+      <div class="nlr">
+        <div class="nlet">Enlist</div>
+        <form class="nlf" onsubmit="handleSignup(event)">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Enlist in the Legion</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="fc">&copy; 2024 SOLEINVICTVS · All rights reserved</div>
+  <div class="fs"><a href="#">Instagram</a><a href="#">Twitter</a><a href="#">YouTube</a></div>
+</footer>
+
+<script>
+const n=document.getElementById('nav');
+window.addEventListener('scroll',()=>n.classList.toggle('scrolled',scrollY>40));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function handleSignup(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='Enlisted ✦';b.style.background='var(--bronze)'}
+</script>
+</body>
+</html>

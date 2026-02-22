@@ -1,0 +1,12 @@
+# Design source files
+*.psd
+*.ai
+*.sketch
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
