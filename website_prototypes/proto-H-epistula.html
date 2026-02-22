@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLEINVICTVS — The Sol Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #F9F5EE;
+  --text:      #1A1A1A;
+  --gold:      #C9A84C;
+  --secondary: #4A4540;
+  --muted:     #8A8580;
+  --border:    rgba(74,69,64,.15);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* ─── HEADER ─── */
+header {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .5em;
+  color: var(--text);
+  text-decoration: none;
+}
+.header-sub {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .4em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ─── HERO BANNER ─── */
+.hero-banner {
+  max-width: 680px;
+  margin: 2rem auto 0;
+  padding: 0 2rem;
+}
+.hero-banner img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+/* ─── MAIN ─── */
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── BRAND STRIP ─── */
+.brand-strip {
+  text-align: center;
+  padding: 3rem 0 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.brand-strip img {
+  height: 50px;
+  width: auto;
+  opacity: .8;
+}
+.brand-strip-sub {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .5em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 1rem;
+  display: block;
+}
+
+/* ─── EMAIL CAPTURE ─── */
+.capture {
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .55em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+.capture-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  line-height: 1.25;
+}
+.capture-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--secondary);
+  margin-bottom: 2.25rem;
+  line-height: 1.9;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.capture-form {
+  display: flex;
+  max-width: 440px;
+  margin: 0 auto 1rem;
+}
+.capture-form input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(74,69,64,.3);
+  border-right: none;
+  color: var(--text);
+  padding: .85rem 1.25rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  outline: none;
+  transition: border-color .3s;
+}
+.capture-form input:focus { border-color: var(--gold); }
+.capture-form input::placeholder { color: var(--muted); }
+.capture-form button {
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: .48rem;
+  letter-spacing: .25em;
+  padding: .85rem 1.5rem;
+  cursor: pointer;
+  transition: opacity .3s;
+  white-space: nowrap;
+}
+.capture-form button:hover { opacity: .85; }
+.capture-note {
+  font-size: .82rem;
+  color: var(--muted);
+  letter-spacing: .03em;
+}
+
+/* ─── ARTICLES ─── */
+.articles { padding: 3.5rem 0; border-bottom: 1px solid var(--border); }
+.section-label {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .55em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2.5rem;
+}
+.article { padding: 1.75rem 0; border-top: 1px solid var(--border); }
+.article:first-of-type { border-top: none; padding-top: 0; }
+.article-cat {
+  font-family: 'Cinzel', serif;
+  font-size: .4rem;
+  letter-spacing: .4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: .75rem;
+}
+.article-title {
+  font-family: 'Cinzel', serif;
+  font-size: .88rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--text);
+  margin-bottom: .75rem;
+  line-height: 1.65;
+}
+.article-excerpt {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--secondary);
+  line-height: 1.9;
+  margin-bottom: .75rem;
+}
+.article-meta {
+  font-family: 'Cinzel', serif;
+  font-size: .38rem;
+  letter-spacing: .3em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ─── TRUST STRIP ─── */
+.trust-strip {
+  padding: 3rem 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.trust-label {
+  font-family: 'Cinzel', serif;
+  font-size: .4rem;
+  letter-spacing: .5em;
+  color: var(--muted);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.trust-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.trust-logos img {
+  height: 28px;
+  width: auto;
+  opacity: .45;
+  filter: sepia(1) saturate(.2) brightness(.4);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1.75rem 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-copy {
+  font-family: 'Cinzel', serif;
+  font-size: .38rem;
+  letter-spacing: .3em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.footer-social a {
+  font-family: 'Cinzel', serif;
+  font-size: .38rem;
+  letter-spacing: .3em;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .3s;
+}
+.footer-social a:hover { color: var(--gold); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  header { flex-direction: column; gap: .75rem; text-align: center; }
+  .capture-form { flex-direction: column; }
+  .capture-form input { border-right: 1px solid rgba(74,69,64,.3); border-bottom: none; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">SOLEINVICTVS</a>
+  <span class="header-sub">The Sol Report · Weekly Dispatch</span>
+</header>
+
+<div class="hero-banner">
+  <img src="../brand_assets/semper_ad_meliora_desktop_wallpaper.png" alt="Semper ad meliora">
+</div>
+
+<main>
+
+  <div class="brand-strip">
+    <img src="../brand_assets/sun_logo_black.png" alt="SOLEINVICTVS Sun">
+    <span class="brand-strip-sub">Semper ad meliora · Always towards better things</span>
+  </div>
+
+  <section class="capture">
+    <span class="eyebrow">The Sol Report</span>
+    <h1 class="capture-title">ANCIENT WISDOM.<br>MODERN LIFE.</h1>
+    <p class="capture-sub">One Stoic insight. One discipline challenge. One resource. Every week. No noise. No comfort culture. No excuses.</p>
+    <form class="capture-form" onsubmit="handleSignup(event)">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Enlist</button>
+    </form>
+    <p class="capture-note">Free Stoic Starter Kit on signup. No spam. Unsubscribe at any time.</p>
+  </section>
+
+  <section class="articles">
+    <span class="section-label">From the Codex</span>
+
+    <article class="article">
+      <span class="article-cat">Stoic Philosophy</span>
+      <h2 class="article-title">Why Marcus Aurelius Wrote to Himself — And What It Means for You</h2>
+      <p class="article-excerpt">The Meditations were never meant to be published. They were a private war journal — a daily battle against comfort, ego, and distraction. Read as such, they change everything.</p>
+      <span class="article-meta">XII · II · MMXXVI · 14 min read</span>
+    </article>
+
+    <article class="article">
+      <span class="article-cat">Daily Systems</span>
+      <h2 class="article-title">The Five Practices That Separate Discipline from Motivation</h2>
+      <p class="article-excerpt">Motivation is a feeling. Discipline is a system. One arrives uninvited and leaves the same way. The other is built, brick by deliberate brick.</p>
+      <span class="article-meta">V · II · MMXXVI · 11 min read</span>
+    </article>
+
+    <article class="article">
+      <span class="article-cat">Roman History</span>
+      <h2 class="article-title">Memento Mori: How the Romans Used Death as a Tool for Living</h2>
+      <p class="article-excerpt">A slave stood behind the victorious general's chariot. His only job: whisper "remember you are mortal" into the ear of the most powerful man in the world.</p>
+      <span class="article-meta">I · II · MMXXVI · 9 min read</span>
+    </article>
+  </section>
+
+  <div class="trust-strip">
+    <span class="trust-label">Also on Substack</span>
+    <div class="trust-logos">
+      <img src="../brand_assets/substack_wordmark/1.png" alt="Substack">
+      <img src="../brand_assets/substack_wordmark/2.png" alt="Substack">
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span class="footer-copy">© MMXXVI SOLEINVICTVS</span>
+  <div class="footer-social">
+    <a href="https://x.com/soleinvictvs">X / Twitter</a>
+  </div>
+</footer>
+
+<script>
+function handleSignup(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = 'Enlisted ✦';
+  btn.style.background = '#8b6914';
+  btn.style.borderColor = '#8b6914';
+  btn.disabled = true;
+  e.target.querySelector('input').value = '';
+}
+</script>
+
+</body>
+</html>

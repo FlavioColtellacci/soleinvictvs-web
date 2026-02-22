@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLEINVICTVS — Rise Unconquered</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #C9A84C;
+  --text: #FFFFFF;
+  --dim:  rgba(255,255,255,.5);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #000;
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+}
+
+/* ─── FULL-SCREEN HERO ─── */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('../brand_assets/desktop_wallpaper_1.png') center/cover no-repeat;
+  /* iOS Safari: background-attachment:fixed breaks — use scroll */
+}
+@media (min-width: 769px) {
+  .hero-bg { background-attachment: fixed; }
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+}
+.hero-logo {
+  width: 80px;
+  height: auto;
+  opacity: .9;
+  margin-bottom: 2.5rem;
+  filter: invert(1);
+}
+.hero-wordmark {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 8vw, 6rem);
+  letter-spacing: .12em;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+.hero-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 1.5rem;
+}
+.hero-tagline {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .5em;
+  color: rgba(201,168,76,.7);
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+.hero-sub {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,.7);
+  max-width: 420px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.9;
+}
+.hero-cta {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .3em;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  border: 1px solid rgba(201,168,76,.6);
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all .35s;
+  display: inline-block;
+}
+.hero-cta:hover {
+  background: var(--gold);
+  color: #000;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  font-family: 'Cinzel', serif;
+  font-size: .38rem;
+  letter-spacing: .4em;
+  color: rgba(255,255,255,.3);
+  text-transform: uppercase;
+  animation: pulse-fade 2.5s ease infinite;
+}
+.scroll-hint-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, rgba(201,168,76,.5), transparent);
+}
+@keyframes pulse-fade { 0%,100%{opacity:.3} 50%{opacity:.8} }
+
+/* ─── MANIFESTO PANELS ─── */
+.manifesto {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+  /* Fade-in state */
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+.manifesto.visible {
+  opacity: 1;
+  transform: none;
+}
+.manifesto-bg {
+  position: absolute;
+  inset: 0;
+  background: url('../brand_assets/desktop_wallpaper_1.png') center/cover no-repeat;
+}
+@media (min-width: 769px) {
+  .manifesto-bg { background-attachment: fixed; }
+}
+.manifesto-overlay {
+  position: absolute;
+  inset: 0;
+}
+.m1 .manifesto-overlay { background: rgba(0,0,0,.80); }
+.m2 .manifesto-overlay { background: rgba(5,3,2,.85); }
+.m3 .manifesto-overlay { background: rgba(0,0,0,.88); }
+
+.manifesto-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+.manifesto-num {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .6em;
+  color: rgba(201,168,76,.5);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.manifesto-word {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 12vw, 8rem);
+  letter-spacing: .1em;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 80px rgba(201,168,76,.15);
+}
+.manifesto-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 2rem;
+}
+.manifesto-body {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,.7);
+  line-height: 1.9;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.manifesto-latin {
+  font-family: 'Cinzel', serif;
+  font-size: .45rem;
+  letter-spacing: .5em;
+  color: rgba(201,168,76,.6);
+  text-transform: uppercase;
+  display: block;
+  margin-top: 2rem;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #000;
+  border-top: 1px solid rgba(201,168,76,.1);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.footer-wordmark {
+  font-family: 'Cinzel', serif;
+  font-size: .55rem;
+  letter-spacing: .5em;
+  color: rgba(255,255,255,.3);
+  display: block;
+  margin-bottom: .75rem;
+}
+.footer-tagline {
+  font-family: 'Cinzel', serif;
+  font-size: .4rem;
+  letter-spacing: .45em;
+  color: rgba(201,168,76,.35);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.footer-link {
+  font-family: 'Cinzel', serif;
+  font-size: .4rem;
+  letter-spacing: .35em;
+  color: rgba(255,255,255,.2);
+  text-decoration: none;
+  transition: color .3s;
+}
+.footer-link:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img class="hero-logo" src="../brand_assets/sun_transparent.png" alt="Sol Invictus">
+    <h1 class="hero-wordmark">SOLEINVICTVS</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">The Unconquered Sun · Sol Invictus</p>
+    <p class="hero-sub">Ancient Stoic wisdom for the modern unconquered life. Discipline. Virtue. Brotherhood.</p>
+    <a href="#discipline" class="hero-cta">Enter</a>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <span>Descend</span>
+  </div>
+</section>
+
+<!-- MANIFESTO: DISCIPLINE -->
+<section class="manifesto m1" id="discipline">
+  <div class="manifesto-bg"></div>
+  <div class="manifesto-overlay"></div>
+  <div class="manifesto-inner">
+    <span class="manifesto-num">I · The First Virtue</span>
+    <h2 class="manifesto-word">DISCIPLINE</h2>
+    <div class="manifesto-rule"></div>
+    <p class="manifesto-body">Motivation is a feeling. It arrives without warning and leaves the same way. Discipline is different. Discipline is a decision made once and lived every day. The sun rises unconquered. So must you.</p>
+    <span class="manifesto-latin">Disciplina · The price of freedom</span>
+  </div>
+</section>
+
+<!-- MANIFESTO: VIRTUE -->
+<section class="manifesto m2" id="virtue">
+  <div class="manifesto-bg"></div>
+  <div class="manifesto-overlay"></div>
+  <div class="manifesto-inner">
+    <span class="manifesto-num">II · The Second Virtue</span>
+    <h2 class="manifesto-word">VIRTUE</h2>
+    <div class="manifesto-rule"></div>
+    <p class="manifesto-body">Philosophy without action is performance. Marcus Aurelius did not just write about virtue — he governed an empire by it. Wisdom. Justice. Courage. Moderation. Four words. One life. No shortcuts.</p>
+    <span class="manifesto-latin">Virtus · Excellence in everything</span>
+  </div>
+</section>
+
+<!-- MANIFESTO: BROTHERHOOD -->
+<section class="manifesto m3" id="brotherhood">
+  <div class="manifesto-bg"></div>
+  <div class="manifesto-overlay"></div>
+  <div class="manifesto-inner">
+    <span class="manifesto-num">III · The Third Virtue</span>
+    <h2 class="manifesto-word">BROTHERHOOD</h2>
+    <div class="manifesto-rule"></div>
+    <p class="manifesto-body">Rome was not built by one man. Strength multiplies among those who refuse to be conquered. Zero tolerance for excuses. Infinite patience for work. The fortress is within. Build it together.</p>
+    <span class="manifesto-latin">Legio · United by the unconquered</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-wordmark">SOLEINVICTVS</span>
+  <span class="footer-tagline">Semper ad meliora · Always towards better things</span>
+  <a href="https://x.com/soleinvictvs" class="footer-link">X / Twitter</a>
+</footer>
+
+<script>
+// Fade-in each manifesto panel on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.manifesto').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
