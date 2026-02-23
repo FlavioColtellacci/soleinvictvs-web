@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLEINVICTVS — Join the Legion</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0e0e0e;
+  --surface: #1a1a1a;
+  --raised:  #222222;
+  --gold:    #c9a84c;
+  --gold2:   #e2c06a;
+  --bronze:  #8b6914;
+  --text:    #efefef;
+  --dim:     #888;
+  --border:  rgba(255,255,255,.07);
+  /* Red is ONLY for the Join button — do not use elsewhere */
+  --red:     #8b1a1a;
+  --red2:    #a82020;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── TWITTER HEADER (IS the top — no nav above it) ─── */
+.twitter-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 340px;
+  object-fit: cover;
+  object-position: center;
+}
+.twitter-banner-strip {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: .9rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.twitter-handle {
+  font-family: 'Cinzel', serif;
+  font-size: .5rem;
+  letter-spacing: .4em;
+  color: var(--gold);
+}
+.twitter-follow {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .3em;
+  padding: .5rem 1.25rem;
+  border: 1px solid rgba(201,168,76,.3);
+  color: var(--dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all .3s;
+}
+.twitter-follow:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ─── MISSION SECTION ─── */
+.mission-section {
+  padding: 6rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.mission-top {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+.mission-wordmark {
+  height: 56px;
+  width: auto;
+  filter: invert(1);
+  opacity: .85;
+  flex-shrink: 0;
+}
+.mission-copy { flex: 1; }
+.mission-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .6em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+.mission-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: var(--text);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.mission-body {
+  font-size: .95rem;
+  color: var(--dim);
+  line-height: 1.8;
+  max-width: 520px;
+}
+/* Virtue cards */
+.virtues-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.virtue-card {
+  background: var(--surface);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: background .3s;
+}
+.virtue-card:hover { background: var(--raised); }
+.virtue-latin {
+  font-family: 'Cinzel', serif;
+  font-size: .4rem;
+  letter-spacing: .45em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: .4rem;
+}
+.virtue-english {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .08em;
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ─── WAITLIST + COUNTDOWN ─── */
+.waitlist-section {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 6rem 4rem;
+}
+.waitlist-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.waitlist-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .6em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.waitlist-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.waitlist-sub {
+  font-size: .95rem;
+  color: var(--dim);
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+/* Countdown */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  padding: 1.75rem 2rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+.countdown-unit { text-align: center; }
+.countdown-num {
+  font-family: 'Cinzel', serif;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+  letter-spacing: .05em;
+  font-variant-numeric: tabular-nums;
+}
+.countdown-label {
+  font-family: 'Cinzel', serif;
+  font-size: .38rem;
+  letter-spacing: .45em;
+  color: var(--dim);
+  text-transform: uppercase;
+  display: block;
+  margin-top: .4rem;
+}
+.countdown-sep {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: rgba(201,168,76,.2);
+  align-self: flex-start;
+  padding-top: .1rem;
+}
+.gates-open {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  color: var(--gold);
+  padding: 1rem 2rem;
+  border: 1px solid rgba(201,168,76,.3);
+  display: none;
+}
+/* Waitlist form */
+.waitlist-form { display: flex; margin-bottom: 1rem; }
+.waitlist-form input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.1);
+  border-right: none;
+  color: var(--text);
+  padding: 1rem 1.25rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .9rem;
+  outline: none;
+  transition: border-color .3s;
+}
+.waitlist-form input:focus { border-color: var(--gold); }
+.waitlist-form input::placeholder { color: var(--dim); }
+/* Red is ONLY for this button */
+.waitlist-form button {
+  background: var(--red);
+  border: none;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: .48rem;
+  letter-spacing: .25em;
+  padding: 1rem 1.75rem;
+  cursor: pointer;
+  transition: background .3s;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.waitlist-form button:hover { background: var(--red2); }
+.waitlist-note { font-size: .8rem; color: var(--dim); }
+
+/* ─── X POST CARD ─── */
+.social-section {
+  padding: 6rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.social-label {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .6em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+.x-post-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  max-width: 540px;
+  margin: 0 auto 4rem;
+  padding: 1.75rem;
+}
+.x-post-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.x-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--raised);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.x-avatar img { width: 24px; height: auto; opacity: .7; }
+.x-author-name {
+  font-family: 'Inter', sans-serif;
+  font-size: .88rem;
+  font-weight: 500;
+  color: var(--text);
+  display: block;
+}
+.x-author-handle {
+  font-family: 'Inter', sans-serif;
+  font-size: .8rem;
+  color: var(--dim);
+}
+.x-post-body {
+  font-family: 'Inter', sans-serif;
+  font-size: .95rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+.x-post-footer {
+  font-family: 'Inter', sans-serif;
+  font-size: .78rem;
+  color: var(--dim);
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+/* ─── SOCIAL PROOF STRIP ─── */
+/* OPERATOR: Update these numbers when real stats change */
+.social-proof {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  max-width: 540px;
+  margin: 0 auto;
+}
+.proof-item {
+  background: var(--bg);
+  padding: 2rem;
+  text-align: center;
+}
+.proof-num {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold);
+  display: block;
+  letter-spacing: .05em;
+}
+.proof-platform {
+  font-family: 'Cinzel', serif;
+  font-size: .4rem;
+  letter-spacing: .4em;
+  color: var(--dim);
+  text-transform: uppercase;
+  display: block;
+  margin-top: .4rem;
+}
+
+/* ─── NEWSLETTER TEASER ─── */
+.newsletter-teaser {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 5rem 4rem;
+  text-align: center;
+}
+.newsletter-teaser-inner { max-width: 540px; margin: 0 auto; }
+.substack-logo {
+  height: 32px;
+  width: auto;
+  opacity: .5;
+  filter: invert(1);
+  margin-bottom: 1.5rem;
+}
+.teaser-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: var(--text);
+  margin-bottom: .75rem;
+}
+.teaser-sub {
+  font-size: .9rem;
+  color: var(--dim);
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+}
+.teaser-cta {
+  font-family: 'Cinzel', serif;
+  font-size: .48rem;
+  letter-spacing: .3em;
+  padding: .85rem 2.25rem;
+  border: 1px solid rgba(201,168,76,.35);
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: all .3s;
+}
+.teaser-cta:hover { background: var(--gold); color: var(--bg); }
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 2.5rem 4rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-brand { font-family: 'Cinzel', serif; font-size: .4rem; letter-spacing: .4em; color: var(--dim); }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-family: 'Cinzel', serif;
+  font-size: .38rem;
+  letter-spacing: .3em;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color .3s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .mission-section, .social-section, .waitlist-section, .newsletter-teaser { padding-left: 2rem; padding-right: 2rem; }
+  .mission-top { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .virtues-grid { grid-template-columns: repeat(2, 1fr); }
+  footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+}
+@media (max-width: 600px) {
+  .twitter-banner-strip { padding: .75rem 1.5rem; }
+  .virtues-grid { grid-template-columns: repeat(2, 1fr); }
+  .waitlist-form { flex-direction: column; }
+  .waitlist-form input { border-right: 1px solid rgba(255,255,255,.1); border-bottom: none; }
+  .countdown { gap: 1rem; padding: 1.25rem 1rem; }
+  .social-proof { grid-template-columns: repeat(2, 1fr); }
+  .footer-links { flex-direction: column; gap: .75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- TWITTER HEADER IS THE TOP -->
+<div class="twitter-banner">
+  <img src="../brand_assets/twitter_header.png" alt="SOLEINVICTVS">
+</div>
+<div class="twitter-banner-strip">
+  <span class="twitter-handle">@soleinvictvs</span>
+  <a href="https://x.com/soleinvictvs" class="twitter-follow">Follow on X</a>
+</div>
+
+<!-- MISSION + WORDMARK + VIRTUES -->
+<section class="mission-section reveal">
+  <div class="mission-top">
+    <img class="mission-wordmark" src="../apparel_design/soleinvictvs_transparent.png" alt="SOLEINVICTVS">
+    <div class="mission-copy">
+      <span class="mission-eyebrow">The Unconquered Sun</span>
+      <h1 class="mission-title">RISE UNCONQUERED.<br>BUILD THE FORTRESS WITHIN.</h1>
+      <p class="mission-body">Ancient Stoic wisdom for the modern unconquered life. Discipline over motivation. The fortress is within. Rome wasn't built in a day, but it was built every day.</p>
+    </div>
+  </div>
+  <div class="virtues-grid">
+    <div class="virtue-card">
+      <span class="virtue-latin">Sapientia</span>
+      <span class="virtue-english">Wisdom</span>
+    </div>
+    <div class="virtue-card">
+      <span class="virtue-latin">Iustitia</span>
+      <span class="virtue-english">Justice</span>
+    </div>
+    <div class="virtue-card">
+      <span class="virtue-latin">Fortitudo</span>
+      <span class="virtue-english">Courage</span>
+    </div>
+    <div class="virtue-card">
+      <span class="virtue-latin">Temperantia</span>
+      <span class="virtue-english">Moderation</span>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST + COUNTDOWN -->
+<section class="waitlist-section" id="waitlist">
+  <div class="waitlist-inner">
+    <span class="waitlist-eyebrow">The Legion · Founding Members</span>
+    <h2 class="waitlist-title">THE GATES OPEN SOON</h2>
+    <p class="waitlist-sub">Join the waitlist. Founding members get first access, founder pricing, and direct access to the community.</p>
+    <!-- Countdown to 2026-03-01 -->
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-days">00</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-hours">00</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-mins">00</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-secs">00</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
+    </div>
+    <div class="gates-open" id="gates-open">THE GATES ARE OPEN</div>
+    <form class="waitlist-form" onsubmit="handleWaitlist(event)">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Join the Legion</button>
+    </form>
+    <p class="waitlist-note">No spam. Unsubscribe at any time.</p>
+  </div>
+</section>
+
+<!-- STATIC X POST CARD -->
+<section class="social-section reveal">
+  <span class="social-label">From the Feed</span>
+  <div class="x-post-card">
+    <div class="x-post-header">
+      <div class="x-avatar">
+        <img src="../brand_assets/sun_transparent.png" alt="Sol">
+      </div>
+      <div>
+        <span class="x-author-name">SOLEINVICTVS</span>
+        <span class="x-author-handle">@soleinvictvs</span>
+      </div>
+    </div>
+    <p class="x-post-body">
+      The fortress is within. Everything else is just weather.<br><br>
+      Marcus Aurelius governed one of the largest empires in human history. He still woke up every morning and reminded himself: control what you can control. Let go of everything else.<br><br>
+      That's the whole system.
+    </p>
+    <div class="x-post-footer">
+      <!-- OPERATOR: update with real post date and engagement stats -->
+      Feb 2026 · 12.4K followers
+    </div>
+  </div>
+
+  <!-- SOCIAL PROOF -->
+  <!-- OPERATOR: update numbers as platform stats change -->
+  <div class="social-proof">
+    <div class="proof-item">
+      <span class="proof-num">12.4K</span>
+      <span class="proof-platform">X / Twitter</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-num">3.8K</span>
+      <span class="proof-platform">Substack</span>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER TEASER -->
+<section class="newsletter-teaser reveal">
+  <div class="newsletter-teaser-inner">
+    <img class="substack-logo" src="../brand_assets/substack_wordmark/2.png" alt="Substack">
+    <h2 class="teaser-title">THE SOL REPORT</h2>
+    <p class="teaser-sub">One Stoic insight. One discipline challenge. One resource. Every week on Substack. Read by thousands of unconquered men.</p>
+    <a href="https://substack.com/@soleinvictvs" class="teaser-cta">Read on Substack</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">© MMXXVI SOLEINVICTVS · Semper ad meliora</span>
+  <div class="footer-links">
+    <a href="https://x.com/soleinvictvs">X / Twitter</a>
+    <a href="https://substack.com/@soleinvictvs">Substack</a>
+  </div>
+</footer>
+
+<script>
+// ── Countdown to 2026-03-01T00:00:00
+const target = new Date('2026-03-01T00:00:00').getTime();
+const cdDays  = document.getElementById('cd-days');
+const cdHours = document.getElementById('cd-hours');
+const cdMins  = document.getElementById('cd-mins');
+const cdSecs  = document.getElementById('cd-secs');
+const cdBox   = document.getElementById('countdown');
+const gatesEl = document.getElementById('gates-open');
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function tick() {
+  const now  = Date.now();
+  const diff = target - now;
+
+  if (diff <= 0) {
+    // Never show negative — show the open message instead
+    cdBox.style.display = 'none';
+    gatesEl.style.display = 'inline-block';
+    return;
+  }
+
+  const days  = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const mins  = Math.floor((diff % 3600000)  / 60000);
+  const secs  = Math.floor((diff % 60000)    / 1000);
+
+  cdDays.textContent  = pad(days);
+  cdHours.textContent = pad(hours);
+  cdMins.textContent  = pad(mins);
+  cdSecs.textContent  = pad(secs);
+}
+
+tick();
+setInterval(tick, 1000);
+
+// ── Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Waitlist form
+function handleWaitlist(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = 'Enlisted ✦';
+  btn.style.background = '#6b1414';
+  btn.disabled = true;
+  e.target.querySelector('input').value = '';
+}
+</script>
+
+</body>
+</html>
