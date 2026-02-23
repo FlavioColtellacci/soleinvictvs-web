@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Virtue Audit — SOLEINVICTVS</title>
+
+<!--
+  FONT SWAP — The Seasons
+  When TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 land in ../assets/fonts/,
+  uncomment the block below and remove the Google Fonts link.
+
+  @font-face {
+    font-family: 'The Seasons';
+    src: url('../assets/fonts/TheSeasons-Regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'The Seasons';
+    src: url('../assets/fonts/TheSeasons-Italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap;
+  }
+-->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0A0A0A;
+  --surface:    #111111;
+  --surface-2:  #161616;
+  --border:     #1E1E1E;
+  --text:       #F5F0E8;
+  --text-muted: #9A9080;
+  --gold:       #C9A84C;
+  --gold-muted: #8A6F32;
+  --red:        #8B1A1A;
+  /* Font swap: when The Seasons arrives, change these two vars only */
+  --font-display: 'Cinzel Decorative', serif;
+  --font-serif:   'Cormorant Garamond', serif;
+  --font-ui:      'Inter', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── VIEWS ─── */
+.view {
+  display: none;
+  min-height: 100vh;
+}
+.view.active { display: flex; }
+
+/* ─── LANDING ─── */
+#view-landing {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.landing-sun {
+  width: 52px;
+  height: auto;
+  opacity: .75;
+  margin-bottom: 2.5rem;
+  filter: invert(72%) sepia(30%) saturate(500%) hue-rotate(5deg) brightness(95%);
+}
+.landing-label {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .65em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.landing-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  line-height: 1.1;
+}
+.landing-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--gold-muted);
+  margin: 0 auto 1.5rem;
+}
+.landing-sub {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-muted);
+  max-width: 440px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.9;
+}
+.landing-note {
+  font-size: .8rem;
+  color: var(--text-muted);
+  max-width: 360px;
+  margin: 1.5rem auto 0;
+  line-height: 1.7;
+}
+
+/* ─── QUIZ ─── */
+#view-quiz {
+  flex-direction: column;
+  padding: 0;
+}
+.quiz-progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width .4s ease;
+  z-index: 10;
+}
+.quiz-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.quiz-wordmark {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .45em;
+  color: var(--gold);
+}
+.quiz-counter {
+  font-family: 'Cinzel', serif;
+  font-size: .48rem;
+  letter-spacing: .35em;
+  color: var(--text-muted);
+}
+.quiz-virtue-tag {
+  font-family: 'Cinzel', serif;
+  font-size: .4rem;
+  letter-spacing: .5em;
+  color: var(--gold-muted);
+  text-transform: uppercase;
+}
+.quiz-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 7rem 2rem 3rem;
+  text-align: center;
+}
+.quiz-question {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  font-weight: 600;
+  color: var(--text);
+  max-width: 600px;
+  line-height: 1.65;
+  margin-bottom: 3rem;
+  opacity: 1;
+  transition: opacity .2s ease;
+}
+.quiz-question.fading { opacity: 0; }
+.quiz-answers {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  width: 100%;
+  max-width: 480px;
+}
+.answer-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: 'Cinzel', serif;
+  font-size: .5rem;
+  letter-spacing: .3em;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+  text-transform: uppercase;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.answer-btn:hover { border-color: var(--gold-muted); color: var(--text); }
+.answer-btn.selected {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,168,76,.05);
+}
+.answer-btn .answer-value {
+  font-size: .38rem;
+  color: var(--text-muted);
+  letter-spacing: .2em;
+}
+.answer-btn.selected .answer-value { color: var(--gold-muted); }
+.quiz-next {
+  display: none;
+  margin-top: 2rem;
+}
+.quiz-next.visible { display: block; }
+
+/* ─── LOADING ─── */
+#view-loading {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem;
+}
+.loading-sun {
+  width: 64px;
+  height: auto;
+  margin-bottom: 2rem;
+  filter: invert(72%) sepia(30%) saturate(500%) hue-rotate(5deg) brightness(95%);
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text {
+  font-family: 'Cinzel', serif;
+  font-size: .48rem;
+  letter-spacing: .5em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ─── RESULTS ─── */
+#view-results {
+  flex-direction: column;
+  padding: 5rem 2rem 3rem;
+  align-items: center;
+}
+.results-preview {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+.results-sun {
+  width: 40px;
+  height: auto;
+  opacity: .6;
+  margin-bottom: 1.5rem;
+  filter: invert(72%) sepia(30%) saturate(500%) hue-rotate(5deg) brightness(95%);
+}
+.results-label {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .6em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+.results-profile-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: .08em;
+  line-height: 1.1;
+  margin-bottom: .5rem;
+}
+.results-profile-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+.results-verdict {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--text);
+  font-style: italic;
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.9;
+}
+/* Score bars */
+.score-bars { width: 100%; max-width: 480px; margin: 0 auto 3rem; }
+.score-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.score-bar-label {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .4em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  width: 100px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.score-bar-track {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  position: relative;
+}
+.score-bar-fill {
+  height: 100%;
+  background: var(--gold);
+  transition: width .8s ease;
+}
+.score-bar-num {
+  font-family: 'Cinzel', serif;
+  font-size: .4rem;
+  letter-spacing: .2em;
+  color: var(--gold);
+  width: 30px;
+  flex-shrink: 0;
+}
+
+/* ─── GATE ─── */
+.results-full {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+.results-full.gated .results-gated-content {
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+}
+.gate-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,0) 0%, rgba(10,10,10,.95) 30%);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  z-index: 5;
+}
+.results-full.gated .gate-overlay { display: flex; }
+.gate-headline {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .5em;
+  color: var(--text);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: .75rem;
+}
+.gate-sub {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text-muted);
+  max-width: 360px;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+}
+.gate-form { display: flex; width: 100%; max-width: 420px; }
+.gate-form input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(201,168,76,.3);
+  border-right: none;
+  color: var(--text);
+  padding: .9rem 1.25rem;
+  font-family: var(--font-ui);
+  font-size: .9rem;
+  outline: none;
+  transition: border-color .3s;
+}
+.gate-form input:focus { border-color: var(--gold); }
+.gate-form input::placeholder { color: var(--text-muted); }
+.gate-form button {
+  background: var(--gold);
+  border: none;
+  color: var(--bg);
+  font-family: 'Cinzel', serif;
+  font-size: .45rem;
+  letter-spacing: .2em;
+  padding: .9rem 1.5rem;
+  cursor: pointer;
+  transition: background .3s;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.gate-form button:hover { background: #e2c06a; }
+.gate-note { font-size: .75rem; color: var(--text-muted); margin-top: 1rem; }
+
+/* ─── FULL PROFILE CONTENT ─── */
+.results-gated-content { padding-bottom: 4rem; }
+.full-section { margin-bottom: 3rem; }
+.full-section-label {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .55em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.full-section p {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 2;
+  margin-bottom: 1rem;
+}
+.full-section p:last-child { margin-bottom: 0; }
+.practices-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+.practices-list li {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  padding: .75rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 1rem;
+}
+.practices-list li:last-child { border-bottom: none; }
+.practice-num {
+  font-family: 'Cinzel', serif;
+  font-size: .45rem;
+  color: var(--gold);
+  letter-spacing: .3em;
+  flex-shrink: 0;
+  padding-top: .2rem;
+}
+.stoic-quote {
+  padding: 2rem;
+  border-left: 1px solid var(--gold-muted);
+  margin: 2rem 0;
+}
+.stoic-quote p {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: .75rem;
+}
+.stoic-quote span {
+  font-family: 'Cinzel', serif;
+  font-size: .4rem;
+  letter-spacing: .4em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.cta-to-protocol {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: 'Cinzel', serif;
+  font-size: .48rem;
+  letter-spacing: .3em;
+  padding: 1rem 2.25rem;
+  border: 1px solid rgba(201,168,76,.4);
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all .3s;
+}
+.cta-to-protocol:hover { background: var(--gold); color: var(--bg); }
+
+/* ─── BUTTONS (shared) ─── */
+.btn-gold {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .3em;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  cursor: pointer;
+  transition: background .3s, color .3s;
+  text-transform: uppercase;
+  display: inline-block;
+}
+.btn-gold:hover { background: var(--gold); color: var(--bg); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .gate-form { flex-direction: column; }
+  .gate-form input { border-right: 1px solid rgba(201,168,76,.3); border-bottom: none; }
+  .quiz-header { padding: 1rem; }
+  .quiz-virtue-tag { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── LANDING ─────────────────────────────────────────────── -->
+<div id="view-landing" class="view active">
+  <img class="landing-sun" src="../brand_assets/sun_transparent.png" alt="Sol Invictus">
+  <span class="landing-label">SOLEINVICTVS · Self-Assessment</span>
+  <h1 class="landing-title">THE VIRTUE AUDIT</h1>
+  <div class="landing-rule"></div>
+  <p class="landing-sub">Twelve questions. Four virtues. One honest answer.</p>
+  <button class="btn-gold" onclick="startQuiz()">Begin the Audit</button>
+  <p class="landing-note">Answer honestly — not as the man you intend to be. As the man you are today. That is where the work begins.</p>
+</div>
+
+<!-- ── QUIZ ────────────────────────────────────────────────── -->
+<div id="view-quiz" class="view">
+  <div class="quiz-progress-bar" id="progress-bar"></div>
+  <div class="quiz-header">
+    <span class="quiz-wordmark">SOLEINVICTVS</span>
+    <span class="quiz-virtue-tag" id="virtue-tag"></span>
+    <span class="quiz-counter" id="q-counter">Q 1 of 12</span>
+  </div>
+  <div class="quiz-body">
+    <p class="quiz-question" id="quiz-question"></p>
+    <div class="quiz-answers" id="quiz-answers">
+      <button class="answer-btn" onclick="selectAnswer(1)">
+        <span>Never</span><span class="answer-value">1</span>
+      </button>
+      <button class="answer-btn" onclick="selectAnswer(2)">
+        <span>Rarely</span><span class="answer-value">2</span>
+      </button>
+      <button class="answer-btn" onclick="selectAnswer(3)">
+        <span>Sometimes</span><span class="answer-value">3</span>
+      </button>
+      <button class="answer-btn" onclick="selectAnswer(4)">
+        <span>Often</span><span class="answer-value">4</span>
+      </button>
+      <button class="answer-btn" onclick="selectAnswer(5)">
+        <span>Always</span><span class="answer-value">5</span>
+      </button>
+    </div>
+    <div class="quiz-next" id="quiz-next">
+      <button class="btn-gold" onclick="nextQuestion()">Next</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── LOADING ──────────────────────────────────────────────── -->
+<div id="view-loading" class="view">
+  <img class="loading-sun" src="../brand_assets/sun_transparent.png" alt="">
+  <span class="loading-text">Calculating your profile...</span>
+</div>
+
+<!-- ── RESULTS ──────────────────────────────────────────────── -->
+<div id="view-results" class="view">
+  <!-- Always visible preview -->
+  <div class="results-preview">
+    <img class="results-sun" src="../brand_assets/sun_transparent.png" alt="">
+    <span class="results-label">Your Virtue Profile</span>
+    <h2 class="results-profile-name" id="r-profile-name"></h2>
+    <p class="results-profile-title" id="r-profile-title"></p>
+    <p class="results-verdict" id="r-verdict"></p>
+    <!-- Score bars -->
+    <div class="score-bars">
+      <div class="score-bar-row">
+        <span class="score-bar-label">Sapientia</span>
+        <div class="score-bar-track"><div class="score-bar-fill" id="bar-sapientia" style="width:0%"></div></div>
+        <span class="score-bar-num" id="num-sapientia">0</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="score-bar-label">Iustitia</span>
+        <div class="score-bar-track"><div class="score-bar-fill" id="bar-iustitia" style="width:0%"></div></div>
+        <span class="score-bar-num" id="num-iustitia">0</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="score-bar-label">Fortitudo</span>
+        <div class="score-bar-track"><div class="score-bar-fill" id="bar-fortitudo" style="width:0%"></div></div>
+        <span class="score-bar-num" id="num-fortitudo">0</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="score-bar-label">Temperantia</span>
+        <div class="score-bar-track"><div class="score-bar-fill" id="bar-temperantia" style="width:0%"></div></div>
+        <span class="score-bar-num" id="num-temperantia">0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gated full profile -->
+  <div class="results-full gated" id="results-full">
+    <!-- Gate overlay -->
+    <div class="gate-overlay">
+      <span class="gate-headline">Unlock Your Full Virtue Profile</span>
+      <p class="gate-sub">Your complete profile is ready. It costs one email.</p>
+      <form class="gate-form" onsubmit="unlockProfile(event)">
+        <input type="email" placeholder="Your email address" required>
+        <!-- TODO: operator provides Substack subscribe URL — replace href='#' in unlockProfile() -->
+        <button type="submit">Reveal My Profile</button>
+      </form>
+      <p class="gate-note">No spam. You'll also receive The Sol Report — free weekly Stoic dispatch.</p>
+    </div>
+    <!-- Full profile content (blurred until gate clears) -->
+    <div class="results-gated-content" id="gated-content">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── QUESTIONS ───────────────────────────────────────────────────────────────
+// E-004-P1P2 not found — original on-brand copy written by Vitalik from brand reference.
+// Operator: replace with verbatim E-004 questions when available.
+
+const QUESTIONS = [
+  // SAPIENTIA (Q1–3)
+  { text: "When facing a difficult decision, do you pause to identify what is and isn't within your control before acting?", virtue: 'sapientia' },
+  { text: "When your beliefs or reasoning are challenged, do you examine your own thinking rather than defend your position?", virtue: 'sapientia' },
+  { text: "Do you make deliberate time for study — philosophy, history, or a discipline that forces you to think more carefully?", virtue: 'sapientia' },
+  // IUSTITIA (Q4–6)
+  { text: "Do you say what is true, even when honesty costs you social approval or comfort?", virtue: 'iustitia' },
+  { text: "Do you fulfil your commitments to others before attending to your own convenience?", virtue: 'iustitia' },
+  { text: "Do you treat people the same way whether you want something from them or not?", virtue: 'iustitia' },
+  // FORTITUDO (Q7–9)
+  { text: "Do you act on your principles when the cost of doing so is real — not hypothetical?", virtue: 'fortitudo' },
+  { text: "Do you seek out voluntary hardship — physical, mental, or financial — as deliberate training?", virtue: 'fortitudo' },
+  { text: "When fear presents itself, do you acknowledge it — and act anyway?", virtue: 'fortitudo' },
+  // TEMPERANTIA (Q10–12)
+  { text: "Do you consume — food, drink, entertainment, information — only as much as serves a clear purpose?", virtue: 'temperantia' },
+  { text: "Do you notice when comfort is pulling you away from the life you intend to build?", virtue: 'temperantia' },
+  { text: "Do you manage your emotional responses rather than being governed by them?", virtue: 'temperantia' }
+];
+
+const VIRTUE_LABELS = {
+  sapientia: 'Sapientia · Wisdom',
+  iustitia:  'Iustitia · Justice',
+  fortitudo: 'Fortitudo · Courage',
+  temperantia: 'Temperantia · Moderation'
+};
+
+// ─── PROFILES ────────────────────────────────────────────────────────────────
+// Operator: replace with verbatim E-004-P1P2 profile content when available.
+
+const PROFILES = {
+  sapientia: {
+    name: 'THE PHILOSOPHER',
+    title: 'The Man Who Sees Clearly',
+    verdict: 'You lead with your mind. Your greatest strength is clarity. Your greatest danger is living inside your head while the world demands action.',
+    p1: "The Philosopher operates from the inside out. Before you act, you understand. Before you speak, you have thought. This is not weakness — it is the primary virtue of the Stoic tradition. Marcus Aurelius was a Philosopher. Epictetus was a Philosopher. The discipline of asking 'what is in my control?' before reacting is the highest cognitive practice a man can build. You have built it.",
+    p2: "Your shadow is inaction. The man who understands everything can always find one more reason to wait. Wisdom without courage is theory. Your profile shows strong sapential capacity — but the danger is that analysis becomes an excuse for delay. The Stoics called this the paralysis of contemplation. Marcus Aurelius warned himself against it in the Meditations. You should too.",
+    p3: "Your path forward is application, not more understanding. One thing per day: decide first, understand later. The Philosopher becomes dangerous when his clarity is married to action. The virtue you need is not more wisdom — it is the courage to act on what you already know.",
+    practices: [
+      "Choose one action per day that you have been overthinking. Do it before you analyse it again.",
+      "Write your daily reflection using the Stoic method: what you could not control today, and how you chose to respond.",
+      "Seek one weekly situation that forces you to act before you're ready. The Philosopher's mind needs a Warrior's training."
+    ],
+    quote: "Waste no more time arguing what a good man should be. Be one.",
+    quoteSource: "Marcus Aurelius · Meditations"
+  },
+  iustitia: {
+    name: 'THE SENTINEL',
+    title: 'The Man Who Holds the Line',
+    verdict: 'You live by a code. Your word is your bond. Your danger is expecting the same from men who don\'t share your standard — and letting their failure become your resentment.',
+    p1: "The Sentinel's gift is reliability. When you commit, you deliver. When you speak, you mean it. This is rarer than it sounds in an age where commitment is treated as optional and honesty is negotiated around comfort. The Roman virtue of Iustitia was not about courts and laws — it was about the man who treats every person as they deserve, not as it is convenient. That is you.",
+    p2: "Your shadow is rigidity. The man who holds a line is admirable. The man who cannot bend that line in service of a larger justice has confused the rule with its purpose. The Stoics were not legalists — they were adaptable men of principle. Justice sometimes looks like flexibility in the right direction. Examine your rules. Some of them are principles. Others are just habits.",
+    p3: "Your resentment watch: Sentinels attract exploitation. Men who cannot keep their word will use men who can. Build your inner circle to your own standards, or reduce your expectations of those who have demonstrated they cannot meet them. Resentment is a signal, not a strategy. When it appears, use it to make a decision — not to make a case.",
+    practices: [
+      "Once per week, identify one commitment you are tempted to renegotiate. Honour it anyway. Let that be the practice.",
+      "Write a one-paragraph personal code — three non-negotiable standards you hold yourself to. Review it monthly.",
+      "When you feel resentment toward someone, ask: did I state my standard clearly, or did I assume they knew it? Act on the answer."
+    ],
+    quote: "First say to yourself what you would be; and then do what you have to do.",
+    quoteSource: "Epictetus · Discourses"
+  },
+  fortitudo: {
+    name: 'THE WARRIOR',
+    title: 'The Man Who Moves Forward',
+    verdict: 'You act. You push. You accept discomfort as payment for growth. Your danger is confusing motion with direction.',
+    p1: "The Warrior is rare. Most men are stopped by fear before they reach the starting line — you start before the fear fully registers. This is not recklessness. It is the trained willingness to act under uncertainty, to move through resistance rather than around it. Fortitudo was the virtue that built Rome. It is the virtue that separates the man who intends to build a life from the man who actually builds one.",
+    p2: "Your shadow is impulsiveness. The Warrior who acts without reflection burns energy against the wrong walls. Epictetus reminded his students that courage without wisdom is destruction. The man who charges every hill will eventually exhaust himself on a hill that didn't need taking. Your profile calls for one thing above everything: the pause before the push. Ask why before you ask how.",
+    p3: "Your fullest expression is disciplined aggression — the willingness to move fast toward a specific target, chosen deliberately. When Fortitudo is married to Sapientia, you become the most dangerous version of yourself: a man who thinks clearly and acts without hesitation. Build that combination. It is not a comfort zone. It is a war room.",
+    practices: [
+      "Before your next significant action, write one sentence: why this, why now. If you can't answer it in one sentence, reconsider the target.",
+      "Daily: one voluntary discomfort, chosen the night before. Cold. Weight. Fasting. Silence. The discomfort is the point.",
+      "Weekly: one conversation you have been avoiding. Start it. The Warrior who can do this is ungovernable."
+    ],
+    quote: "It is not because things are difficult that we do not dare; it is because we do not dare that things are difficult.",
+    quoteSource: "Seneca · Letters to Lucilius"
+  },
+  temperantia: {
+    name: 'THE ARCHITECT',
+    title: 'The Man Who Builds to Last',
+    verdict: 'You understand systems. You resist waste. You build for permanence. Your danger is that the fortress becomes a prison.',
+    p1: "The Architect is the man no one sees — and the man everything depends on. Temperantia is the least celebrated virtue and the most powerful. It is not abstinence. It is mastery. The man who consumes only what serves him, who regulates his emotions as a tool rather than a weather system, who builds systems instead of relying on feelings — this man is ungovernable. Nothing external can stop him.",
+    p2: "Your shadow is stagnation. The man who masters moderation can mistake comfort for discipline. There is a version of Temperantia that is just caution wearing a virtue's name. The Architect who never builds anything bold has confused restraint with safety. The Stoics valued temperance in service of excellence — not in service of staying comfortable. Ask yourself: is this control, or is this avoidance?",
+    p3: "Your fullest expression is the long game. You are built for the thirty-year vision, not the quarterly result. This is power — in an age of dopamine-optimised short-termism, the man who can delay, moderate, and accumulate is the man who wins when the others have burned themselves out. Use it. Build something that requires your fullest patience. That is where you are most unconquered.",
+    practices: [
+      "Map one area of overconsumption — food, entertainment, information — and set a deliberate daily limit. Hold it for 30 days.",
+      "Before any significant purchase or commitment, wait 48 hours. Decide after the want has passed, not during it.",
+      "Monthly: write a one-page review of your systems. What is working? What has become habit without purpose? Cut the second category."
+    ],
+    quote: "Govern yourself and you will be able to govern the world.",
+    quoteSource: "Seneca · Letters to Lucilius"
+  }
+};
+
+const VIRTUE_ORDER = ['sapientia', 'iustitia', 'fortitudo', 'temperantia'];
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let currentQ = 0;
+let selectedAnswer = null;
+let scores = { sapientia: 0, iustitia: 0, fortitudo: 0, temperantia: 0 };
+
+// ─── VIEW SWITCHING ──────────────────────────────────────────────────────────
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ─── QUIZ ────────────────────────────────────────────────────────────────────
+function startQuiz() {
+  currentQ = 0;
+  scores = { sapientia: 0, iustitia: 0, fortitudo: 0, temperantia: 0 };
+  showView('quiz');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  const el = document.getElementById('quiz-question');
+  el.classList.add('fading');
+  setTimeout(() => {
+    el.textContent = q.text;
+    el.classList.remove('fading');
+  }, 200);
+
+  document.getElementById('q-counter').textContent = 'Q ' + (currentQ + 1) + ' of 12';
+  document.getElementById('virtue-tag').textContent = VIRTUE_LABELS[q.virtue];
+  document.getElementById('progress-bar').style.width = (currentQ / 12 * 100) + '%';
+
+  // Clear selections
+  document.querySelectorAll('.answer-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('quiz-next').classList.remove('visible');
+  selectedAnswer = null;
+}
+
+function selectAnswer(value) {
+  selectedAnswer = value;
+  document.querySelectorAll('.answer-btn').forEach((b, i) => {
+    b.classList.toggle('selected', i + 1 === value);
+  });
+  document.getElementById('quiz-next').classList.add('visible');
+}
+
+function nextQuestion() {
+  if (selectedAnswer === null) return;
+  // Score
+  scores[QUESTIONS[currentQ].virtue] += selectedAnswer;
+  currentQ++;
+
+  if (currentQ >= QUESTIONS.length) {
+    finishQuiz();
+  } else {
+    renderQuestion();
+  }
+}
+
+function finishQuiz() {
+  localStorage.setItem('si_audit_scores', JSON.stringify(scores));
+  showView('loading');
+  setTimeout(() => {
+    const unlocked = localStorage.getItem('si_audit_unlocked') === 'true';
+    renderResults(scores, unlocked);
+    showView('results');
+  }, 2000);
+}
+
+// ─── RESULTS ─────────────────────────────────────────────────────────────────
+function getDominant(s) {
+  // Tie → first in VIRTUE_ORDER
+  let max = -1, dominant = 'sapientia';
+  VIRTUE_ORDER.forEach(v => {
+    if (s[v] > max) { max = s[v]; dominant = v; }
+  });
+  return dominant;
+}
+
+function getBlindSpot(s, dominant) {
+  let min = 999, blind = 'fortitudo';
+  VIRTUE_ORDER.forEach(v => {
+    if (v !== dominant && s[v] < min) { min = s[v]; blind = v; }
+  });
+  return blind;
+}
+
+function renderResults(s, unlocked) {
+  const dominant = getDominant(s);
+  const blindSpot = getBlindSpot(s, dominant);
+  const profile = PROFILES[dominant];
+  const blindProfile = PROFILES[blindSpot];
+
+  // Preview
+  document.getElementById('r-profile-name').textContent = profile.name;
+  document.getElementById('r-profile-title').textContent = profile.title;
+  document.getElementById('r-verdict').textContent = profile.verdict;
+
+  // Bars (max 15)
+  VIRTUE_ORDER.forEach(v => {
+    document.getElementById('bar-' + v).style.width = (s[v] / 15 * 100) + '%';
+    document.getElementById('num-' + v).textContent = s[v];
+  });
+
+  // Animate bars after paint
+  setTimeout(() => {
+    VIRTUE_ORDER.forEach(v => {
+      document.getElementById('bar-' + v).style.width = (s[v] / 15 * 100) + '%';
+    });
+  }, 100);
+
+  // Full profile content
+  const blindLabel = VIRTUE_LABELS[blindSpot].split(' · ')[0] + ' — ' + VIRTUE_LABELS[blindSpot].split(' · ')[1];
+  document.getElementById('gated-content').innerHTML = `
+    <div class="full-section">
+      <span class="full-section-label">Dominant Virtue · ${VIRTUE_LABELS[dominant]}</span>
+      <p>${profile.p1}</p>
+      <p>${profile.p2}</p>
+      <p>${profile.p3}</p>
+    </div>
+    <div class="full-section">
+      <span class="full-section-label">Your Blind Spot · ${blindLabel}</span>
+      <p>${blindProfile.p1}</p>
+    </div>
+    <div class="full-section">
+      <span class="full-section-label">Three Daily Practices</span>
+      <ul class="practices-list">
+        ${profile.practices.map((p, i) => `
+          <li><span class="practice-num">0${i+1}</span><span>${p}</span></li>
+        `).join('')}
+      </ul>
+    </div>
+    <div class="stoic-quote">
+      <p>"${profile.quote}"</p>
+      <span>${profile.quoteSource}</span>
+    </div>
+    <div style="text-align:center; padding-bottom: 2rem;">
+      <a href="fortress-protocol.html" class="cta-to-protocol">Begin the Fortress Protocol →</a>
+    </div>
+  `;
+
+  // Gate state
+  if (unlocked) {
+    document.getElementById('results-full').classList.remove('gated');
+  }
+}
+
+function unlockProfile(e) {
+  e.preventDefault();
+  localStorage.setItem('si_audit_unlocked', 'true');
+  // TODO: operator provides Substack URL — replace '#' below
+  window.open('#', '_blank');
+  document.getElementById('results-full').classList.remove('gated');
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  const stored   = localStorage.getItem('si_audit_scores');
+  const unlocked = localStorage.getItem('si_audit_unlocked') === 'true';
+
+  if (stored && unlocked) {
+    // Returning user: skip gate, show full results immediately
+    scores = JSON.parse(stored);
+    renderResults(scores, true);
+    showView('results');
+  }
+  // else: landing is already active
+});
+</script>
+
+</body>
+</html>
