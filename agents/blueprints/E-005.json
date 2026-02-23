@@ -1,0 +1,113 @@
+{
+  "agent": "elena",
+  "plan_id": "E-005",
+  "timestamp": "2026-02-23T18:00:00Z",
+  "status": "approved — ready for Colombo",
+  "project": "soleinvictvs-web",
+  "title": "Full Multi-Page Website Build",
+
+  "scope_summary": "Extend the approved monolith homepage into a complete multi-page website. Three new pages (Codex, Vault, About). Shared nav and footer pattern across all 6 files. Free tools integrated into site navigation. The Seasons font wired into logotype and hero. Orphaned old assets removed.",
+
+  "operator_answers": {
+    "Q1_codex_content": "Launch with branded placeholder article titles and excerpts.",
+    "Q2_about_page": "Build with a recommended placeholder. Founder swaps in real avatar and bio when ready. Page must not be blocked.",
+    "Q3_nav_labels": "Confirmed final — The Vault / The Codex / Philosophy / Join the Legion.",
+    "Q4_font": "The Seasons on logotype and hero title — NOT Cinzel Decorative. Cormorant Garamond fallback until woff2 files are dropped in. Same pattern as tools."
+  },
+
+  "current_state": {
+    "on_main_approved": [
+      "soleinvictvs-web/index.html — monolith homepage",
+      "soleinvictvs-web/virtue-audit.html — free tool, QA passed",
+      "soleinvictvs-web/fortress-protocol.html — free tool, QA passed"
+    ],
+    "to_replace": [
+      "soleinvictvs-web/codex.html — pre-monolith build, wrong aesthetic"
+    ],
+    "to_delete": [
+      "soleinvictvs-web/assets/css/main.css — orphaned, no page references it",
+      "soleinvictvs-web/assets/js/main.js — orphaned, no page references it"
+    ]
+  },
+
+  "tasks": [
+    {
+      "task_id": "E-005-T1",
+      "title": "Rebuild codex.html — Stoic content hub",
+      "type": "new-page",
+      "priority": "p1",
+      "effort": "medium",
+      "nav_link": "The Codex",
+      "description": "The Codex is the articles and essays hub. Replace the old codex.html entirely. Layout: monolith-consistent header section + article card grid. Six placeholder cards in brand voice across categories: Philosophy, Discipline, Stoicism, Finance, Training, Ancient Rome. Vitalik writes the placeholder titles and excerpts — must sound like real SOLEINVICTVS content, not lorem ipsum. Each card: category eyebrow (Cinzel), title, 2-sentence excerpt, read-time, arrow CTA (href='#' — individual articles are E-006 scope). No sidebar. Grid at max-width 1100px.",
+      "content_note": "Branded placeholders. Vitalik authors them in SOLEINVICTVS voice. No lorem ipsum."
+    },
+    {
+      "task_id": "E-005-T2",
+      "title": "Build vault.html — dedicated products page",
+      "type": "new-page",
+      "priority": "p1",
+      "effort": "medium",
+      "nav_link": "The Vault",
+      "description": "Dedicated products page. Three sections: (1) Free Arsenal — Virtue Audit and Fortress Protocol as featured free product cards, linking directly to their HTML files. (2) Digital Products — the three paid cards from index.html (Morning Protocol $9, Marcus Method $17, 30 Days Hardship $27), all Join Waitlist CTAs linking to index.html#newsletter until payment solution confirmed. (3) Coming Soon — single placeholder card for physical apparel. Each section has eyebrow label and section title in monolith style.",
+      "operator_blockers": [
+        "Payment solution (Stripe, Gumroad, Lemon Squeezy) — required before paid CTAs go live"
+      ]
+    },
+    {
+      "task_id": "E-005-T3",
+      "title": "Build about.html — philosophy and founder page",
+      "type": "new-page",
+      "priority": "p2",
+      "effort": "medium",
+      "nav_link": "Philosophy",
+      "description": "The brand story page. Sections in order: (1) Hero — 'PHILOSOPHY' page title, brand mission statement in brand voice. (2) The Three Pillars — Philosophy, Discipline, Community — expanded from the homepage cards with a fuller paragraph each. (3) The Four Virtues — SAPIENTIA, IUSTITIA, FORTITUDO, TEMPERANTIA — one-line Latin definition, 2-sentence relevance, one Stoic quote each. (4) Founder section — circular placeholder avatar (use sun_transparent.png at 120px or a CSS circle placeholder), name 'FLAVIUS' as placeholder, 3-paragraph bio written in SOLEINVICTVS brand voice as a placeholder — structured so the operator can drop in the real photo and bio with minimal edits. (5) CTA band — newsletter sign-up in monolith style.",
+      "content_note": "Vitalik writes the placeholder bio in brand voice — real enough to publish, structured to swap. Avatar placeholder uses existing brand assets.",
+      "operator_action_required": "Drop in real founder avatar photo and real bio when ready — two-step swap, no layout changes needed."
+    },
+    {
+      "task_id": "E-005-T4",
+      "title": "Shared nav and footer across all 6 pages",
+      "type": "architecture",
+      "priority": "p1",
+      "effort": "small",
+      "description": "All six pages (index, codex, vault, about, virtue-audit, fortress-protocol) must have the same nav and footer. Inline HTML in each file — no JS injection, no fetch(), no framework. Canonical nav/footer block established once, applied consistently. Active nav link highlighted via body data-page attribute and a single CSS rule. virtue-audit and fortress-protocol currently have their own nav variants — unify them to the shared pattern without breaking their standalone functionality. Nav links: SOLEINVICTVS logo → index.html, The Vault → vault.html, The Codex → codex.html, Philosophy → about.html, Join the Legion → index.html#newsletter (internal anchor on index, full path on all other pages).",
+      "notes": "Copy-paste is correct for 6 files. No abstraction needed."
+    },
+    {
+      "task_id": "E-005-T5",
+      "title": "The Seasons font on SOLEINVICTVS logotype and hero title",
+      "type": "fix",
+      "priority": "p2",
+      "effort": "trivial",
+      "description": "The current monolith loads only Cinzel. The SOLEINVICTVS brand wordmark and hero title should use The Seasons. Build with Cormorant Garamond as fallback (same @font-face pattern as virtue-audit and fortress-protocol). Leave the @font-face block commented and ready to activate the moment the operator drops TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 into assets/fonts/. Apply to .nav-logo and .hero-title only — all other headings, labels, and nav copy stay on Cinzel. Propagate the font stack to all pages as part of T4.",
+      "operator_action_required": "Drop TheSeasons-Regular.woff2 and TheSeasons-Italic.woff2 into soleinvictvs-web/assets/fonts/ — Vitalik leaves the @font-face block commented and ready, two-line uncomment to activate."
+    },
+    {
+      "task_id": "E-005-T6",
+      "title": "Remove orphaned old build assets",
+      "type": "housekeeping",
+      "priority": "p3",
+      "effort": "trivial",
+      "description": "Delete assets/css/main.css and assets/js/main.js. Both are from the pre-monolith build — no current page references either. Verify with grep before deleting."
+    }
+  ],
+
+  "assumptions": [
+    "No standalone newsletter.html — homepage section plus Substack handle subscriptions.",
+    "Individual article pages are E-006 scope. All Codex cards href='#' in E-005.",
+    "Physical merch on Vault is a single Coming Soon placeholder card — no product listings.",
+    "GitHub Pages deployment config (ci.yml, deploy.yml) does not require changes for E-005.",
+    "No mobile hamburger menu — nav-links hide on mobile as in the current monolith pattern."
+  ],
+
+  "operator_blockers_summary": [
+    "Substack URL — all newsletter CTAs across all pages point to # until provided",
+    "TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 — logotype uses Cormorant Garamond fallback until dropped into assets/fonts/",
+    "Founder avatar photo + real bio — About page ships with brand-voice placeholder, operator swaps when ready",
+    "Payment solution — Vault paid CTAs point to waitlist until Stripe/Gumroad/Lemon Squeezy is confirmed"
+  ],
+
+  "colombo_build_order": "T6 (remove orphaned assets) → T5 (The Seasons font) → T4 (shared nav/footer) → T1 (Codex) → T2 (Vault) → T3 (About)",
+
+  "next_blueprint_id": "C-009"
+}
