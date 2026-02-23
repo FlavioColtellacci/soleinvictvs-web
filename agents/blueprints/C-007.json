@@ -1,0 +1,159 @@
+{
+  "agent": "colombo",
+  "blueprint_id": "C-007",
+  "source_plan": "E-004-P1P2",
+  "created": "2026-02-22",
+  "project": "soleinvictvs-web",
+  "status": "vitalik_ready",
+
+  "font_situation": {
+    "target": "The Seasons — woff2 not yet in project",
+    "build_with": "Cormorant Garamond from Google Fonts as fallback",
+    "swap_later": "When operator drops TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 into assets/fonts/, uncomment the @font-face block Vitalik leaves in CSS. Two-line change.",
+    "google_fonts": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap"
+  },
+
+  "shared_tokens": {
+    "--bg": "#0A0A0A",
+    "--surface": "#111111",
+    "--surface-2": "#161616",
+    "--border": "#1E1E1E",
+    "--text": "#F5F0E8",
+    "--text-muted": "#9A9080",
+    "--gold": "#C9A84C",
+    "--gold-muted": "#8A6F32",
+    "--red": "#8B1A1A"
+  },
+
+  "operator_actions_required": [
+    "Drop TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 into assets/fonts/ — Vitalik builds without them, swap is 2 lines",
+    "Provide Substack subscribe URL — Vitalik uses href='#' and leaves comment"
+  ],
+
+  "specs": [
+
+    {
+      "spec_id": "C-007-A",
+      "file": "soleinvictvs-web/virtue-audit.html",
+      "effort": "large",
+      "one_shot": true,
+      "concept": "12-question virtue self-assessment. Single HTML file. State machine in vanilla JS. Email gate before full results. localStorage persistence.",
+
+      "structure": "No nav. No footer. Full-screen immersion. Four views rendered/hidden via JS: landing → quiz → loading → results.",
+
+      "views": {
+        "landing": {
+          "asset": "../brand_assets/sun_transparent.png (48px, centered)",
+          "headline": "THE VIRTUE AUDIT",
+          "subline": "Twelve questions. Four virtues. One honest answer.",
+          "cta": "Begin the Audit — gold border button, hover gold fill"
+        },
+        "quiz": {
+          "elements": ["progress bar (gold, 1px, animates per question)", "counter top-right (Q 1 of 12)", "question text centered max-width 600px", "5 answer buttons: Never / Rarely / Sometimes / Often / Always", "Next button appears after selection"],
+          "transition": "CSS opacity fade 200ms between questions",
+          "no_back_button": true
+        },
+        "loading": {
+          "visual": "sun_transparent.png — CSS rotate 360deg 1.5s linear infinite",
+          "text": "Calculating your profile...",
+          "duration": "2 second timeout then show results"
+        },
+        "results": {
+          "preview_shows": ["dominant virtue name (large, gold)", "profile name", "one-line verdict", "4-bar score chart (gold fill proportional)"],
+          "gate": "Bottom half blurred (CSS blur 6px). Overlay: 'Unlock your full Virtue Profile — enter your email below.' Email input + 'Reveal My Profile' button.",
+          "full_profile_shows_after_gate": ["profile name + title", "dominant virtue deep-dive (3 paragraphs — use content from E-004-P1P2 profiles)", "blind spot virtue assessment", "3 daily practices", "Stoic quote", "CTA to fortress-protocol.html"]
+        }
+      },
+
+      "questions": {
+        "order": "SAPIENTIA (Q1-3) → IUSTITIA (Q4-6) → FORTITUDO (Q7-9) → TEMPERANTIA (Q10-12)",
+        "scoring": "Never=1 Rarely=2 Sometimes=3 Often=4 Always=5. Max 15 per virtue.",
+        "all_questions": "Exact text from E-004-P1P2 questions block — do not paraphrase"
+      },
+
+      "profiles": {
+        "rule": "dominant virtue = highest score. blind spot = lowest score.",
+        "four": ["THE PHILOSOPHER (Sapientia)", "THE SENTINEL (Iustitia)", "THE WARRIOR (Fortitudo)", "THE ARCHITECT (Temperantia)"],
+        "all_content": "Exact text from E-004-P1P2 profiles array — use verbatim"
+      },
+
+      "js_state": {
+        "vars": "currentQuestion (int), scores {sapientia, iustitia, fortitudo, temperantia} (int), profileUnlocked (bool from localStorage)",
+        "on_complete": "localStorage.setItem('si_audit_scores', JSON.stringify(scores))",
+        "on_email_submit": "localStorage.setItem('si_audit_unlocked', 'true'). Open Substack in new tab. Reveal full profile immediately.",
+        "on_page_load": "if localStorage.getItem('si_audit_unlocked') === 'true' → skip gate, render full profile with stored scores"
+      },
+
+      "delivery": "Single self-contained HTML. <style> in <head>. <script> before </body>. No external JS files.",
+
+      "watch": [
+        "Profile assignment logic: ties go to whichever virtue appears first in the order SAPIENTIA → IUSTITIA → FORTITUDO → TEMPERANTIA",
+        "Email gate must blur content visually but keep DOM accessible for reveal — use CSS class toggle, not DOM removal"
+      ]
+    },
+
+    {
+      "spec_id": "C-007-B",
+      "file": "soleinvictvs-web/fortress-protocol.html",
+      "effort": "medium",
+      "one_shot": true,
+      "concept": "30-day discipline protocol. Beautiful on screen. Prints clean as PDF. Email-gated. Single HTML file.",
+
+      "two_modes": {
+        "screen": "Dark #0A0A0A. Gold accents. The Seasons (or Cormorant fallback) for section headers.",
+        "print": "@media print — white bg, black text, all UI chrome hidden, sun_logo_black.png at top, page breaks between sections"
+      },
+
+      "gate_mechanic": {
+        "above_fold_visible": "Section 1 header + first 3 daily items (no blur)",
+        "below_fold_blurred": "CSS blur(6px) + overlay text: 'The full Fortress Protocol is free. It costs one email.'",
+        "cta": "'Unlock the Protocol' — gold fill button",
+        "action": "localStorage.setItem('si_fortress_unlocked', 'true'). Open Substack new tab. Remove blur immediately.",
+        "on_load": "if si_fortress_unlocked === 'true' → show all content, no gate"
+      },
+
+      "sections": {
+        "print_header": "sun_logo_black.png (small, left) + 'SOLEINVICTVS' + 'Semper ad meliora' — visible in print only via @media print, hidden on screen",
+        "section_1": {
+          "header": "THE DAILY STANDARD",
+          "subheader": "What the unconquered man does. Every day. Without negotiation.",
+          "items": "7 timed items — exact content from E-004-P1P2 section_1_daily_standard.items. Time left-col, ACT label, instruction right."
+        },
+        "section_2": {
+          "header": "THE WEEKLY REVIEW",
+          "subheader": "Every Sunday. One hour. Alone.",
+          "content": "6 questions as numbered list — exact text from E-004-P1P2 section_2_weekly_review.questions. Closing line below."
+        },
+        "section_3": {
+          "header": "THE FORTRESS PRINCIPLES",
+          "subheader": "The non-negotiables. These do not bend.",
+          "content": "5 numbered principles — exact text from E-004-P1P2 section_3_fortress_principles.principles. Closing block last: 'The sun rises unconquered. So must we.' in italic gold, large."
+        },
+        "upgrade_teaser": {
+          "screen_only": true,
+          "hidden_in_print": true,
+          "content": "The Full 90-Day Fortress teaser card — exact text from E-004-P1P2 upgrade_teaser. Gold border card. CTA links to Substack placeholder."
+        }
+      },
+
+      "print_css": {
+        "body": "background: white; color: black",
+        "hide": "nav, gate overlay, upgrade-teaser, print-cta-button, all CTAs, email form",
+        "page_breaks": "page-break-before: always on section-2 and section-3 headers",
+        "gold_to_black": "All --gold elements render #1A1A1A in print",
+        "font_sizes": "body 11pt, section headers 18pt, item time labels 9pt"
+      },
+
+      "screen_cta": "'Print this page — Cmd+P / Ctrl+P' — small text, visible on screen, display:none in @media print",
+
+      "delivery": "Single self-contained HTML. <style> includes both screen and @media print blocks. <script> minimal — gate reveal only. No external JS files."
+    }
+
+  ],
+
+  "build_order": "C-007-A (virtue-audit) first — more JS complexity, better to close it before starting B. C-007-B (fortress-protocol) second — lighter JS, heavier content.",
+
+  "done_when": "Both files open clean in Safari and Chrome. Zero console errors. Audit scores correctly, gate reveals on email submit, localStorage persists on refresh. Fortress prints clean via Cmd+P.",
+
+  "message_to_vitalik": "Two standalone files. All copy is in E-004-P1P2 — use it verbatim, no paraphrasing. The Seasons font is not there yet, build clean with Cormorant Garamond and leave the @font-face block commented out ready to activate. The email gate on both files uses the same localStorage pattern — build it once in your head, apply it twice. Audit first, Fortress second. Hand both to Athena together."
+}

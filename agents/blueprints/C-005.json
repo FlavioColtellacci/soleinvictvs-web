@@ -1,100 +1,59 @@
 {
   "agent": "colombo",
-  "blueprint_id": "C-005",
-  "source_plan": "E-003",
-  "created": "2026-02-22",
-  "project": "soleinvictvs-web",
-
-  "pre_flight": {
-    "done": true,
-    "note": "desktop_wallpapaper_1.png renamed to desktop_wallpaper_1.png — typo fixed before build"
-  },
-
-  "decisions": {
-    "newsletter_forms": "mailto:join@soleinvictvs.com — add data-convertkit-form-id='' for future swap",
-    "apparel_ctas": "href='#waitlist' — no Shopify URL yet",
-    "social": "X/Twitter only — no Instagram"
-  },
-
-  "stack": "Single HTML file per prototype. All CSS inline. Vanilla JS only. No build step. No libraries.",
-  "fonts": "Google Fonts — Cinzel, Cinzel Decorative, Cormorant Garamond. Add Inter for LEGION only.",
-  "asset_root": "../brand_assets/",
-  "apparel_root": "../apparel_design/",
-  "output_dir": "website_prototypes/",
-
-  "do_not_repeat": "No CSS Roman arch, no column sidebar, no canvas sun animation, no SPQR nav — exhausted in prior 12 protos.",
-
-  "builds": [
+  "type": "blueprint",
+  "timestamp": "2026-02-23T17:05:00Z",
+  "source_plan": "E-002",
+  "target_account": "FlavioColtellacci",
+  "pre_flight_fixes": [
+    "Verify if existing files in soleinvictvs-web/ (codex.html, fortress-protocol.html, virtue-audit.html) should be preserved or overwritten with the new Monolith aesthetic. We assume they need the new Monolith aesthetic applied."
+  ],
+  "specs": [
     {
       "spec_id": "C-005",
-      "file": "proto-H-epistula.html",
-      "codename": "EPISTULA",
-      "effort": "small",
-      "concept": "Newsletter-first landing. Email capture above the fold. Cream paper aesthetic.",
-      "palette": { "bg": "#F9F5EE", "text": "#1A1A1A", "gold": "#C9A84C", "secondary": "#4A4540" },
-      "layout": "Centered column, max-width 680px. No sidebar. No grid.",
-      "sections": ["Hero banner (semper_ad_meliora_desktop_wallpaper.png)", "Brand strip (sun_logo_black.png)", "Email capture form", "3 Stoic article preview cards", "Substack wordmark trust strip (substack_wordmark/1.png + 2.png)", "Footer"],
-      "assets": ["../brand_assets/semper_ad_meliora_desktop_wallpaper.png", "../brand_assets/sun_logo_black.png", "../brand_assets/substack_wordmark/1.png", "../brand_assets/substack_wordmark/2.png"],
-      "js": "none",
-      "watch": "sun_logo_black.png is black-on-transparent — only works on the cream background"
-    },
-    {
-      "spec_id": "C-006",
-      "file": "proto-I-vigilia.html",
-      "codename": "VIGILIA",
-      "effort": "small",
-      "concept": "Ultra-minimal luxury. Full-screen fixed wallpaper. Three manifesto panels. No nav.",
-      "palette": { "overlay": "rgba(0,0,0,0.72)", "text": "#FFFFFF", "gold": "#C9A84C" },
-      "layout": "No columns. No grid. No nav. Full viewport sections stacked.",
-      "sections": ["Full-screen hero (desktop_wallpaper_1.png + sun_transparent.png logo)", "Manifesto: DISCIPLINE", "Manifesto: VIRTUE", "Manifesto: BROTHERHOOD", "Minimal footer"],
-      "assets": ["../brand_assets/desktop_wallpaper_1.png", "../brand_assets/sun_transparent.png"],
-      "js": "IntersectionObserver — fade-in each manifesto panel on scroll. ~15 lines.",
-      "watch": "background-attachment:fixed breaks on iOS Safari — add @media (max-width:768px) fallback to scroll"
-    },
-    {
-      "spec_id": "C-007",
-      "file": "proto-F-luminary.html",
-      "codename": "LUMINARY",
-      "effort": "medium",
-      "concept": "Cinematic hero. 2K wallpaper. CSS pulse glow on logo. JS parallax on scroll.",
-      "palette": { "bg": "#0a0806", "gold": "#c9a84c", "text": "#f2ede4", "surface": "#131109" },
-      "layout": "Full-viewport hero, then stacked sections. Fixed nav.",
-      "sections": ["Hero (2k_wallpaper_sun.png as <img> not background-image, sun_transparent.png with pulse glow, single CTA)", "Manifesto (3 gold lines)", "4 virtue pillar cards (2x2 grid)", "Newsletter form", "Footer"],
-      "assets": ["../brand_assets/2k_wallpaper_sun.png", "../brand_assets/sun_transparent.png"],
-      "js": "Parallax: requestAnimationFrame on scroll, translateY hero img. Nav scrolled class. ~25 lines total.",
-      "watch": "Use <img> for wallpaper inside position:relative hero with overflow:hidden — not background-image. Parallax needs this."
-    },
-    {
-      "spec_id": "C-008",
-      "file": "proto-G-merx.html",
-      "codename": "MERX",
-      "effort": "medium",
-      "concept": "Commerce-coded. Split-screen hero. Apparel assets as product imagery. Waitlist CTAs.",
-      "palette": { "bg": "#0a0806", "linen": "#1c1a16", "gold": "#c9a84c", "text": "#f5f0e8" },
-      "layout": "Split-screen hero (CSS grid 50/50). Then: twitter banner, product card grid, founder note, waitlist form.",
-      "sections": ["Hero split (apparel collage left, copy + form right)", "Twitter header banner (twitter_header.png — full width, natural ratio)", "3 product cards (The Stoic Daily / Apparel Drop I / Inner Circle)", "Founder note (placeholder copy, HTML comment for operator)", "Waitlist form", "Footer"],
-      "assets": ["../apparel_design/soleinvictvs_transparent.png", "../apparel_design/logo_transparent.png", "../apparel_design/sun_transparent.png", "../brand_assets/twitter_header.png"],
-      "js": "none — CSS hover only",
-      "watch": "apparel_design/sun_transparent.png and brand_assets/sun_transparent.png are different files. MERX hero uses apparel_design/ version."
-    },
-    {
-      "spec_id": "C-009",
-      "file": "proto-J-legion.html",
-      "codename": "LEGION",
-      "effort": "large",
-      "concept": "Community hub. Social-native. Countdown timer. Static X post card. Social proof.",
-      "palette": { "bg": "#0e0e0e", "surface": "#1a1a1a", "gold": "#c9a84c", "text": "#efefef", "red": "#8b1a1a" },
-      "layout": "No hero section — twitter banner IS the top. Multi-section dark page.",
-      "sections": ["Twitter header banner (twitter_header.png)", "Mission + soleinvictvs_transparent.png wordmark + 4 virtue cards", "Waitlist form + countdown timer (target: 2026-03-01)", "Static X post card (styled div, no embed)", "Social proof strip (X: 12.4K / Substack: 3.8K — placeholder, HTML comment for operator)", "Newsletter teaser (substack_wordmark/2.png)", "Footer"],
-      "assets": ["../brand_assets/twitter_header.png", "../brand_assets/soleinvictvs_transparent.png", "../brand_assets/sun_transparent.png", "../brand_assets/substack_wordmark/2.png"],
-      "js": "Countdown: setInterval 1s, target 2026-03-01. Show 'THE GATES ARE OPEN' at zero — never negative. ~20 lines.",
-      "watch": "Red (#8b1a1a) is the ONLY accent for the Join button. Do not bleed it elsewhere."
+      "source_task": "E-002",
+      "title": "Port Monolith Prototype to production index",
+      "description": "Establish the SOLEINVICTVS base index.html using the approved proto-1-monolith.html.",
+      "files": [
+        {
+          "path": "soleinvictvs-web/index.html",
+          "action": "modify",
+          "purpose": "Main Landing Page",
+          "details": "Overwrite the existing index.html with the contents of website_prototypes/proto-1-monolith.html. Ensure all sections, animations, and typography remain intact."
+        }
+      ],
+      "sequence_order": 1,
+      "depends_on": null,
+      "acceptance_criteria": "index.html renders identically to proto-1-monolith.html in the browser.",
+      "edge_cases": [
+        "The ConvertKit newsletter form currently prevents submission and purely visually updates; this must remain until ConvertKit is set up."
+      ],
+      "estimated_effort": "small"
     }
   ],
-
-  "build_order": "C-005 → C-006 → C-007 → C-008 → C-009",
-
-  "done_when": "5 HTML files in website_prototypes/. Each opens in browser with zero console errors. All images load. LEGION countdown runs. VIGILIA panels fade on scroll. LUMINARY hero parallaxes.",
-
-  "message_to_vitalik": "Five standalone HTML files. You own all decisions not listed above — layout details, spacing, hover states, mobile breakpoints. The specs tell you what sections exist and which assets go where. Make them look good. Ship clean HTML with no broken tags and no console errors. Start with H (easiest) and end with J (most JS). Hand to Athena when all five open cleanly in Safari and Chrome."
+  "issues_to_raise": [
+    {
+      "title": "[SPEC] soleinvictvs-web — Port Monolith prototype",
+      "repo": "FlavioColtellacci/repo-bootstrap",
+      "labels": [
+        "priority:p2",
+        "vitalic:ready",
+        "stack:html",
+        "type:spec"
+      ],
+      "body_json": {
+        "spec_id": "C-005",
+        "project": "soleinvictvs-web",
+        "stack": "html",
+        "action": "modify",
+        "description": "Port proto-1-monolith to soleinvictvs-web/index.html",
+        "priority": "p2",
+        "effort": "small",
+        "depends_on": []
+      }
+    }
+  ],
+  "total_specs": 1,
+  "build_sequence_summary": "1. Overwrite soleinvictvs-web/index.html with website_prototypes/proto-1-monolith.html.",
+  "risks_and_notes": "Operator still needs to provide ConvertKit setup, founder copy, and payment solution for the Vault products. C-005 only handles porting the approved design.",
+  "message_to_vitalic": "BUILD ORDER:\n1. index.html — Copy the contents of website_prototypes/proto-1-monolith.html into soleinvictvs-web/index.html.\n\nWATCH OUT FOR:\n- The old index.html has different content. We are overwriting it entirely with the newly approved Monolith prototype.\n- Leave existing files like codex.html as they are; they will be updated in subsequent specs.\n\nDO NOT:\n- Do not change the aesthetic. The Monolith direction is approved.\n\nDONE WHEN:\n- index.html opens in the browser and looks identical to proto-1-monolith.html, with all scroll animations functioning."
 }
