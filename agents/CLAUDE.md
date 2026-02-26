@@ -30,7 +30,7 @@ Elena → Colombo → Vitalik → Athena
 |-------|------|-----------|
 | **Elena** | Intake — translates operator requests into JSON task plans | `ELENA.md` |
 | **Colombo** | Architect — turns Elena's plans into Vitalik blueprints | `COLOMBO.md` |
-| **Vitalik** | Builder — ships code from Colombo's blueprints | `VITALIK.md` (not yet created) |
+| **Vitalik** | Builder — ships code from Colombo's blueprints | `VITALIK.md` |
 | **Athena** | QA — verifies, tests, closes the loop | (human-in-the-loop) |
 
 **Operator = CEO.** You review PRs, set priorities, approve scope changes.
@@ -57,27 +57,19 @@ Each subdirectory is a standalone, independent project.
 
 | Plan | Agent | Project | Status |
 |------|-------|---------|--------|
-| E-002 | Elena | `soleinvictvs-web` | In progress — 6 prototypes built, selection pending |
+| E-005 | Vitalik | `soleinvictvs-web` | In progress — blueprints C-009–C-013 complete, build assigned |
 
 ---
 
 ### In Progress
 
 - `soleinvictvs-web/` — SOLEINVICTVS brand website (HTML/JS, GitHub Pages)
-  - Stack: static HTML/CSS/JS · No framework · No backend
-  - Scope: Home, About, Codex, Vault, Newsletter · Digital products · Waitlist CTA
-  - Payments: deferred · Physical merch/membership: out of scope for E-002
-  - **Prototype selection pending** — operator chooses from `prototypes/` before build starts
-  - Operator blockers: prototype pick, ConvertKit setup, founder copy, future payment solution TBD
-
-- `prototypes/` — Design prototypes for `soleinvictvs-web` (not a deployable project)
-  - `proto-1-monolith.html` — Centered, austere, large Cinzel, gold rules
-  - `proto-2-aurora.html` — Animated CSS sun rays, clip-path sections, Cormorant
-  - `proto-3-editorial.html` — Sticky sidebar, drop caps, virtues grid
-  - `proto-4-imperium.html` — CSS Roman arch frame, SPQR nav, Pompeii red, Latin subtitles ⭐
-  - `proto-5-divinus.html` — Canvas-animated Sol Invictus, imperial purple, medal cards ⭐
-  - `proto-6-codex.html` — CSS Roman column sidebar, proclamation listing, four virtues ⭐
-  - ⭐ = Round 2 elevated (more Roman, better UI)
+  - Stack: static HTML/CSS/JS · No framework · No backend · GitHub Pages
+  - Branch: `main` (stable) · `feat/e005-full-site` (active build)
+  - **Prototype selected:** `proto-1-monolith.html` — all other prototypes purged
+  - **Live on main:** index.html (monolith), virtue-audit.html, fortress-protocol.html
+  - **Building in E-005:** codex.html, vault.html, about.html + shared nav/footer
+  - Operator blockers: Substack URL, TheSeasons font files, founder avatar/bio, payment solution
 
 ---
 

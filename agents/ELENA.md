@@ -251,32 +251,61 @@ Elena stops and uses `[QUESTION]`:
 - **Stack:** Static HTML/CSS/JS · No framework · No backend · GitHub Pages
 - **GitHub account:** FlavioColtellacci (active, gh CLI authenticated)
 - **Commit standard:** Conventional Commits
+- **Branch:** `main` (clean) · Active build branch: `feat/e005-full-site`
 - **Brand reference:** `SOLEINVICTVS_brand_reference.md`
 - **Agent soul files:** `agents/ELENA.md` · `agents/COLOMBO.md` · `agents/VITALIK.md` · `agents/ATHENA.md`
 - **Blueprints:** `agents/blueprints/`
 
-### Current Site State
-- `soleinvictvs-web/index.html` — fully built (Nav, Hero, Manifesto, Four Virtues, Founder, Codex Preview, Legion CTA, Footer)
-- `soleinvictvs-web/codex.html` — fully built (Nav, Codex Header, 3 article stubs, Footer)
-- `soleinvictvs-web/assets/css/main.css` — complete
-- `soleinvictvs-web/assets/js/main.js` — complete (nav scroll, mobile menu, fade-in)
-- `soleinvictvs-web/.github/workflows/ci.yml` — HTMLHint + Lighthouse CI
-- `soleinvictvs-web/.github/workflows/deploy.yml` — GitHub Pages deploy (awaiting repo creation)
+### Current Site State (main — committed)
 
-### Open Operator TODOs (do not plan around these — flag with [BLOCKER] or [CONTEXT] and wait)
-- `founder_avatar.jpg` — placeholder is `../brand_assets/sun_logo_black.png`, comment left in HTML
-- Substack URL — `href="#"` in Legion CTA and footer, comment left in HTML
-- GitHub repo creation — `deploy.yml` written but Pages not yet active
+| File | Status | Notes |
+|------|--------|-------|
+| `soleinvictvs-web/index.html` | Live | Monolith homepage — C-010 applied (The Seasons font prep, shared nav/footer, data-page="home") |
+| `soleinvictvs-web/virtue-audit.html` | Live | 12-question virtue self-assessment — C-007-A, Athena PASS 10/10 |
+| `soleinvictvs-web/fortress-protocol.html` | Live | 30-day discipline protocol, print-ready — C-007-B, Athena PASS 10/10 |
+| `soleinvictvs-web/codex.html` | Stale | Pre-monolith build — queued for full replacement in C-011 |
+| `website_prototypes/proto-1-monolith.html` | Reference | Selected approved prototype — do not delete |
+| `soleinvictvs-web/assets/css/main.css` | Orphaned | Referenced only by old codex.html — deleted in C-009 |
+| `soleinvictvs-web/assets/js/main.js` | Orphaned | Referenced only by old codex.html — deleted in C-009 |
+
+### Active Work — E-005 (Vitalik assigned, feat/e005-full-site)
+
+| Blueprint | Task | Description |
+|-----------|------|-------------|
+| C-009 | T6 | Delete orphaned main.css + main.js (ships with C-011 in same PR) |
+| C-010 | T5+T4 | The Seasons font + shared nav/footer on all 3 existing pages |
+| C-011 | T1 | Build codex.html — article hub, 6 branded placeholder cards |
+| C-012 | T2 | Build vault.html — Free Arsenal, Digital Products, Coming Soon |
+| C-013 | T3 | Build about.html — Three Pillars, Four Virtues, Founder placeholder |
+
+### Design System (C-006 token set — all new pages)
+```
+--bg: #0A0A0A  --surface: #111111  --surface-2: #161616  --border: #1E1E1E
+--text: #F5F0E8  --text-muted: #9A9080  --gold: #C9A84C  --gold-muted: #8A6F32
+--font-display: 'The Seasons', 'Cormorant Garamond', serif
+--font-serif: 'Cormorant Garamond', serif
+--font-ui: 'Inter', sans-serif
+```
+**Token debt:** index.html still uses pre-C-006 names (--dim, --stone, --bronze). Harmonise in E-006.
+
+### Open Operator TODOs (flag with [BLOCKER] or [CONTEXT] — do not plan around these)
+- **Substack URL** — all newsletter CTAs point to `#` across all pages
+- **TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2** — @font-face block commented in every page, Cormorant Garamond fallback active; drop files into `soleinvictvs-web/assets/fonts/` to activate
+- **Founder avatar + real bio** — about.html ships with placeholder; operator swaps when ready
+- **Payment solution** (Stripe / Gumroad / Lemon Squeezy) — vault paid CTAs point to newsletter waitlist
 
 ### Plan History
-| Plan | Blueprint | Description | Status |
-|------|-----------|-------------|--------|
-| E-001 | — | Initial setup | Complete |
-| E-002 | C-005 | Prototype exploration | Complete |
-| E-003 | — | (reserved) | — |
-| E-004 | C-006 | Full website build | Complete |
 
-**Next plan ID: E-005**
+| Plan | Blueprint(s) | Description | Status |
+|------|-------------|-------------|--------|
+| E-001 | — | Initial repo setup | Complete |
+| E-002 | C-005 | Port proto-1-monolith to production index.html | Complete |
+| E-003 | C-006 | proto-OMEGA amalgam prototype | Abandoned — proto-OMEGA never built |
+| E-004 | C-007, C-008 | Free tools (virtue-audit + fortress-protocol) + rejected prototype round | C-007 complete (Athena PASS); C-008 output deleted (rejected) |
+| E-005 | C-009–C-013 | Full multi-page website build (Codex, Vault, About + shared nav) | In progress — blueprints complete, Vitalik building |
+
+**Next plan ID: E-006**
+**Next blueprint ID: C-014**
 
 ---
 
