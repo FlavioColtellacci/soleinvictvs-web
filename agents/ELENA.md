@@ -134,7 +134,7 @@ She flags when a completed spec's acceptance criteria were not met.
 
 ### Field Rules
 
-- `plan_id`: Sequential. Format: `E-001`, `E-002`. **Next ID: E-005.**
+- `plan_id`: Sequential. Format: `E-001`, `E-002`. **Next ID: E-006.**
 - `task_id`: Subtasks of a plan. Format: `E-005-01`, `E-005-02`.
 - `interpreted_intent`: Elena's most important field. If this is wrong, everything downstream is wrong.
 - `acceptance_criteria`: Must be observable and binary. "Works correctly" is not acceptable. "Both pages open with zero console errors in Safari and Chrome" is acceptable.
@@ -251,32 +251,26 @@ Elena stops and uses `[QUESTION]`:
 - **Stack:** Static HTML/CSS/JS · No framework · No backend · GitHub Pages
 - **GitHub account:** FlavioColtellacci (active, gh CLI authenticated)
 - **Commit standard:** Conventional Commits
-- **Branch:** `main` (clean) · Active build branch: `feat/e005-full-site`
+- **Branch:** `main` (clean — E-005 merged · no active feature branch)
 - **Brand reference:** `SOLEINVICTVS_brand_reference.md`
 - **Agent soul files:** `agents/ELENA.md` · `agents/COLOMBO.md` · `agents/VITALIK.md` · `agents/ATHENA.md`
 - **Blueprints:** `agents/blueprints/`
 
-### Current Site State (main — committed)
+### Current Site State (main — E-005 merged, clean)
 
 | File | Status | Notes |
 |------|--------|-------|
-| `soleinvictvs-web/index.html` | Live | Monolith homepage — C-010 applied (The Seasons font prep, shared nav/footer, data-page="home") |
+| `soleinvictvs-web/index.html` | Live | Monolith homepage — C-010: font vars, shared nav/footer, data-page="home". Token debt: old names (--dim, --stone, --bronze) → fix in E-006 |
+| `soleinvictvs-web/codex.html` | Live | Article hub — C-011: 6 branded cards, Seneca quote, newsletter, scroll reveal |
+| `soleinvictvs-web/vault.html` | Live | Products page — C-012: Free Arsenal, Digital Vault (3 paid), Physical Vault (apparel) |
+| `soleinvictvs-web/about.html` | Live | Philosophy page — C-013: Three Pillars, Four Virtues, Founder placeholder (operator swap ready) |
 | `soleinvictvs-web/virtue-audit.html` | Live | 12-question virtue self-assessment — C-007-A, Athena PASS 10/10 |
 | `soleinvictvs-web/fortress-protocol.html` | Live | 30-day discipline protocol, print-ready — C-007-B, Athena PASS 10/10 |
-| `soleinvictvs-web/codex.html` | Stale | Pre-monolith build — queued for full replacement in C-011 |
-| `website_prototypes/proto-1-monolith.html` | Reference | Selected approved prototype — do not delete |
-| `soleinvictvs-web/assets/css/main.css` | Orphaned | Referenced only by old codex.html — deleted in C-009 |
-| `soleinvictvs-web/assets/js/main.js` | Orphaned | Referenced only by old codex.html — deleted in C-009 |
 
-### Active Work — E-005 (Vitalik assigned, feat/e005-full-site)
-
-| Blueprint | Task | Description |
-|-----------|------|-------------|
-| C-009 | T6 | Delete orphaned main.css + main.js (ships with C-011 in same PR) |
-| C-010 | T5+T4 | The Seasons font + shared nav/footer on all 3 existing pages |
-| C-011 | T1 | Build codex.html — article hub, 6 branded placeholder cards |
-| C-012 | T2 | Build vault.html — Free Arsenal, Digital Products, Coming Soon |
-| C-013 | T3 | Build about.html — Three Pillars, Four Virtues, Founder placeholder |
+### E-006 Backlog (not yet briefed)
+- Token harmonisation: index.html old names (--dim, --stone, --bronze, --bg:#0a0806) → C-006 names
+- Mobile nav: hamburger menu (nav links hidden on mobile across all pages)
+- Individual article pages: Codex cards all link to `#`
 
 ### Design System (C-006 token set — all new pages)
 ```
