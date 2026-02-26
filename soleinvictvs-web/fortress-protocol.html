@@ -40,7 +40,7 @@
   --gold:       #C9A84C;
   --gold-muted: #8A6F32;
   --red:        #8B1A1A;
-  --font-display: 'Cinzel Decorative', serif;
+  --font-display: 'The Seasons', 'Cormorant Garamond', serif;
   --font-serif:   'Cormorant Garamond', serif;
   --font-ui:      'Inter', sans-serif;
 }
@@ -57,28 +57,40 @@ body {
 
 /* ─── NAV (screen only) ─── */
 .site-nav {
-  padding: 1.25rem 3rem;
+  position: static;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1.5rem 3rem;
   border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  z-index: 100;
 }
 .nav-logo {
-  font-family: 'Cinzel', serif;
-  font-size: .55rem;
-  letter-spacing: .45em;
+  font-family: var(--font-display);
+  font-size: .65rem;
+  letter-spacing: .4em;
   color: var(--gold);
   text-decoration: none;
 }
-.nav-back {
+.nav-links {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+}
+.nav-links a {
   font-family: 'Cinzel', serif;
-  font-size: .44rem;
-  letter-spacing: .3em;
+  font-size: .55rem;
+  letter-spacing: .25em;
   color: var(--text-muted);
   text-decoration: none;
+  text-transform: uppercase;
   transition: color .3s;
 }
-.nav-back:hover { color: var(--gold); }
+.nav-links a:hover { color: var(--gold); }
+body[data-page='vault'] .nav-links a[href='vault.html'],
+body[data-page='codex'] .nav-links a[href='codex.html'],
+body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
 
 /* ─── HERO HEADER ─── */
 .hero-header {
@@ -392,27 +404,40 @@ body {
 
 /* ─── FOOTER (screen only) ─── */
 .site-footer {
-  padding: 2rem 3rem;
+  padding: 2.5rem 4rem;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .footer-brand {
-  font-family: 'Cinzel', serif;
-  font-size: .4rem;
+  font-family: var(--font-display);
+  font-size: .5rem;
   letter-spacing: .4em;
   color: var(--text-muted);
+  text-transform: uppercase;
 }
-.footer-link {
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+.footer-links a {
   font-family: 'Cinzel', serif;
-  font-size: .4rem;
-  letter-spacing: .35em;
+  font-size: .45rem;
+  letter-spacing: .2em;
   color: var(--text-muted);
   text-decoration: none;
+  text-transform: uppercase;
   transition: color .3s;
 }
-.footer-link:hover { color: var(--gold); }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
 
 /* ═══════════════════════════════════════════════════════════
    PRINT STYLES
@@ -518,18 +543,23 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .site-nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { display: none; }
+}
+
+@media (max-width: 600px) {
   .hero-header { padding: 3rem 1.5rem 2.5rem; }
   .protocol-wrapper { padding: 0 1.5rem; }
   .daily-item { grid-template-columns: 72px 1fr; gap: 1rem; }
   .gate-form { flex-direction: column; }
   .gate-form input { border-right: 1px solid rgba(201,168,76,.3); border-bottom: none; }
-  .site-footer { flex-direction: column; gap: 1rem; text-align: center; }
 }
 </style>
 </head>
-<body>
+<body data-page="fortress-protocol">
 
 <!-- PRINT HEADER (print @media only) -->
 <div class="print-header">
@@ -543,7 +573,12 @@ body {
 <!-- NAV (screen only) -->
 <nav class="site-nav">
   <a href="index.html" class="nav-logo">SOLEINVICTVS</a>
-  <a href="virtue-audit.html" class="nav-back">← The Virtue Audit</a>
+  <ul class="nav-links">
+    <li><a href="vault.html">The Vault</a></li>
+    <li><a href="codex.html">The Codex</a></li>
+    <li><a href="about.html">Philosophy</a></li>
+    <li><a href="index.html#newsletter">Join the Legion</a></li>
+  </ul>
 </nav>
 
 <!-- HERO HEADER -->
@@ -725,8 +760,13 @@ body {
 
 <!-- FOOTER (screen only) -->
 <footer class="site-footer">
-  <span class="footer-brand">© MMXXVI SOLEINVICTVS · Semper ad meliora</span>
-  <a href="index.html" class="footer-link">← Return to site</a>
+  <span class="footer-brand">SOLEINVICTVS</span>
+  <div class="footer-links">
+    <a href="#">X / Twitter</a>
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+  </div>
+  <span class="footer-copy">© MMXXVI · Semper ad meliora</span>
 </footer>
 
 <script>

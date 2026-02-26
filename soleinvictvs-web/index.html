@@ -4,7 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SOLEINVICTVS — Monolith</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<!--
+  FONT SWAP — The Seasons
+  When TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 land in assets/fonts/,
+  uncomment the block below and remove the Google Fonts link.
+
+  @font-face {
+    font-family: 'The Seasons';
+    src: url('assets/fonts/TheSeasons-Regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'The Seasons';
+    src: url('assets/fonts/TheSeasons-Italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap;
+  }
+-->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,6 +32,9 @@
   --stone: #6b6560;
   --text: #f2ede4;
   --dim: #9e9890;
+  --font-display: 'The Seasons', 'Cormorant Garamond', serif;
+  --font-serif:   'Cormorant Garamond', serif;
+  --font-ui:      'Inter', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -30,14 +49,14 @@ body {
 }
 
 /* NAV */
-nav {
+.site-nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
   padding: 1.75rem 4rem;
   background: linear-gradient(to bottom, rgba(10,8,6,.97) 0%, transparent 100%);
 }
 .nav-logo {
-  font-family: 'Cinzel', serif; font-size: .65rem;
+  font-family: var(--font-display); font-size: .65rem;
   letter-spacing: .4em; color: var(--gold); text-decoration: none;
 }
 .nav-links { display: flex; gap: 3rem; list-style: none; }
@@ -47,6 +66,9 @@ nav {
   text-transform: uppercase; transition: color .3s;
 }
 .nav-links a:hover { color: var(--gold); }
+body[data-page='vault'] .nav-links a[href='vault.html'],
+body[data-page='codex'] .nav-links a[href='codex.html'],
+body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
 
 /* HERO */
 .hero {
@@ -65,7 +87,7 @@ nav {
   text-transform: uppercase;
 }
 .hero-title {
-  font-family: 'Cinzel', serif; font-weight: 900;
+  font-family: var(--font-display); font-weight: 900;
   font-size: clamp(3rem, 9vw, 8rem); letter-spacing: .18em;
   line-height: .95; color: var(--text); margin-bottom: 2.5rem;
 }
@@ -216,12 +238,12 @@ nav {
 .newsletter-form button:hover { background: #d9b85c; }
 
 /* FOOTER */
-footer {
+.site-footer {
   padding: 2.5rem 4rem; display: flex;
   justify-content: space-between; align-items: center;
   border-top: 1px solid rgba(107,101,96,.15);
 }
-.footer-logo { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .35em; color: var(--stone); }
+.footer-brand { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .35em; color: var(--stone); }
 .footer-copy { font-size: .6rem; color: var(--stone); letter-spacing: .1em; }
 .footer-links { display: flex; gap: 1.5rem; }
 .footer-links a { font-size: .6rem; color: var(--stone); text-decoration: none; letter-spacing: .1em; transition: color .3s; }
@@ -233,26 +255,26 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  nav { padding: 1.25rem 1.75rem; }
+  .site-nav { padding: 1.25rem 1.75rem; }
   .nav-links { display: none; }
   .pillars, .vault { padding: 5rem 1.75rem; }
   .pillars-grid, .vault-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .quote-wrap, .newsletter { padding: 5rem 1.75rem; }
   .newsletter-form { flex-direction: column; }
   .newsletter-form input { border-right: 1px solid var(--bronze); border-bottom: none; }
-  footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.75rem; }
+  .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.75rem; }
   .footer-links { display: none; }
 }
 </style>
 </head>
-<body>
+<body data-page="home">
 
-<nav>
+<nav class="site-nav">
   <a href="/" class="nav-logo">SOLEINVICTVS</a>
   <ul class="nav-links">
-    <li><a href="#vault">The Vault</a></li>
-    <li><a href="#codex">The Codex</a></li>
-    <li><a href="#about">Philosophy</a></li>
+    <li><a href="vault.html">The Vault</a></li>
+    <li><a href="codex.html">The Codex</a></li>
+    <li><a href="about.html">Philosophy</a></li>
     <li><a href="#newsletter">Join the Legion</a></li>
   </ul>
 </nav>
@@ -347,8 +369,8 @@ footer {
   </form>
 </section>
 
-<footer>
-  <span class="footer-logo">SOLEINVICTVS</span>
+<footer class="site-footer">
+  <span class="footer-brand">SOLEINVICTVS</span>
   <div class="footer-links">
     <a href="#">X / Twitter</a>
     <a href="#">YouTube</a>
