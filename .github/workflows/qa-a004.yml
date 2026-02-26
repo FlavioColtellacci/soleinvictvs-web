@@ -1,0 +1,43 @@
+name: Athena A-004 — C-015 cycle closure
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'agents/**'
+      - 'soleinvictvs-web/**'
+      - 'tests/**'
+  workflow_dispatch:
+
+jobs:
+  verify-c015:
+    name: C-015 cycle closure verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 20
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Make test script executable
+        run: chmod +x tests/a004-c015.sh
+
+      - name: Run C-015 cycle closure verification
+        run: bash tests/a004-c015.sh
+
+      - name: Write job summary
+        if: always()
+        run: |
+          if bash tests/a004-c015.sh 2>/dev/null | grep -q 'VERDICT: PASS'; then
+            echo '### Athena A-004: PASS' >> $GITHUB_STEP_SUMMARY
+            echo 'All 16 cycle closure checks passed.' >> $GITHUB_STEP_SUMMARY
+          else
+            echo '### Athena A-004: FAIL' >> $GITHUB_STEP_SUMMARY
+            echo 'One or more checks failed. Review step output above.' >> $GITHUB_STEP_SUMMARY
+          fi
