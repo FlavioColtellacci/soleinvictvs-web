@@ -1,0 +1,134 @@
+/* ─────────────────────────────────────────────────────────────
+   SOLEINVICTVS — main.css
+   Shared stylesheet for site-wide components.
+   Loaded after inline <style> blocks so inline specificity wins
+   for page-level overrides.
+───────────────────────────────────────────────────────────── */
+
+/* ─── Mobile Navigation ─── */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ─── Mobile breakpoint: 900px matches all existing page breakpoints ─── */
+@media (max-width: 900px) {
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Override inline display:none — external sheet loads after inline <style>
+     so same-specificity later rule wins without needing !important */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s ease, opacity 0.3s ease;
+  }
+
+  /* Mobile overlay link styles — editorial, brand-voice */
+  .nav-links a {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold);
+  }
+
+  /* Open state — toggled by JS adding .nav-open to <body> */
+  body.nav-open .nav-links {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Lock background scroll while overlay is open */
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  /* Hamburger → X animation */
+  body.nav-open .nav-toggle__bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  body.nav-open .nav-toggle__bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  body.nav-open .nav-toggle__bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+}
+
+/* ─── Desktop guard ─────────────────────────────────────────────────────────
+   Ensures residual .nav-open class on <body> cannot break desktop nav
+   if a user opens mobile menu then resizes the window above 900px.
+─────────────────────────────────────────────────────────────────────────── */
+@media (min-width: 901px) {
+
+  .nav-toggle {
+    display: none;
+  }
+
+  body.nav-open .nav-links {
+    position: static;
+    transform: none;
+    opacity: 1;
+    height: auto;
+    flex-direction: row;
+    background: transparent;
+    pointer-events: auto;
+    overflow: visible;
+  }
+
+}
+
+/* ─── Print override ─────────────────────────────────────────────────────────
+   Prevents hamburger from appearing on printed output (fortress-protocol).
+─────────────────────────────────────────────────────────────────────────── */
+@media print {
+
+  .nav-toggle {
+    display: none !important;
+  }
+
+}

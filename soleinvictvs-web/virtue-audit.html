@@ -579,6 +579,7 @@ body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
   .quiz-virtue-tag { display: none; }
 }
 </style>
+<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body data-page="virtue-audit">
 
@@ -590,6 +591,11 @@ body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
     <li><a href="about.html">Philosophy</a></li>
     <li><a href="index.html#newsletter">Join the Legion</a></li>
   </ul>
+  <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+    <span class="nav-toggle__bar"></span>
+    <span class="nav-toggle__bar"></span>
+    <span class="nav-toggle__bar"></span>
+  </button>
 </nav>
 
 <!-- ── LANDING ─────────────────────────────────────────────── -->
@@ -965,6 +971,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // else: landing is already active
 });
 </script>
+<script src="assets/js/main.js" defer></script>
 
 <footer class="site-footer">
   <span class="footer-brand">SOLEINVICTVS</span>

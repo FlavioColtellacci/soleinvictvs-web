@@ -396,6 +396,7 @@ body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
   .footer-links { display: none; }
 }
 </style>
+<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body data-page="about">
 
@@ -414,6 +415,11 @@ body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
     <li><a href="about.html">Philosophy</a></li>
     <li><a href="index.html#newsletter">Join the Legion</a></li>
   </ul>
+  <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+    <span class="nav-toggle__bar"></span>
+    <span class="nav-toggle__bar"></span>
+    <span class="nav-toggle__bar"></span>
+  </button>
 </nav>
 
 <!-- PAGE HERO -->
@@ -565,6 +571,7 @@ function handleSignup(e) {
   e.target.querySelector('input').value = '';
 }
 </script>
+<script src="assets/js/main.js" defer></script>
 
 </body>
 </html>
