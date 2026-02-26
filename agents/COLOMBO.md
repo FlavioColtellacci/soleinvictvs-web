@@ -238,10 +238,11 @@ DONE WHEN:
 - **GitHub account:** FlavioColtellacci (active, gh CLI authenticated)
 - **Commit standard:** Conventional Commits
 
-### Design Tokens (from C-006 — use these everywhere, never hardcode hex)
+### Design Tokens (C-006 canonical set — use these everywhere, never hardcode hex)
 ```
 --bg:          #0A0A0A
 --surface:     #111111
+--surface-2:   #161616
 --border:      #1E1E1E
 --text:        #F5F0E8
 --text-muted:  #9A9080
@@ -249,46 +250,46 @@ DONE WHEN:
 --gold-muted:  #8A6F32
 --red:         #8B1A1A
 
---font-display: 'Cinzel Decorative', serif
+--font-display: 'The Seasons', 'Cormorant Garamond', serif
 --font-serif:   'Cormorant Garamond', serif
 --font-ui:      'Inter', sans-serif
-
---section-pad:        6rem 4rem
---section-pad-mobile: 4rem 1.5rem
-```
-
-### Asset Paths (relative to soleinvictvs-web/)
-```
-../brand_assets/2k_wallpaper_sun.png      — hero background
-../brand_assets/sun_transparent.png       — nav + footer logo (32px / 24px)
-../brand_assets/sun_logo_black.png        — founder avatar fallback
-../brand_assets/twitter_header.png        — legion section background
-../brand_assets/substack_wordmark/2.png   — substack logo
-../apparel_design/logo_transparent.png    — apparel logo
 ```
 
 ### Current File State
-| File | Status |
-|------|--------|
-| `soleinvictvs-web/index.html` | Complete |
-| `soleinvictvs-web/codex.html` | Complete — 3 article stubs, operator fills content |
-| `soleinvictvs-web/assets/css/main.css` | Complete |
-| `soleinvictvs-web/assets/js/main.js` | Complete |
-| `soleinvictvs-web/.github/workflows/ci.yml` | Complete |
-| `soleinvictvs-web/.github/workflows/deploy.yml` | Written — awaiting repo creation |
+| File | Status | Notes |
+|------|--------|-------|
+| `soleinvictvs-web/index.html` | Live | C-010 + C-014-A: C-006 tokens, shared nav/footer, data-page="home" |
+| `soleinvictvs-web/codex.html` | Live | C-011: 6-card article hub, Seneca quote, newsletter |
+| `soleinvictvs-web/vault.html` | Live | C-012: Free Arsenal, Digital Vault, Physical Vault |
+| `soleinvictvs-web/about.html` | Live | C-013: Three Pillars, Four Virtues, Founder placeholder |
+| `soleinvictvs-web/virtue-audit.html` | Live | C-007-A: 12-question virtue assessment, static nav |
+| `soleinvictvs-web/fortress-protocol.html` | Live | C-007-B: 30-day protocol, print-ready, static nav |
+| `soleinvictvs-web/assets/css/main.css` | Live | C-014-B: mobile nav overlay, 900px breakpoint, desktop guard, print override |
+| `soleinvictvs-web/assets/js/main.js` | Live | C-014-B: nav toggle — open/close, link-close, Escape-close |
+| `soleinvictvs-web/.github/workflows/ci.yml` | Live | Static validation on push |
+| `soleinvictvs-web/.github/workflows/deploy.yml` | Live | GitHub Pages deploy |
 
 ### Open Operator TODOs (do not design around these — leave placeholders and flag)
-- `founder_avatar.jpg` — current fallback: `../brand_assets/sun_logo_black.png`
-- Substack URL — current: `href="#"` with TODO comment
-- GitHub repo + Pages activation — deploy.yml ready but not live
+- Substack URL — newsletter CTAs point to `#` across all pages
+- TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 — @font-face commented in all pages; drop into `assets/fonts/` to activate
+- Founder avatar + real bio — about.html has placeholder; operator swaps in when ready
+- Payment solution (Stripe / Gumroad / Lemon Squeezy) — vault paid CTAs point to waitlist
 
 ### Blueprint History
-| Blueprint | Source Plan | Status |
-|-----------|-------------|--------|
-| C-005 | E-002 | Superseded by C-006 |
-| C-006 | E-004 | Complete — full site built |
+| Blueprint | Source Plan | Description | Status |
+|-----------|-------------|-------------|--------|
+| C-005 | E-002 | Port proto-1-monolith to production index.html | Superseded by C-006 |
+| C-006 | E-003/E-004 | Design token set + proto-OMEGA | C-006 tokens canonical — proto abandoned |
+| C-007 | E-004 | Free tools: virtue-audit.html + fortress-protocol.html | Complete — Athena PASS A-001 |
+| C-008 | E-004 | Rejected prototype round | Deleted — output rejected by operator |
+| C-009 | E-005 | Delete orphaned assets (main.css, main.js) | Complete |
+| C-010 | E-005 | Font stack + shared nav/footer on 3 existing pages | Complete |
+| C-011 | E-005 | codex.html rebuild (article hub) | Complete |
+| C-012 | E-005 | vault.html new (products page) | Complete |
+| C-013 | E-005 | about.html new (philosophy + founder) | Complete |
+| C-014 | E-006 | Token harmonisation (index.html) + mobile nav hamburger (all 6 pages) | Complete — Athena PASS A-003 |
 
-**Next blueprint ID: C-007**
+**Next blueprint ID: C-015**
 
 ---
 

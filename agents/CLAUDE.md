@@ -1,7 +1,7 @@
-# Code Base — Project Collection
+# SOLEINVICTVS — Project Context
 
-This directory contains a collection of independent projects and utilities.
-Each folder is its own universe. Nothing here is coupled to anything else.
+This is the SOLEINVICTVS brand website project.
+Operated by a four-agent waterfall fleet. Operator is the CEO.
 
 ---
 
@@ -10,17 +10,12 @@ Each folder is its own universe. Nothing here is coupled to anything else.
 | Account | Status | Purpose |
 |---------|--------|---------|
 | **FlavioColtellacci** | Active — gh CLI authenticated | Live portfolio, CI/CD, public repos |
-| **Catalitium** | Available — inactive | Historical / reference only |
 
-**Control plane:** `FlavioColtellacci/repo-bootstrap` — scripts, CI templates, publishing pipeline.
-Local copy: `code-base/repo-bootstrap/`
-> ⚠️ `repo-bootstrap` does not exist on GitHub yet. Must be created before any CI injection or bulk publish work.
+**Active repo:** `FlavioColtellacci/soleinvictvs-web` — GitHub Pages, static HTML/CSS/JS
 
 ---
 
 ## Agent Fleet
-
-This codebase is operated by a four-agent waterfall. Each agent has a soul file in memory.
 
 ```
 Elena → Colombo → Vitalik → Athena
@@ -28,166 +23,117 @@ Elena → Colombo → Vitalik → Athena
 
 | Agent | Role | Soul File |
 |-------|------|-----------|
-| **Elena** | Intake — translates operator requests into JSON task plans | `ELENA.md` |
-| **Colombo** | Architect — turns Elena's plans into Vitalik blueprints | `COLOMBO.md` |
-| **Vitalik** | Builder — ships code from Colombo's blueprints | `VITALIK.md` |
-| **Athena** | QA — verifies, tests, closes the loop | (human-in-the-loop) |
+| **Elena** | Intake — translates operator requests into JSON task plans | `agents/ELENA.md` |
+| **Colombo** | Architect — turns Elena's plans into Vitalik blueprints | `agents/COLOMBO.md` |
+| **Vitalik** | Builder — ships code from Colombo's blueprints | `agents/VITALIK.md` |
+| **Athena** | QA — verifies, tests, closes the loop | `agents/ATHENA.md` |
 
 **Operator = CEO.** You review PRs, set priorities, approve scope changes.
 Everything else runs through the fleet.
 
 ---
 
-## Naming Convention
+## Project Structure
 
-All project folders use **kebab-case**: `noun-topic` or `noun-action`
-— all lowercase, hyphen-separated, 2–4 words, singular where natural.
-No `tool-` or `util-` prefixes. No camelCase. No underscores.
+```
+soleinvictvs_web/
+├── agents/             — Agent soul files + blueprint history
+│   ├── CLAUDE.md       — This file
+│   ├── ELENA.md
+│   ├── COLOMBO.md
+│   ├── VITALIK.md
+│   ├── ATHENA.md
+│   ├── OPERATOR_GUIDE.md
+│   └── blueprints/     — JSON outputs from every plan cycle
+├── soleinvictvs-web/   — Live website (GitHub Pages)
+├── brand_assets/       — Logos, wallpapers, source files
+├── apparel_design/     — Apparel logos
+└── website_prototypes/ — Historical prototypes (reference only)
+```
 
 ---
 
-## Structure
+## Active Plans
 
-Each subdirectory is a standalone, independent project.
-`wip-` prefix = spec complete, code not yet written.
-
----
-
-### Active Plans
-
-| Plan | Agent | Project | Status |
-|------|-------|---------|--------|
-| E-005 | Vitalik | `soleinvictvs-web` | MERGED to main — Athena PASS · PR #3 closed |
+| Plan | Blueprint(s) | Description | Status |
+|------|-------------|-------------|--------|
+| E-005 | C-009–C-013 | Full multi-page website build | MERGED to main — Athena PASS · PR #3 closed |
 
 **Next plan: E-006** (not yet briefed)
 
 ---
 
-### In Progress
+## Current Site State (main — clean)
 
-- `soleinvictvs-web/` — SOLEINVICTVS brand website (HTML/JS, GitHub Pages)
-  - Stack: static HTML/CSS/JS · No framework · No backend · GitHub Pages
-  - Branch: `main` (clean — E-005 merged)
-  - **Live on main:** index.html · codex.html · vault.html · about.html · virtue-audit.html · fortress-protocol.html
-  - **E-006 backlog:** token harmonisation (index.html old names), mobile nav hamburger, individual article pages
-  - Operator blockers: Substack URL, TheSeasons font files, founder avatar/bio, payment solution
-
----
-
-### Live Projects (35)
-
-#### Python Tools
-- `ascii-art/` — ASCII art generator
-- `auto-prompter/` — Auto prompt chaining tool
-- `cache-cleaner/` — Cache cleaning utility (Python + PowerShell)
-- `conway-game/` — Conway's Game of Life
-- `maze-master/` — Maze generation and solving
-- `qr-generator/` — QR code generator
-- `secure-vault/` — Encrypted secure vault
-- `seo-intel/` — SEO intelligence tool (Flask)
-- `text-summarizer/` — Text summarization utility
-- `typing-test/` — Typing speed test
-
-#### PowerShell / System Tools
-- `cpu-benchmark/` — CPU benchmarking tool
-- `system-health/` — System health monitor and benchmark
-
-#### Web / HTML Tools
-- `aspect-ratio/` — Image/video dimension calculator
-- `base64/` — Base64 encoder/decoder
-- `binary-converter/` — Binary, decimal, hex, octal converter
-- `bmi-calculator/` — BMI calculator with health range visualization
-- `contract-generator/` — Contract document generator
-- `countdown-timer/` — Live countdown to any target date/time
-- `cron-builder/` — Visual cron expression builder
-- `css-minifier/` — CSS minifier and beautifier
-- `euro-castles/` — European castles interactive guide
-- `hash-generator/` — MD5/SHA1/SHA256 hash generator
-- `hex-palette/` — Hex color mood palette (PWA)
-- `invoice-generator/` — Invoice creation and export
-- `json-formatter/` — JSON formatter, minifier, validator
-- `lorem-generator/` — Placeholder text generator
-- `morse-translator/` — Morse code translator with audio
-- `pixel-art-editor/` — Pixel art drawing tool
-- `reading-estimator/` — Reading time, word count, readability stats
-- `regex-tester/` — Live regex tester with match highlighting
-- `social-card/` — Social media card designer
-- `timezone-converter/` — World timezone converter with visual clock
-- `tip-calculator/` — Bill splitter and tip calculator
-- `word-counter/` — Real-time word/character/sentence counter
-- `password-generator/` — Secure password generator (crypto.getRandomValues)
+| File | Status | Notes |
+|------|--------|-------|
+| `soleinvictvs-web/index.html` | Live | Token debt: old names (--dim, --stone, --bronze) → fix in E-006 |
+| `soleinvictvs-web/codex.html` | Live | 6 article cards — all link to `#`, individual pages pending |
+| `soleinvictvs-web/vault.html` | Live | Free Arsenal + Digital Vault + Physical Vault (apparel) |
+| `soleinvictvs-web/about.html` | Live | Founder placeholder — operator swaps when ready |
+| `soleinvictvs-web/virtue-audit.html` | Live | 12-question virtue self-assessment — Athena PASS |
+| `soleinvictvs-web/fortress-protocol.html` | Live | 30-day discipline protocol, print-ready — Athena PASS |
+| `soleinvictvs-web/assets/css/main.css` | Live | C-006 design token set |
+| `soleinvictvs-web/assets/js/main.js` | Live | Nav scroll, mobile menu, scroll reveal |
+| `soleinvictvs-web/.github/workflows/ci.yml` | Live | HTMLHint + Lighthouse CI |
 
 ---
 
-### Planned Projects (wip- prefix — spec complete, no code yet)
+## E-006 Backlog (not yet briefed)
 
-#### Simple Utilities
-- `wip-color-scheme/` — Color palette generator
-- `wip-dice-roller/` — Virtual dice roller for tabletop gaming
-- `wip-gradient-generator/` — Visual CSS gradient creator
-- `wip-markdown-preview/` — Live markdown editor with preview
-- ~~`wip-password-generator/`~~ — **SHIPPED** → `password-generator/` (C-004-09)
-- `wip-pomodoro-timer/` — Productivity timer (25/5 min cycles)
-- `wip-unit-converter/` — Multi-category unit conversion
-
-#### Developer & AI Tools
-- `wip-case-converter/` — camelCase ↔ snake_case ↔ kebab-case ↔ PascalCase
-- `wip-context-packer/` — Compress long text for LLM context windows
-- `wip-data-converter/` — CSV ↔ JSON ↔ YAML bidirectional converter
-- `wip-token-counter/` — Token count + API cost estimator
-- `wip-url-parser/` — URL decomposer (scheme, host, path, params, fragment)
-
-#### Games
-- `wip-simon-says/` — Audio + color memory sequences
-- `wip-snake-game/` — Classic Snake on HTML canvas
-
-#### Three.js / WebGL Animations
-- `wip-audio-visualizer/` — Mic-driven 3D frequency bars
-- `wip-dna-helix/` — Rotating double helix with base pair labels
-- `wip-fluid-sim/` — 2D Navier-Stokes fluid simulation
-- `wip-fractal-tree/` — Generative 3D trees from L-System grammar
-- `wip-gravity-sim/` — N-body gravitational simulation
-- `wip-lorenz-attractor/` — Real-time 3D strange attractor
-- `wip-matrix-rain/` — Matrix digital rain in 3D
-- `wip-particle-galaxy/` — 50k+ particle spiral galaxy
-- `wip-solar-system/` — 8 planets with real orbital period ratios
-- `wip-terrain-generator/` — Perlin noise heightmap with flythrough camera
-
-#### Serious Math Tools
-- `wip-complex-plane/` — Argand plane, roots of unity, Julia sets
-- `wip-fourier-visualizer/` — Draw a wave → FFT decomposition + epicycle animation
-- `wip-graphing-calculator/` — Multi-function plotter with zoom/pan and root finder
-- `wip-laplace-visualizer/` — Pole-zero plot, step response, Bode plot
-- `wip-linear-solver/` — Gaussian elimination with geometric visualization
-- `wip-matrix-calculator/` — NxN matrix operations with step-by-step solutions
-
-#### Million-Dollar SaaS (Requirements Complete)
-- `wip-api-builder/` — Visual API creation platform
-- `wip-compliance-auto/` — GDPR/CCPA automation
-- `wip-email-warmup/` — Email deliverability and sender reputation
-- `wip-niche-job-board/` — Vertical-specific job marketplace
-- `wip-screenshot-docs/` — AI-powered docs from screenshots
-- `wip-waitlist-platform/` — Complete product launch toolkit
+- **Token harmonisation** — index.html still uses pre-C-006 names (--dim, --stone, --bronze, --bg:#0a0806)
+- **Mobile nav hamburger** — nav links hidden on mobile across all pages
+- **Individual article pages** — Codex cards all link to `#`
 
 ---
 
-## Guidelines
+## Open Operator Blockers
 
-### Working with Projects
-- Each project is independent and self-contained
-- Check for project-specific deps: `package.json`, `requirements.txt`, etc.
-- No root-level git repo — individual projects may have their own
-- `repo-bootstrap/` is the control plane — not a project, never publish it as one
+- **Substack URL** — all newsletter CTAs point to `#` across all pages
+- **TheSeasons font files** — drop `TheSeasons-Regular.woff2` + `TheSeasons-Italic.woff2` into `soleinvictvs-web/assets/fonts/` to activate
+- **Founder avatar + real bio** — about.html ships with placeholder
+- **Payment solution** (Stripe / Gumroad / Lemon Squeezy) — vault paid CTAs point to newsletter waitlist
 
-### CI/CD Standards (per stack)
-- **HTML:** HTMLHint (block) + Lighthouse CI (warn) + GitHub Pages deploy on push to main
-- **Python:** ruff lint (block) + pytest if `tests/` exists (skip otherwise)
-- **PowerShell:** PSScriptAnalyzer — Error=block, Warning=warn, runs on windows-latest
+---
 
-### Commit Standard
-Conventional Commits everywhere. No "Initial commit". No free-form messages.
+## Design System (C-006 tokens — use everywhere, never hardcode)
 
-### Agent Workflow
+```
+--bg: #0A0A0A          --surface: #111111      --surface-2: #161616
+--border: #1E1E1E      --text: #F5F0E8         --text-muted: #9A9080
+--gold: #C9A84C        --gold-muted: #8A6F32   --red: #8B1A1A
+
+--font-display: 'The Seasons', 'Cormorant Garamond', serif
+--font-serif:   'Cormorant Garamond', serif
+--font-ui:      'Inter', sans-serif
+```
+
+---
+
+## Asset Paths (relative to soleinvictvs-web/)
+
+```
+../brand_assets/2k_wallpaper_sun.png         — hero background
+../brand_assets/sun_transparent.png          — nav + footer logo (32px / 24px)
+../brand_assets/sun_logo_black.png           — founder avatar fallback
+../brand_assets/twitter_header.png          — legion section background
+../brand_assets/substack_wordmark/2.png      — substack logo
+../apparel_design/logo_transparent.png       — apparel logo
+```
+
+---
+
+## Standards
+
+- **Stack:** Static HTML/CSS/JS · No framework · No backend · GitHub Pages
+- **Commits:** Conventional Commits everywhere. No "Initial commit". No free-form messages.
+- **CI/CD:** HTMLHint (block) + Lighthouse CI (warn) + GitHub Pages deploy on push to main
+- **Naming:** kebab-case folders — all lowercase, hyphen-separated, 2–4 words
+
+---
+
+## Agent Workflow
+
 1. Operator briefs **Elena** (any format — voice dump, one-liner, full spec)
 2. **Elena** decorates (questions/assumptions/challenges) then outputs task plan JSON
 3. **Colombo** receives JSON → produces blueprint for Vitalik

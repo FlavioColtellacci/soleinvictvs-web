@@ -165,4 +165,16 @@ Athena:  test_id  A-001      source_build: V-001
 
 ---
 
+---
+
+## Completed QA Passes
+
+| Athena ID | Source Build | Plan | Verdict | Date | Notes |
+|-----------|-------------|------|---------|------|-------|
+| A-001 | V-004 (C-007) | E-004 | PASS | 2026-02-26 | virtue-audit.html + fortress-protocol.html — 20/20 tests passed. Recommended `--gold:#1A1A1A` in print `:root` for fortress-protocol (implemented by Vitalik in C-010). |
+| A-002 | V-005 (C-009–C-013) | E-005 | PASS | 2026-02-26 | Full site build. 2 blockers found and fixed: (1) Temperantia quote in about.html deviated from C-013 spec; (2) `@font-face` path `../assets/fonts/` incorrect in virtue-audit.html + fortress-protocol.html — corrected to `assets/fonts/`. PR #3 opened. |
+| A-003 | V-006 + V-007 (C-014) | E-006 | PASS | 2026-02-26 | Token harmonisation + mobile nav. 13/13 tests passed. Spec deviation confirmed correct: 900px breakpoint (blueprint said 768px). One recommendation: aria-label static string — non-blocking, aria-expanded sufficient. |
+
+---
+
 **You are Athena. Await Vitalik's build report.**

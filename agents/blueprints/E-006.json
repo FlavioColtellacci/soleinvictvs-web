@@ -1,0 +1,69 @@
+{
+  "agent": "elena",
+  "type": "task_plan",
+  "plan_id": "E-006",
+  "timestamp": "2026-02-26T10:00:00Z",
+  "operator_request": "What do you recommend doing first?",
+  "interpreted_intent": "Identify highest-impact E-006 backlog items and execute the two that unblock mobile usability and resolve outstanding token debt before compounding further.",
+  "output_format": "colombo_handoff",
+  "priority": "p1",
+  "target_repo": "soleinvictvs-web",
+  "tasks": [
+    {
+      "task_id": "E-006-01",
+      "title": "Harmonise index.html CSS to C-006 token standard",
+      "description": "index.html still uses pre-C-006 custom property names: --dim, --stone, --bronze, and pre-C-006 background values (#0a0806, #111009, #f2ede4). Map all occurrences to canonical C-006 names. Expand :root to include the full 12-token C-006 set — --surface-2, --border, --gold-muted, --red are currently absent from index.html.",
+      "stack": "css",
+      "scope": "soleinvictvs-web/index.html",
+      "action_type": "modify",
+      "acceptance_criteria": "grep for --dim, --stone, --bronze returns zero results in index.html. All 12 C-006 token names present in :root with canonical values. Page renders identically at 1280px with zero console errors.",
+      "depends_on": [],
+      "estimated_effort": "small",
+      "files_affected": ["soleinvictvs-web/index.html"],
+      "pre_flight_fixes": [
+        "Confirm assets/css/main.css and assets/js/main.js do not exist on disk before creating them — C-009 deleted them but CLAUDE.md incorrectly lists them as present. Resolve the contradiction."
+      ],
+      "risks": [
+        "--stone (#6b6560) and --dim (#9e9890) both map to --text-muted (#9A9080) — two muted-text shades consolidated to one. Near-zero visual impact but document the mapping in build notes.",
+        "rgba() calls in index.html inline pre-C-006 background hex values — these must also be updated."
+      ],
+      "out_of_scope": [
+        "Other pages — they already use C-006 tokens. Only index.html has token debt.",
+        "Layout changes, content changes, or any visual redesign."
+      ]
+    },
+    {
+      "task_id": "E-006-02",
+      "title": "Add mobile hamburger nav overlay to all 6 pages",
+      "description": "All six pages hide .nav-links at the mobile breakpoint via @media but provide no hamburger toggle to open the nav. Create shared assets/css/main.css (mobile nav overlay styles) and assets/js/main.js (toggle behaviour). Add hamburger button markup and load both asset files on all 6 pages.",
+      "stack": "multi",
+      "scope": "soleinvictvs-web/index.html, codex.html, vault.html, about.html, virtue-audit.html, fortress-protocol.html",
+      "action_type": "modify",
+      "acceptance_criteria": "At ≤900px viewport: hamburger button visible, overlay opens on click, closes on Escape key or nav link click, body scroll locked while open, aria-expanded toggles correctly. At ≥901px: hamburger hidden, nav links visible as before, no regression. fortress-protocol.html print output: hamburger absent. Zero console errors across all 6 pages.",
+      "depends_on": ["E-006-01"],
+      "estimated_effort": "medium",
+      "files_affected": [
+        "soleinvictvs-web/assets/css/main.css",
+        "soleinvictvs-web/assets/js/main.js",
+        "soleinvictvs-web/index.html",
+        "soleinvictvs-web/codex.html",
+        "soleinvictvs-web/vault.html",
+        "soleinvictvs-web/about.html",
+        "soleinvictvs-web/virtue-audit.html",
+        "soleinvictvs-web/fortress-protocol.html"
+      ],
+      "pre_flight_fixes": [],
+      "risks": [
+        "Breakpoint must match existing pages (900px) not an arbitrary value — confirm the existing @media breakpoint before speccing."
+      ],
+      "out_of_scope": [
+        "Individual article pages.",
+        "Substack URL or payment links.",
+        "Any content changes."
+      ]
+    }
+  ],
+  "build_sequence": "1. E-006-01: Token harmonisation on index.html. 2. E-006-02: Create main.css and main.js, then add hamburger markup and asset links to all 6 pages.",
+  "done_when": "index.html has zero pre-C-006 token names. Mobile nav hamburger functional on all 6 pages at ≤900px. Desktop nav unaffected at ≥901px. Athena PASS.",
+  "elena_notes": "Two Conventional Commits: 'fix(tokens): harmonise index.html CSS to C-006 token standard' and 'feat(nav): add mobile hamburger overlay to all pages'. Individual article pages remain in E-007 backlog — blocked on content and Substack URL. Not included in this cycle."
+}

@@ -1,0 +1,117 @@
+{
+  "agent": "colombo",
+  "type": "blueprint",
+  "blueprint_id": "C-014",
+  "timestamp": "2026-02-26T10:30:00Z",
+  "source_plan": "E-006",
+  "project": "soleinvictvs-web",
+  "output_dir": "soleinvictvs-web/",
+  "tech_stack": {
+    "language": "Vanilla HTML/CSS/JS",
+    "framework": "none",
+    "dependencies": []
+  },
+  "pre_flight_fixes": [
+    "Confirm assets/ directory does not exist on disk before creating it — CLAUDE.md lists main.css and main.js as live but MEMORY.md and disk check confirm they were deleted in C-009. Create fresh."
+  ],
+  "specs": [
+    {
+      "spec_id": "C-014-A",
+      "source_task": "E-006-01",
+      "title": "Token harmonisation — index.html",
+      "description": "Replace all pre-C-006 CSS custom property names in index.html with canonical C-006 names. Expand :root to the full 12-token canonical set.",
+      "files": [
+        {
+          "path": "soleinvictvs-web/index.html",
+          "action": "modify",
+          "purpose": "Eliminate pre-C-006 token debt on the homepage",
+          "details": "In :root block: replace --bg:#0a0806 with #0A0A0A, --surface:#111009 with #111111, --text:#f2ede4 with #F5F0E8, --gold:#c9a84c with #C9A84C. Add missing tokens: --surface-2:#161616, --border:#1E1E1E, --gold-muted:#8A6F32, --red:#8B1A1A. Update --font-display to \"'The Seasons', 'Cormorant Garamond', serif\". Add --font-serif:'Cormorant Garamond',serif and --font-ui:'Inter',sans-serif. Throughout file: replace var(--dim) with var(--text-muted), var(--stone) with var(--text-muted), var(--bronze) with var(--gold-muted). Update all rgba() calls that inline pre-C-006 background hex values. Replace hardcoded font-family:'Inter',sans-serif with var(--font-ui). Add <link rel='stylesheet' href='assets/css/main.css'> immediately after </style>. Add hamburger button as last child of <nav>. Add <script src='assets/js/main.js' defer></script> before </body>."
+        }
+      ],
+      "sequence_order": 1,
+      "depends_on": null,
+      "acceptance_criteria": "grep for --dim, --stone, --bronze in index.html returns zero results. All 12 C-006 token names defined in :root with canonical hex values. Page renders at 1280px with zero console errors.",
+      "edge_cases": [
+        "--stone (#6b6560) and --dim (#9e9890) both map to --text-muted (#9A9080) — two muted-text shades consolidated to one. Near-zero visual impact. Document mapping in build notes.",
+        "Two .btn-gold:hover values (#d9b85c) have no C-006 equivalent — leave as hardcoded hex and document in build report. Do not create a new token without Colombo approval.",
+        "rgba() calls that inline pre-C-006 background hex values must be updated to match new --bg and --text-muted equivalents.",
+        "font-family:'Inter',sans-serif hardcoded on body and inputs — replace with var(--font-ui)."
+      ],
+      "estimated_effort": "small"
+    },
+    {
+      "spec_id": "C-014-B",
+      "source_task": "E-006-02",
+      "title": "Mobile nav hamburger overlay — all 6 pages",
+      "description": "Create shared assets/css/main.css and assets/js/main.js. Add hamburger button markup and load both asset files on all 6 pages.",
+      "files": [
+        {
+          "path": "soleinvictvs-web/assets/css/main.css",
+          "action": "create",
+          "purpose": "Shared stylesheet for site-wide components, beginning with mobile nav overlay",
+          "details": ".nav-toggle hidden by default (display:none). At max-width:900px: show .nav-toggle as flex column of 3 bars. Override .nav-links to position:fixed full-viewport overlay, translateY(-100%) opacity:0 pointer-events:none when closed. body.nav-open .nav-links: translateY(0) opacity:1 pointer-events:auto. body.nav-open: overflow:hidden. Hamburger-to-X animation on .nav-toggle__bar nth-child transforms. @media (min-width:901px) desktop guard: force .nav-links back to static row layout if body.nav-open class is residual. @media print: .nav-toggle { display:none !important }. Sheet loads after inline <style> — no !important needed for .nav-links display override."
+        },
+        {
+          "path": "soleinvictvs-web/assets/js/main.js",
+          "action": "create",
+          "purpose": "Mobile nav toggle behaviour shared across all pages",
+          "details": "DOMContentLoaded wrapper. querySelector('.nav-toggle') — return early if not found (safe on any page). Click: toggle body.nav-open class, set aria-expanded to matching boolean string on toggle element. querySelectorAll('.nav-links a') forEach click: remove body.nav-open, set aria-expanded='false'. document keydown listener: if e.key === 'Escape' and body has nav-open, remove class and reset aria-expanded."
+        },
+        {
+          "path": "soleinvictvs-web/index.html",
+          "action": "modify",
+          "purpose": "Add hamburger markup and asset links (handled alongside C-014-A edits)",
+          "details": "Three surgical edits: (1) <link rel='stylesheet' href='assets/css/main.css'> after </style>. (2) Hamburger button as last child of <nav>: <button class='nav-toggle' aria-label='Open navigation menu' aria-expanded='false'><span class='nav-toggle__bar'></span><span class='nav-toggle__bar'></span><span class='nav-toggle__bar'></span></button>. (3) <script src='assets/js/main.js' defer></script> before </body>."
+        },
+        {
+          "path": "soleinvictvs-web/codex.html",
+          "action": "modify",
+          "purpose": "Add hamburger markup and asset links",
+          "details": "Same three surgical edits as index.html."
+        },
+        {
+          "path": "soleinvictvs-web/vault.html",
+          "action": "modify",
+          "purpose": "Add hamburger markup and asset links",
+          "details": "Same three surgical edits."
+        },
+        {
+          "path": "soleinvictvs-web/about.html",
+          "action": "modify",
+          "purpose": "Add hamburger markup and asset links",
+          "details": "Same three surgical edits."
+        },
+        {
+          "path": "soleinvictvs-web/virtue-audit.html",
+          "action": "modify",
+          "purpose": "Add hamburger markup and asset links",
+          "details": "Same three surgical edits. Note: nav is position:static on tool pages — overlay still positions to viewport via position:fixed on .nav-links."
+        },
+        {
+          "path": "soleinvictvs-web/fortress-protocol.html",
+          "action": "modify",
+          "purpose": "Add hamburger markup and asset links",
+          "details": "Same three surgical edits. Note: print override in main.css hides hamburger — confirmed safe against existing print styles in this page."
+        }
+      ],
+      "sequence_order": 2,
+      "depends_on": "C-014-A",
+      "acceptance_criteria": "At 375px: hamburger display:flex, overlay opens on click (nav-open class + aria-expanded=true + opacity:1 + overflow:hidden), closes on Escape (nav-open removed + aria-expanded=false), closes on nav link click. At 1280px: hamburger display:none, nav-links display:flex opacity:1 transform:none. fortress-protocol.html print: hamburger absent. Zero console errors on all 6 pages.",
+      "edge_cases": [
+        "Build at 900px — NOT 768px. 768px creates a dead zone (769–900px) where nav links are hidden but hamburger does not appear. All 6 existing pages use 900px @media breakpoints.",
+        "Desktop guard: @media (min-width:901px) must reset .nav-links position and layout in case body.nav-open class persists after resize from mobile to desktop.",
+        "main.css must load AFTER the closing </style> tag — cascade source order is the override mechanism for .nav-links display. No !important needed.",
+        "Print override on fortress-protocol: @media print must set .nav-toggle { display:none !important }.",
+        "Static-nav tool pages (virtue-audit, fortress-protocol): nav is position:static but .nav-links overlay is position:fixed — still positions to viewport correctly.",
+        "Hamburger button is last child in <nav> — DOM order ensures it renders above the fixed overlay without explicit z-index declaration."
+      ],
+      "estimated_effort": "medium"
+    }
+  ],
+  "issues_to_raise": [],
+  "total_specs": 2,
+  "build_sequence_summary": "1. C-014-A: rewrite index.html :root and replace all pre-C-006 token names throughout the file. 2. C-014-B: create assets/css/main.css and assets/js/main.js, then add link + hamburger button + script to all 6 HTML pages.",
+  "risks_and_notes": "Breakpoint deviation: 768px noted in early session planning but 900px is correct to match all existing page breakpoints — 900px avoids a dead zone between 769–900px. Token consolidation: --stone and --dim both map to --text-muted, collapsing two pre-C-006 muted-text shades into one canonical value. Two #d9b85c hover values left hardcoded — no C-006 equivalent exists. Cascade source order used instead of !important for .nav-links display override. This file is a retroactive reconstruction; content reflects what was actually designed and built in-session.",
+  "message_to_operator": "Blueprint covers both E-006 tasks: token debt clearance on index.html and mobile nav for all 6 pages. No blockers. Vitalik can start immediately.",
+  "message_to_vitalik": "BUILD ORDER:\n1. C-014-A: index.html — rewrite :root, replace all pre-C-006 token names throughout file\n2. C-014-B: create assets/css/main.css and assets/js/main.js\n3. C-014-B: edit all 6 HTML pages (same 3 surgical edits each)\n\nWATCH OUT FOR:\n- Breakpoint: build at 900px, NOT 768px — 768px creates a dead zone\n- main.css MUST load AFTER </style> in <head> for cascade override to work\n- rgba() calls in index.html with pre-C-006 hex values — update these too\n- Two #d9b85c hover values in index.html — no C-006 equivalent, leave hardcoded, note in build report\n\nDO NOT:\n- Touch any page content, layout, or sections outside nav and :root\n- Use !important for .nav-links display override — correct cascade order makes it unnecessary\n- Add z-index declarations — hamburger stacks above overlay via DOM order (last child wins)\n\nDONE WHEN:\n- grep for '--dim|--stone|--bronze' in index.html returns nothing\n- Hamburger opens/closes on all 6 pages at 375px viewport\n- Desktop nav unaffected at 1280px\n- Zero console errors"
+}

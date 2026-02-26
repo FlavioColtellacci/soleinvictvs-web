@@ -256,23 +256,23 @@ Elena stops and uses `[QUESTION]`:
 - **Agent soul files:** `agents/ELENA.md` · `agents/COLOMBO.md` · `agents/VITALIK.md` · `agents/ATHENA.md`
 - **Blueprints:** `agents/blueprints/`
 
-### Current Site State (main — E-005 merged, clean)
+### Current Site State (main — E-006 merged, clean)
 
 | File | Status | Notes |
 |------|--------|-------|
-| `soleinvictvs-web/index.html` | Live | Monolith homepage — C-010: font vars, shared nav/footer, data-page="home". Token debt: old names (--dim, --stone, --bronze) → fix in E-006 |
+| `soleinvictvs-web/index.html` | Live | Monolith homepage — C-010 + C-014-A: fully harmonised to C-006 tokens, shared nav/footer, data-page="home" |
 | `soleinvictvs-web/codex.html` | Live | Article hub — C-011: 6 branded cards, Seneca quote, newsletter, scroll reveal |
 | `soleinvictvs-web/vault.html` | Live | Products page — C-012: Free Arsenal, Digital Vault (3 paid), Physical Vault (apparel) |
 | `soleinvictvs-web/about.html` | Live | Philosophy page — C-013: Three Pillars, Four Virtues, Founder placeholder (operator swap ready) |
 | `soleinvictvs-web/virtue-audit.html` | Live | 12-question virtue self-assessment — C-007-A, Athena PASS 10/10 |
 | `soleinvictvs-web/fortress-protocol.html` | Live | 30-day discipline protocol, print-ready — C-007-B, Athena PASS 10/10 |
+| `soleinvictvs-web/assets/css/main.css` | Live | Shared mobile nav styles — C-014-B: hamburger overlay, 900px breakpoint, desktop guard, print override |
+| `soleinvictvs-web/assets/js/main.js` | Live | Mobile nav toggle — C-014-B: open/close, link-close, Escape-close, aria-expanded |
 
-### E-006 Backlog (not yet briefed)
-- Token harmonisation: index.html old names (--dim, --stone, --bronze, --bg:#0a0806) → C-006 names
-- Mobile nav: hamburger menu (nav links hidden on mobile across all pages)
-- Individual article pages: Codex cards all link to `#`
+### E-007 Backlog (not yet briefed)
+- Individual article pages: Codex cards all link to `#` — blocked on content + Substack URL
 
-### Design System (C-006 token set — all new pages)
+### Design System (C-006 token set — all pages)
 ```
 --bg: #0A0A0A  --surface: #111111  --surface-2: #161616  --border: #1E1E1E
 --text: #F5F0E8  --text-muted: #9A9080  --gold: #C9A84C  --gold-muted: #8A6F32
@@ -280,7 +280,6 @@ Elena stops and uses `[QUESTION]`:
 --font-serif: 'Cormorant Garamond', serif
 --font-ui: 'Inter', sans-serif
 ```
-**Token debt:** index.html still uses pre-C-006 names (--dim, --stone, --bronze). Harmonise in E-006.
 
 ### Open Operator TODOs (flag with [BLOCKER] or [CONTEXT] — do not plan around these)
 - **Substack URL** — all newsletter CTAs point to `#` across all pages
@@ -297,9 +296,10 @@ Elena stops and uses `[QUESTION]`:
 | E-003 | C-006 | proto-OMEGA amalgam prototype | Abandoned — proto-OMEGA never built |
 | E-004 | C-007, C-008 | Free tools (virtue-audit + fortress-protocol) + rejected prototype round | C-007 complete (Athena PASS); C-008 output deleted (rejected) |
 | E-005 | C-009–C-013 | Full multi-page website build (Codex, Vault, About + shared nav) | MERGED to main — Athena PASS · PR #3 closed |
+| E-006 | C-014 | Token harmonisation (index.html) + mobile nav hamburger (all 6 pages) | COMPLETE — Athena PASS · A-003 |
 
-**Next plan ID: E-006**
-**Next blueprint ID: C-014**
+**Next plan ID: E-007**
+**Next blueprint ID: C-015**
 
 ---
 
