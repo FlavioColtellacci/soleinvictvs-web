@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vault — SOLEINVICTVS</title>
+
+<!--
+  FONT SWAP — The Seasons
+  When TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 land in assets/fonts/,
+  uncomment the block below and remove the Google Fonts link.
+
+  @font-face {
+    font-family: 'The Seasons';
+    src: url('assets/fonts/TheSeasons-Regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'The Seasons';
+    src: url('assets/fonts/TheSeasons-Italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap;
+  }
+-->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0A0A0A;
+  --surface:    #111111;
+  --surface-2:  #161616;
+  --border:     #1E1E1E;
+  --text:       #F5F0E8;
+  --text-muted: #9A9080;
+  --gold:       #C9A84C;
+  --gold-muted: #8A6F32;
+  --red:        #8B1A1A;
+  --font-display: 'The Seasons', 'Cormorant Garamond', serif;
+  --font-serif:   'Cormorant Garamond', serif;
+  --font-ui:      'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.75rem 4rem;
+  background: linear-gradient(to bottom, rgba(10,10,10,.97) 0%, transparent 100%);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: .65rem;
+  letter-spacing: .4em;
+  color: var(--gold);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 3rem; list-style: none; }
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: .55rem;
+  letter-spacing: .25em;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--gold); }
+body[data-page='vault'] .nav-links a[href='vault.html'],
+body[data-page='codex'] .nav-links a[href='codex.html'],
+body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
+
+/* ─── PAGE HEADER ─── */
+.page-header {
+  padding: 14rem 4rem 5rem;
+  text-align: center;
+}
+.section-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .5rem;
+  letter-spacing: .55em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.page-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  letter-spacing: .2em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+.title-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 1.5rem;
+}
+.page-sub {
+  font-family: 'Cinzel', serif;
+  font-size: .8rem;
+  color: var(--text-muted);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+/* ─── PRODUCTS WRAPPER ─── */
+.products-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 4rem 9rem;
+}
+
+/* ─── PRODUCT SECTIONS ─── */
+.product-section { margin-bottom: 6rem; }
+.product-section-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  letter-spacing: .2em;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.product-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--surface);
+  padding: 2.5rem;
+  border: 1px solid rgba(201,168,76,.08);
+  transition: border-color .4s;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover { border-color: rgba(201,168,76,.25); }
+.card-tag {
+  font-family: 'Cinzel', serif;
+  font-size: .48rem;
+  letter-spacing: .35em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.card-title {
+  font-family: 'Cinzel', serif;
+  font-size: .88rem;
+  letter-spacing: .08em;
+  color: var(--text);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  flex: 1;
+}
+.card-desc {
+  font-size: .75rem;
+  color: var(--text-muted);
+  line-height: 2;
+  margin-bottom: 2rem;
+}
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-price {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+.card-price-free {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+.card-cta {
+  font-family: 'Cinzel', serif;
+  font-size: .5rem;
+  letter-spacing: .2em;
+  padding: .6rem 1.25rem;
+  border: 1px solid var(--gold-muted);
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all .3s;
+}
+.card-cta:hover { border-color: var(--gold); color: var(--gold); }
+.card-cta-soon {
+  border-color: rgba(201,168,76,.3);
+  color: var(--text-muted);
+  cursor: default;
+}
+.card-cta-soon:hover { border-color: rgba(201,168,76,.3); color: var(--text-muted); }
+
+/* ─── SUN DIVIDER ─── */
+.sun-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto 6rem;
+  padding: 0 2rem;
+}
+.sun-divider::before, .sun-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-muted));
+  opacity: .5;
+}
+.sun-divider::after {
+  background: linear-gradient(to left, transparent, var(--gold-muted));
+}
+.sun-icon { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+
+/* ─── FOOTER ─── */
+.site-footer {
+  padding: 2.5rem 4rem;
+  border-top: 1px solid rgba(154,144,128,.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: .5rem;
+  letter-spacing: .4em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-family: 'Cinzel', serif;
+  font-size: .45rem;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .3s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-copy {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .site-nav { padding: 1.25rem 1.75rem; }
+  .nav-links { display: none; }
+  .products-wrapper { padding: 4rem 1.75rem 6rem; }
+  .product-grid { grid-template-columns: 1fr !important; gap: 1.25rem; }
+  .page-header { padding: 10rem 1.75rem 3rem; }
+  .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.75rem; }
+  .footer-links { display: none; }
+}
+</style>
+</head>
+<body data-page="vault">
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">SOLEINVICTVS</a>
+  <ul class="nav-links">
+    <li><a href="vault.html">The Vault</a></li>
+    <li><a href="codex.html">The Codex</a></li>
+    <li><a href="about.html">Philosophy</a></li>
+    <li><a href="index.html#newsletter">Join the Legion</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <span class="section-eyebrow">The Vault</span>
+  <h1 class="page-title">EVERYTHING WE BUILD</h1>
+  <div class="title-rule"></div>
+  <p class="page-sub">Free tools. Digital frameworks. Apparel. All built on Stoic principles.</p>
+</header>
+
+<div class="products-wrapper">
+
+  <!-- SECTION 1: FREE ARSENAL -->
+  <section class="product-section reveal">
+    <div class="product-section-header">
+      <span class="section-eyebrow">Free Tools</span>
+      <h2 class="section-title">THE FREE ARSENAL</h2>
+    </div>
+    <div class="product-grid" style="grid-template-columns: repeat(2, 1fr);">
+
+      <div class="card">
+        <p class="card-tag">Self-Assessment · Free</p>
+        <h3 class="card-title">The Virtue Audit</h3>
+        <p class="card-desc">Twelve questions. Four virtues. One honest answer. Discover where you are strong and where you are failing — in under five minutes. No account. No email. Free forever.</p>
+        <div class="card-bottom">
+          <span class="card-price-free">FREE</span>
+          <a href="virtue-audit.html" class="card-cta">Begin Audit →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="card-tag">Daily Standard · Free</p>
+        <h3 class="card-title">The Fortress Protocol</h3>
+        <p class="card-desc">The 30-day standard. Not motivation. Not inspiration. A system you execute daily without negotiation. One page. Print it. Pin it. Live it.</p>
+        <div class="card-bottom">
+          <span class="card-price-free">FREE</span>
+          <a href="fortress-protocol.html" class="card-cta">Get Protocol →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="sun-divider"><span class="sun-icon">✦</span></div>
+
+  <!-- SECTION 2: DIGITAL PRODUCTS -->
+  <section class="product-section reveal">
+    <div class="product-section-header">
+      <span class="section-eyebrow">Digital Products</span>
+      <h2 class="section-title">THE DIGITAL VAULT</h2>
+    </div>
+    <div class="product-grid" style="grid-template-columns: repeat(3, 1fr);">
+
+      <div class="card">
+        <p class="card-tag">Protocol · PDF Guide</p>
+        <h3 class="card-title">The Stoic Morning Protocol</h3>
+        <p class="card-desc">Own your first hour. A proven morning system built on Aurelius's own daily practice — adapted for the modern unconquered man.</p>
+        <div class="card-bottom">
+          <span class="card-price">$9</span>
+          <!-- TODO: replace href with payment link when Stripe/Gumroad/LemonSqueezy confirmed -->
+          <a href="index.html#newsletter" class="card-cta">Join Waitlist</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="card-tag">Framework · PDF Guide</p>
+        <h3 class="card-title">The Marcus Method Daily System</h3>
+        <p class="card-desc">A complete decision-making and productivity framework. Think clearly. Act decisively. Waste nothing. Live with intent.</p>
+        <div class="card-bottom">
+          <span class="card-price">$17</span>
+          <!-- TODO: replace href with payment link when Stripe/Gumroad/LemonSqueezy confirmed -->
+          <a href="index.html#newsletter" class="card-cta">Join Waitlist</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="card-tag">Challenge · 30-Day Program</p>
+        <h3 class="card-title">30 Days of Deliberate Hardship</h3>
+        <p class="card-desc">Comfort is the enemy of strength. Thirty structured days of voluntary difficulty — physical, mental, financial. Come out unconquered.</p>
+        <div class="card-bottom">
+          <span class="card-price">$27</span>
+          <!-- TODO: replace href with payment link when Stripe/Gumroad/LemonSqueezy confirmed -->
+          <a href="index.html#newsletter" class="card-cta">Join Waitlist</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="sun-divider"><span class="sun-icon">✦</span></div>
+
+  <!-- SECTION 3: COMING SOON -->
+  <section class="product-section reveal">
+    <div class="product-section-header">
+      <span class="section-eyebrow">Apparel</span>
+      <h2 class="section-title">THE PHYSICAL VAULT</h2>
+    </div>
+    <div class="product-grid" style="grid-template-columns: 1fr; max-width: 380px; margin: 0 auto;">
+
+      <div class="card">
+        <p class="card-tag">Apparel · Coming Soon</p>
+        <h3 class="card-title">SOLEINVICTVS Apparel</h3>
+        <p class="card-desc">Clothing built on Roman precision. No logos for the sake of logos. Every piece carries meaning. First drop coming for the Legion.</p>
+        <div class="card-bottom">
+          <span class="card-price">SOON</span>
+          <a href="index.html#newsletter" class="card-cta card-cta-soon">Join Waitlist</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /products-wrapper -->
+
+<footer class="site-footer">
+  <span class="footer-brand">SOLEINVICTVS</span>
+  <div class="footer-links">
+    <a href="#">X / Twitter</a>
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+  </div>
+  <span class="footer-copy">© MMXXVI · Semper ad meliora</span>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
