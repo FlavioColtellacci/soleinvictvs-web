@@ -57,7 +57,9 @@ Each subdirectory is a standalone, independent project.
 
 | Plan | Agent | Project | Status |
 |------|-------|---------|--------|
-| E-005 | Vitalik | `soleinvictvs-web` | In progress — blueprints C-009–C-013 complete, build assigned |
+| E-005 | Vitalik | `soleinvictvs-web` | MERGED to main — Athena PASS · PR #3 closed |
+
+**Next plan: E-006** (not yet briefed)
 
 ---
 
@@ -65,10 +67,9 @@ Each subdirectory is a standalone, independent project.
 
 - `soleinvictvs-web/` — SOLEINVICTVS brand website (HTML/JS, GitHub Pages)
   - Stack: static HTML/CSS/JS · No framework · No backend · GitHub Pages
-  - Branch: `main` (stable) · `feat/e005-full-site` (active build)
-  - **Prototype selected:** `proto-1-monolith.html` — all other prototypes purged
-  - **Live on main:** index.html (monolith), virtue-audit.html, fortress-protocol.html
-  - **Building in E-005:** codex.html, vault.html, about.html + shared nav/footer
+  - Branch: `main` (clean — E-005 merged)
+  - **Live on main:** index.html · codex.html · vault.html · about.html · virtue-audit.html · fortress-protocol.html
+  - **E-006 backlog:** token harmonisation (index.html old names), mobile nav hamburger, individual article pages
   - Operator blockers: Substack URL, TheSeasons font files, founder avatar/bio, payment solution
 
 ---

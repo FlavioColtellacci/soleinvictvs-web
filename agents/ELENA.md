@@ -302,7 +302,7 @@ Elena stops and uses `[QUESTION]`:
 | E-002 | C-005 | Port proto-1-monolith to production index.html | Complete |
 | E-003 | C-006 | proto-OMEGA amalgam prototype | Abandoned — proto-OMEGA never built |
 | E-004 | C-007, C-008 | Free tools (virtue-audit + fortress-protocol) + rejected prototype round | C-007 complete (Athena PASS); C-008 output deleted (rejected) |
-| E-005 | C-009–C-013 | Full multi-page website build (Codex, Vault, About + shared nav) | BUILD COMPLETE — feat/e005-full-site · awaiting Athena QA + PR to main |
+| E-005 | C-009–C-013 | Full multi-page website build (Codex, Vault, About + shared nav) | MERGED to main — Athena PASS · PR #3 closed |
 
 **Next plan ID: E-006**
 **Next blueprint ID: C-014**
