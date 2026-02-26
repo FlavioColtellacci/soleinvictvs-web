@@ -7,17 +7,17 @@
 
 <!--
   FONT SWAP — The Seasons
-  When TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 land in ../assets/fonts/,
+  When TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 land in assets/fonts/,
   uncomment the block below and remove the Google Fonts link.
 
   @font-face {
     font-family: 'The Seasons';
-    src: url('../assets/fonts/TheSeasons-Regular.woff2') format('woff2');
+    src: url('assets/fonts/TheSeasons-Regular.woff2') format('woff2');
     font-weight: 400; font-style: normal; font-display: swap;
   }
   @font-face {
     font-family: 'The Seasons';
-    src: url('../assets/fonts/TheSeasons-Italic.woff2') format('woff2');
+    src: url('assets/fonts/TheSeasons-Italic.woff2') format('woff2');
     font-weight: 400; font-style: italic; font-display: swap;
   }
 -->
@@ -37,7 +37,7 @@
   --gold-muted: #8A6F32;
   --red:        #8B1A1A;
   /* Font swap: when The Seasons arrives, change these two vars only */
-  --font-display: 'Cinzel Decorative', serif;
+  --font-display: 'The Seasons', 'Cormorant Garamond', serif;
   --font-serif:   'Cormorant Garamond', serif;
   --font-ui:      'Inter', sans-serif;
 }
@@ -502,7 +502,76 @@ html, body {
 }
 .btn-gold:hover { background: var(--gold); color: var(--bg); }
 
+/* ─── SHARED NAV ─── */
+.site-nav {
+  position: static;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  z-index: 100;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: .65rem;
+  letter-spacing: .4em;
+  color: var(--gold);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 3rem; list-style: none; }
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: .55rem;
+  letter-spacing: .25em;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--gold); }
+body[data-page='vault'] .nav-links a[href='vault.html'],
+body[data-page='codex'] .nav-links a[href='codex.html'],
+body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
+
+/* ─── SHARED FOOTER ─── */
+.site-footer {
+  padding: 2.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+.footer-brand {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .35em;
+  color: var(--text-muted);
+}
+.footer-copy {
+  font-size: .6rem;
+  color: var(--text-muted);
+  letter-spacing: .1em;
+}
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a {
+  font-size: .6rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: .1em;
+  transition: color .3s;
+}
+.footer-links a:hover { color: var(--gold); }
+
 /* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .site-nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  .footer-links { display: none; }
+}
 @media (max-width: 600px) {
   .gate-form { flex-direction: column; }
   .gate-form input { border-right: 1px solid rgba(201,168,76,.3); border-bottom: none; }
@@ -511,7 +580,17 @@ html, body {
 }
 </style>
 </head>
-<body>
+<body data-page="virtue-audit">
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">SOLEINVICTVS</a>
+  <ul class="nav-links">
+    <li><a href="vault.html">The Vault</a></li>
+    <li><a href="codex.html">The Codex</a></li>
+    <li><a href="about.html">Philosophy</a></li>
+    <li><a href="index.html#newsletter">Join the Legion</a></li>
+  </ul>
+</nav>
 
 <!-- ── LANDING ─────────────────────────────────────────────── -->
 <div id="view-landing" class="view active">
@@ -886,6 +965,16 @@ window.addEventListener('DOMContentLoaded', () => {
   // else: landing is already active
 });
 </script>
+
+<footer class="site-footer">
+  <span class="footer-brand">SOLEINVICTVS</span>
+  <div class="footer-links">
+    <a href="#">X / Twitter</a>
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+  </div>
+  <span class="footer-copy">© MMXXVI · Semper ad meliora</span>
+</footer>
 
 </body>
 </html>

@@ -1,109 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Codex — SOLEINVICTVS</title>
-  <meta name="description" content="Stoic philosophy applied to modern men. Discipline, virtue, brotherhood.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Codex — SOLEINVICTVS</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!--
+  FONT SWAP — The Seasons
+  When TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 land in assets/fonts/,
+  uncomment the block below and remove the Google Fonts link.
 
-  <link rel="stylesheet" href="assets/css/main.css">
-  <script src="assets/js/main.js" defer></script>
+  @font-face {
+    font-family: 'The Seasons';
+    src: url('assets/fonts/TheSeasons-Regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'The Seasons';
+    src: url('assets/fonts/TheSeasons-Italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap;
+  }
+-->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0A0A0A;
+  --surface:    #111111;
+  --surface-2:  #161616;
+  --border:     #1E1E1E;
+  --text:       #F5F0E8;
+  --text-muted: #9A9080;
+  --gold:       #C9A84C;
+  --gold-muted: #8A6F32;
+  --red:        #8B1A1A;
+  --font-display: 'The Seasons', 'Cormorant Garamond', serif;
+  --font-serif:   'Cormorant Garamond', serif;
+  --font-ui:      'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.75rem 4rem;
+  background: linear-gradient(to bottom, rgba(10,10,10,.97) 0%, transparent 100%);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: .65rem;
+  letter-spacing: .4em;
+  color: var(--gold);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 3rem; list-style: none; }
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: .55rem;
+  letter-spacing: .25em;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--gold); }
+body[data-page='vault'] .nav-links a[href='vault.html'],
+body[data-page='codex'] .nav-links a[href='codex.html'],
+body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
+
+/* ─── PAGE HEADER ─── */
+.page-header {
+  padding: 14rem 4rem 5rem;
+  text-align: center;
+}
+.section-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .5rem;
+  letter-spacing: .55em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.page-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  letter-spacing: .2em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+.title-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 1.5rem;
+}
+.page-sub {
+  font-family: 'Cinzel', serif;
+  font-size: .8rem;
+  color: var(--text-muted);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+/* ─── ARTICLE GRID ─── */
+.codex-section {
+  padding: 5rem 4rem 9rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.codex-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.article-card {
+  background: var(--surface);
+  border: 1px solid rgba(201,168,76,.08);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .4s;
+}
+.article-card:hover { border-color: rgba(201,168,76,.25); }
+.card-category {
+  font-family: 'Cinzel', serif;
+  font-size: .45rem;
+  letter-spacing: .4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.card-title {
+  font-family: 'Cinzel', serif;
+  font-size: .9rem;
+  letter-spacing: .06em;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+.card-excerpt {
+  font-size: .78rem;
+  color: var(--text-muted);
+  line-height: 2;
+  margin-bottom: 1.75rem;
+}
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-readtime {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.card-read-cta {
+  font-family: 'Cinzel', serif;
+  font-size: .55rem;
+  letter-spacing: .2em;
+  color: var(--gold);
+  text-decoration: none;
+  transition: color .3s;
+}
+.card-read-cta:hover { color: #d9b85c; }
+
+/* ─── QUOTE ─── */
+.quote-wrap {
+  padding: 8rem 4rem;
+  text-align: center;
+  border-top: 1px solid rgba(154,144,128,.15);
+  border-bottom: 1px solid rgba(154,144,128,.15);
+}
+.quote-mark {
+  font-family: 'Cinzel', serif;
+  font-size: 4rem;
+  color: rgba(201,168,76,.15);
+  line-height: 1;
+  margin-bottom: .5rem;
+  display: block;
+}
+.quote-text {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
+  letter-spacing: .05em;
+  color: var(--text);
+  max-width: 680px;
+  margin: 0 auto 2rem;
+  line-height: 1.75;
+}
+.quote-attr {
+  font-size: .65rem;
+  color: var(--text-muted);
+  letter-spacing: .25em;
+}
+
+/* ─── NEWSLETTER ─── */
+.newsletter {
+  padding: 7rem 4rem;
+  background: var(--surface);
+  text-align: center;
+}
+.newsletter-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  letter-spacing: .2em;
+  margin-bottom: .75rem;
+}
+.newsletter-sub {
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+.newsletter-form {
+  display: flex;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.newsletter-form input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid rgba(201,168,76,.35);
+  border-right: none;
+  color: var(--text);
+  padding: .9rem 1.25rem;
+  font-family: var(--font-ui);
+  font-size: .78rem;
+  outline: none;
+  transition: border-color .3s;
+}
+.newsletter-form input:focus { border-color: var(--gold); }
+.newsletter-form input::placeholder { color: var(--text-muted); }
+.newsletter-form button {
+  background: var(--gold);
+  border: none;
+  color: var(--bg);
+  font-family: 'Cinzel', serif;
+  font-size: .55rem;
+  letter-spacing: .2em;
+  padding: .9rem 1.75rem;
+  cursor: pointer;
+  transition: background .3s;
+  white-space: nowrap;
+}
+.newsletter-form button:hover { background: #d9b85c; }
+
+/* ─── FOOTER ─── */
+.site-footer {
+  padding: 2.5rem 4rem;
+  border-top: 1px solid rgba(154,144,128,.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: .5rem;
+  letter-spacing: .4em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-family: 'Cinzel', serif;
+  font-size: .45rem;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .3s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-copy {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .site-nav { padding: 1.25rem 1.75rem; }
+  .nav-links { display: none; }
+  .codex-section { padding: 4rem 1.75rem 6rem; }
+  .codex-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .page-header { padding: 10rem 1.75rem 3rem; }
+  .quote-wrap, .newsletter { padding: 5rem 1.75rem; }
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form input { border-right: 1px solid rgba(201,168,76,.35); border-bottom: none; }
+  .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.75rem; }
+  .footer-links { display: none; }
+}
+</style>
 </head>
-<body>
+<body data-page="codex">
 
-  <!-- ==============================
-       NAVIGATION (same as index)
-       ============================== -->
-  <nav>
-    <div class="nav-left">
-      <img src="../brand_assets/sun_transparent.png" alt="SOLEINVICTVS" width="32" height="32">
-      <span>SOLEINVICTVS</span>
-    </div>
-    <div class="nav-right">
-      <div class="nav-menu">
-        <a href="codex.html">Codex</a>
-        <a href="index.html#legion">Legion</a>
-        <a href="https://x.com/soleinvictvs" target="_blank" rel="noopener" class="btn-outline">Follow on X</a>
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">SOLEINVICTVS</a>
+  <ul class="nav-links">
+    <li><a href="vault.html">The Vault</a></li>
+    <li><a href="codex.html">The Codex</a></li>
+    <li><a href="about.html">Philosophy</a></li>
+    <li><a href="index.html#newsletter">Join the Legion</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <span class="section-eyebrow">The Codex</span>
+  <h1 class="page-title">WRITINGS ON THE UNCONQUERED LIFE</h1>
+  <div class="title-rule"></div>
+  <p class="page-sub">Philosophy. Discipline. Stoicism. Applied.</p>
+</header>
+
+<!-- ARTICLE GRID -->
+<section class="codex-section reveal">
+  <div class="codex-grid">
+
+    <article class="article-card">
+      <p class="card-category">Philosophy</p>
+      <h2 class="card-title">The Examined Life: Why Socrates Was Right About Everything</h2>
+      <p class="card-excerpt">Most men live at the surface of themselves, reacting, consuming, drifting from one distraction to the next without ever asking why. Socrates chose differently and paid for it with his life; the only question is whether you have the courage to follow him.</p>
+      <div class="card-meta">
+        <span class="card-readtime">6 Min Read</span>
+        <a href="#" class="card-read-cta">Read →</a>
       </div>
-      <button class="hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </nav>
+    </article>
 
-  <!-- ==============================
-       CODEX HEADER
-       ============================== -->
-  <header class="codex-page-header">
-    <h1>THE CODEX</h1>
-    <p>Stoic philosophy applied to modern men. Discipline, virtue, brotherhood.</p>
-  </header>
-
-  <!-- ==============================
-       ARTICLE GRID
-       ============================== -->
-  <section class="article-grid">
-    <!-- TODO: operator replaces these stubs with full article content -->
-    <div class="article-grid-inner">
-
-      <article class="article-card fade-in">
-        <p class="card-tag">Stoic Philosophy</p>
-        <h2>The Hardship Hierarchy</h2>
-        <p>Not all suffering is equal. The man who treats every inconvenience as a crisis will break under real weight. Learn to rank your trials — and use each one deliberately. Marcus Aurelius endured far worse than your morning commute.</p>
-        <!-- TODO: operator provides full article URL → replace href below -->
-        <a href="#" class="read-more">Read the full piece &rarr;</a>
-      </article>
-
-      <article class="article-card fade-in">
-        <p class="card-tag">Discipline</p>
-        <h2>Iron Over Pills</h2>
-        <p>Modern men are medicated against the symptoms of a life without challenge. The pharmaceutical solution treats the signal, not the source. Here is the antidote: resistance, routine, and the refusal to outsource your suffering.</p>
-        <!-- TODO: operator provides full article URL → replace href below -->
-        <a href="#" class="read-more">Read the full piece &rarr;</a>
-      </article>
-
-      <article class="article-card fade-in">
-        <p class="card-tag">Masculine Virtue</p>
-        <h2>Men Are Rational</h2>
-        <p>When the juice stops being worth the squeeze, men stop squeezing. This is not a crisis. It is not apathy. It is logic — and the men calling it a problem are the same ones who removed the incentives. The solution is obvious.</p>
-        <!-- TODO: operator provides full article URL → replace href below -->
-        <a href="#" class="read-more">Read the full piece &rarr;</a>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ==============================
-       FOOTER (same as index)
-       ============================== -->
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand-row">
-          <img src="../brand_assets/sun_transparent.png" alt="" width="24" height="24">
-          <span>SOLEINVICTVS</span>
-        </div>
-        <p class="footer-tagline">Semper ad meliora.</p>
+    <article class="article-card">
+      <p class="card-category">Discipline</p>
+      <h2 class="card-title">The 5 AM Standard: What the Stoics Knew About Your Morning</h2>
+      <p class="card-excerpt">Marcus Aurelius wrote about the reluctance of the body to rise before dawn and then rose anyway, because the first victory of the day belongs to whoever claims it first. Your morning belongs to you or it belongs to everyone else's priorities; there is no arrangement in between.</p>
+      <div class="card-meta">
+        <span class="card-readtime">5 Min Read</span>
+        <a href="#" class="card-read-cta">Read →</a>
       </div>
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="index.html">Home</a>
-        <a href="codex.html">Codex</a>
-        <a href="https://x.com/soleinvictvs" target="_blank" rel="noopener">X</a>
-        <!-- TODO: operator provides Substack URL → replace href below -->
-        <a href="#">Substack</a>
-      </nav>
-      <div class="footer-legal">
-        <p>&copy; MMXXV SOLEINVICTVS. All rights reserved.</p>
+    </article>
+
+    <article class="article-card">
+      <p class="card-category">Stoicism</p>
+      <h2 class="card-title">Memento Mori: The Stoic Practice That Ended My Fear of Death</h2>
+      <p class="card-excerpt">The Stoics did not contemplate death to be morbid but to be free, because a man who has faced his mortality with clear eyes lives with a precision that no comfortable life can produce. Everything changes when you understand that today may be the last day available to you.</p>
+      <div class="card-meta">
+        <span class="card-readtime">7 Min Read</span>
+        <a href="#" class="card-read-cta">Read →</a>
       </div>
-    </div>
-  </footer>
+    </article>
+
+    <article class="article-card">
+      <p class="card-category">Finance</p>
+      <h2 class="card-title">The Stoic Investor: Ancient Principles for Modern Wealth</h2>
+      <p class="card-excerpt">The Stoics had nothing to say about markets and everything to say about the man who enters them: his relationship with desire, fear, and patience measured in decades rather than quarters. Every ancient principle on mastering the mind applies directly to how money masters yours.</p>
+      <div class="card-meta">
+        <span class="card-readtime">8 Min Read</span>
+        <a href="#" class="card-read-cta">Read →</a>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <p class="card-category">Training</p>
+      <h2 class="card-title">The Unconquered Body: A Stoic Framework for Physical Training</h2>
+      <p class="card-excerpt">The Stoics trained the body because they understood it is the instrument through which philosophy is practiced in the world, and a weak instrument produces weak music regardless of what the mind intends. Voluntary hardship in the gym is not vanity; it is preparation for the suffering that arrives uninvited.</p>
+      <div class="card-meta">
+        <span class="card-readtime">6 Min Read</span>
+        <a href="#" class="card-read-cta">Read →</a>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <p class="card-category">Ancient Rome</p>
+      <h2 class="card-title">What Marcus Aurelius Can Teach You About Leading Men</h2>
+      <p class="card-excerpt">Marcus Aurelius ruled the known world while recording his private failures in a notebook he never intended anyone to read, which is the most honest model of leadership ever committed to paper. A man who leads others without first leading himself is not a leader but a distraction in motion.</p>
+      <div class="card-meta">
+        <span class="card-readtime">9 Min Read</span>
+        <a href="#" class="card-read-cta">Read →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-wrap reveal">
+  <span class="quote-mark">"</span>
+  <p class="quote-text">It is not the man who has too little, but the man who craves more, that is poor.</p>
+  <p class="quote-attr">— Seneca · Letters to Lucilius</p>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter reveal" id="newsletter">
+  <p class="section-eyebrow">The Sol Report</p>
+  <h2 class="newsletter-title">JOIN THE LEGION</h2>
+  <p class="newsletter-sub">One Stoic insight. One discipline challenge. One resource. Weekly. No noise. No BS.</p>
+  <form class="newsletter-form" onsubmit="handleSignup(event)">
+    <input type="email" placeholder="your@email.com" required>
+    <button type="submit">Enlist</button>
+  </form>
+</section>
+
+<footer class="site-footer">
+  <span class="footer-brand">SOLEINVICTVS</span>
+  <div class="footer-links">
+    <a href="#">X / Twitter</a>
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+  </div>
+  <span class="footer-copy">© MMXXVI · Semper ad meliora</span>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Newsletter — visual-only placeholder until ConvertKit is configured
+function handleSignup(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = 'Enlisted ✦';
+  btn.style.background = '#8A6F32';
+  e.target.querySelector('input').value = '';
+}
+</script>
 
 </body>
 </html>
