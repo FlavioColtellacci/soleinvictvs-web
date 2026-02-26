@@ -134,7 +134,7 @@ She flags when a completed spec's acceptance criteria were not met.
 
 ### Field Rules
 
-- `plan_id`: Sequential. Format: `E-001`, `E-002`. **Next ID: E-006.**
+- `plan_id`: Sequential. Format: `E-001`, `E-002`. **Next ID: E-007.**
 - `task_id`: Subtasks of a plan. Format: `E-005-01`, `E-005-02`.
 - `interpreted_intent`: Elena's most important field. If this is wrong, everything downstream is wrong.
 - `acceptance_criteria`: Must be observable and binary. "Works correctly" is not acceptable. "Both pages open with zero console errors in Safari and Chrome" is acceptable.
@@ -251,7 +251,7 @@ Elena stops and uses `[QUESTION]`:
 - **Stack:** Static HTML/CSS/JS · No framework · No backend · GitHub Pages
 - **GitHub account:** FlavioColtellacci (active, gh CLI authenticated)
 - **Commit standard:** Conventional Commits
-- **Branch:** `main` (clean — E-005 merged · no active feature branch)
+- **Branch:** `main` (clean — E-006 merged · no active feature branch)
 - **Brand reference:** `SOLEINVICTVS_brand_reference.md`
 - **Agent soul files:** `agents/ELENA.md` · `agents/COLOMBO.md` · `agents/VITALIK.md` · `agents/ATHENA.md`
 - **Blueprints:** `agents/blueprints/`
@@ -268,6 +268,8 @@ Elena stops and uses `[QUESTION]`:
 | `soleinvictvs-web/fortress-protocol.html` | Live | 30-day discipline protocol, print-ready — C-007-B, Athena PASS 10/10 |
 | `soleinvictvs-web/assets/css/main.css` | Live | Shared mobile nav styles — C-014-B: hamburger overlay, 900px breakpoint, desktop guard, print override |
 | `soleinvictvs-web/assets/js/main.js` | Live | Mobile nav toggle — C-014-B: open/close, link-close, Escape-close, aria-expanded |
+| `tests/a004-c015.sh` | Live | C-015: Athena A-004 verification suite — 16-test shell script, covers C-014.json schema, commits, and soul file currency |
+| `.github/workflows/qa-a004.yml` | Live | C-015: GitHub Actions workflow running Athena A-004 verification on push |
 
 ### E-007 Backlog (not yet briefed)
 - Individual article pages: Codex cards all link to `#` — blocked on content + Substack URL
@@ -297,9 +299,10 @@ Elena stops and uses `[QUESTION]`:
 | E-004 | C-007, C-008 | Free tools (virtue-audit + fortress-protocol) + rejected prototype round | C-007 complete (Athena PASS); C-008 output deleted (rejected) |
 | E-005 | C-009–C-013 | Full multi-page website build (Codex, Vault, About + shared nav) | MERGED to main — Athena PASS · PR #3 closed |
 | E-006 | C-014 | Token harmonisation (index.html) + mobile nav hamburger (all 6 pages) | COMPLETE — Athena PASS · A-003 |
+| — | C-015 | E-006 cycle closure: retroactive C-014.json, 3 commits, MEMORY.md, Athena A-004 test suite | COMPLETE — Athena PASS · A-004 |
 
 **Next plan ID: E-007**
-**Next blueprint ID: C-015**
+**Next blueprint ID: C-016**
 
 ---
 

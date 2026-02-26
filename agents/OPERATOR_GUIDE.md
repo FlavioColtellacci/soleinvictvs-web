@@ -138,9 +138,9 @@ Every output traces back through the chain. Preserve it:
 
 ```
 Elena:   plan_id    E-007        task_id     E-007-01
-Colombo: blueprint  C-015        spec_id     C-015-A     source_task:  E-007-01
-Vitalik: build_id   V-008        source_spec C-015-A
-Athena:  test_id    A-004        source_build V-008
+Colombo: blueprint  C-016        spec_id     C-016-A     source_task:  E-007-01
+Vitalik: build_id   V-011        source_spec C-016-A
+Athena:  test_id    A-005        source_build V-011
 ```
 
 Blueprints are saved to `agents/blueprints/` after every PASS.
@@ -152,5 +152,5 @@ Blueprints are saved to `agents/blueprints/` after every PASS.
 | Counter | Current value |
 |---------|--------------|
 | Next Plan ID | **E-007** |
-| Next Blueprint ID | **C-015** |
-| Next Athena ID | **A-004** |
+| Next Blueprint ID | **C-016** |
+| Next Athena ID | **A-005** |

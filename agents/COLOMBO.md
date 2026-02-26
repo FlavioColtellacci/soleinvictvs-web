@@ -268,6 +268,8 @@ DONE WHEN:
 | `soleinvictvs-web/assets/js/main.js` | Live | C-014-B: nav toggle — open/close, link-close, Escape-close |
 | `soleinvictvs-web/.github/workflows/ci.yml` | Live | Static validation on push |
 | `soleinvictvs-web/.github/workflows/deploy.yml` | Live | GitHub Pages deploy |
+| `tests/a004-c015.sh` | Live | C-015: Athena A-004 verification suite — 16-test shell script (repo root) |
+| `.github/workflows/qa-a004.yml` | Live | C-015: GitHub Actions workflow running Athena A-004 on push (repo root) |
 
 ### Open Operator TODOs (do not design around these — leave placeholders and flag)
 - Substack URL — newsletter CTAs point to `#` across all pages
@@ -288,8 +290,9 @@ DONE WHEN:
 | C-012 | E-005 | vault.html new (products page) | Complete |
 | C-013 | E-005 | about.html new (philosophy + founder) | Complete |
 | C-014 | E-006 | Token harmonisation (index.html) + mobile nav hamburger (all 6 pages) | Complete — Athena PASS A-003 |
+| C-015 | — | E-006 cycle closure: retroactive C-014.json, 3 commits, MEMORY.md, Athena A-004 test suite | Complete — Athena PASS A-004 |
 
-**Next blueprint ID: C-015**
+**Next blueprint ID: C-016**
 
 ---
 

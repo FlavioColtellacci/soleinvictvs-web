@@ -174,6 +174,7 @@ Athena:  test_id  A-001      source_build: V-001
 | A-001 | V-004 (C-007) | E-004 | PASS | 2026-02-26 | virtue-audit.html + fortress-protocol.html — 20/20 tests passed. Recommended `--gold:#1A1A1A` in print `:root` for fortress-protocol (implemented by Vitalik in C-010). |
 | A-002 | V-005 (C-009–C-013) | E-005 | PASS | 2026-02-26 | Full site build. 2 blockers found and fixed: (1) Temperantia quote in about.html deviated from C-013 spec; (2) `@font-face` path `../assets/fonts/` incorrect in virtue-audit.html + fortress-protocol.html — corrected to `assets/fonts/`. PR #3 opened. |
 | A-003 | V-006 + V-007 (C-014) | E-006 | PASS | 2026-02-26 | Token harmonisation + mobile nav. 13/13 tests passed. Spec deviation confirmed correct: 900px breakpoint (blueprint said 768px). One recommendation: aria-label static string — non-blocking, aria-expanded sufficient. |
+| A-004 | V-008 + V-009 + V-010 (C-015) | — | PASS | 2026-02-26 | E-006 cycle closure. 16/16 tests passed. One T-015 bug caught and fixed during authoring (--stat vs --name-only regex). Test suite committed to repo: tests/a004-c015.sh + .github/workflows/qa-a004.yml. |
 
 ---
 
