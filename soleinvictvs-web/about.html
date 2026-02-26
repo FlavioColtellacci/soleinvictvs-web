@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philosophy — SOLEINVICTVS</title>
+
+<!--
+  FONT SWAP — The Seasons
+  When TheSeasons-Regular.woff2 + TheSeasons-Italic.woff2 land in assets/fonts/,
+  uncomment the block below and remove the Google Fonts link.
+
+  @font-face {
+    font-family: 'The Seasons';
+    src: url('assets/fonts/TheSeasons-Regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'The Seasons';
+    src: url('assets/fonts/TheSeasons-Italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap;
+  }
+-->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0A0A0A;
+  --surface:    #111111;
+  --surface-2:  #161616;
+  --border:     #1E1E1E;
+  --text:       #F5F0E8;
+  --text-muted: #9A9080;
+  --gold:       #C9A84C;
+  --gold-muted: #8A6F32;
+  --red:        #8B1A1A;
+  --font-display: 'The Seasons', 'Cormorant Garamond', serif;
+  --font-serif:   'Cormorant Garamond', serif;
+  --font-ui:      'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.75rem 4rem;
+  background: linear-gradient(to bottom, rgba(10,10,10,.97) 0%, transparent 100%);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: .65rem;
+  letter-spacing: .4em;
+  color: var(--gold);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 3rem; list-style: none; }
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: .55rem;
+  letter-spacing: .25em;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--gold); }
+body[data-page='vault'] .nav-links a[href='vault.html'],
+body[data-page='codex'] .nav-links a[href='codex.html'],
+body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
+
+/* ─── PAGE HEADER ─── */
+.page-header {
+  padding: 14rem 4rem 5rem;
+  text-align: center;
+}
+.section-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .5rem;
+  letter-spacing: .55em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.page-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  letter-spacing: .2em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+.title-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 1.5rem;
+}
+.page-sub {
+  font-family: 'Cinzel', serif;
+  font-size: .8rem;
+  color: var(--text-muted);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  letter-spacing: .2em;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+/* ─── THREE PILLARS ─── */
+.pillars-section {
+  padding: 6rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.pillars-section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.pillars-grid-expanded {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+.pillar-card { }
+.pillar-num {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  font-size: 3rem;
+  color: rgba(201,168,76,.15);
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.pillar-title-lg {
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  letter-spacing: .3em;
+  color: var(--text);
+  margin-bottom: .75rem;
+  text-transform: uppercase;
+  display: block;
+}
+.pillar-latin {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.pillar-body {
+  font-size: .82rem;
+  color: var(--text-muted);
+  line-height: 2.1;
+}
+
+/* ─── FOUR VIRTUES ─── */
+.virtues-section {
+  background: var(--surface);
+  padding: 6rem 4rem;
+}
+.virtues-section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.virtues-section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.virtues-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+.virtue-card {
+  background: var(--bg);
+  border: 1px solid rgba(201,168,76,.08);
+  padding: 2.5rem;
+  transition: border-color .4s;
+  display: flex;
+  flex-direction: column;
+}
+.virtue-card:hover { border-color: rgba(201,168,76,.2); }
+.virtue-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: .12em;
+  color: var(--gold);
+  margin-bottom: .35rem;
+  display: block;
+}
+.virtue-en {
+  font-family: 'Cinzel', serif;
+  font-size: .5rem;
+  letter-spacing: .4em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+.virtue-def {
+  font-family: 'Cinzel', serif;
+  font-size: .7rem;
+  letter-spacing: .08em;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.virtue-body {
+  font-size: .8rem;
+  color: var(--text-muted);
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+.virtue-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text);
+  border-left: 2px solid rgba(201,168,76,.3);
+  padding-left: 1rem;
+  margin-top: auto;
+}
+.virtue-attr {
+  font-family: 'Cinzel', serif;
+  font-size: .55rem;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+  display: block;
+  margin-top: .5rem;
+}
+
+/* ─── FOUNDER ─── */
+.founder-section {
+  padding: 6rem 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.founder-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,.3);
+  display: block;
+  margin: 0 auto 2rem;
+  object-fit: cover;
+}
+.founder-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  letter-spacing: .12em;
+  color: var(--text);
+  margin-bottom: .5rem;
+  display: block;
+}
+.founder-title {
+  font-family: 'Cinzel', serif;
+  font-size: .5rem;
+  letter-spacing: .4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2.5rem;
+}
+.founder-bio {
+  font-size: .88rem;
+  color: var(--text-muted);
+  line-height: 2.1;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── NEWSLETTER ─── */
+.newsletter {
+  padding: 7rem 4rem;
+  background: var(--surface);
+  text-align: center;
+}
+.newsletter-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  letter-spacing: .2em;
+  margin-bottom: .75rem;
+}
+.newsletter-sub {
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+.newsletter-form {
+  display: flex;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.newsletter-form input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid rgba(201,168,76,.35);
+  border-right: none;
+  color: var(--text);
+  padding: .9rem 1.25rem;
+  font-family: var(--font-ui);
+  font-size: .78rem;
+  outline: none;
+  transition: border-color .3s;
+}
+.newsletter-form input:focus { border-color: var(--gold); }
+.newsletter-form input::placeholder { color: var(--text-muted); }
+.newsletter-form button {
+  background: var(--gold);
+  border: none;
+  color: var(--bg);
+  font-family: 'Cinzel', serif;
+  font-size: .55rem;
+  letter-spacing: .2em;
+  padding: .9rem 1.75rem;
+  cursor: pointer;
+  transition: background .3s;
+  white-space: nowrap;
+}
+.newsletter-form button:hover { background: #d9b85c; }
+
+/* ─── FOOTER ─── */
+.site-footer {
+  padding: 2.5rem 4rem;
+  border-top: 1px solid rgba(154,144,128,.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: .5rem;
+  letter-spacing: .4em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-family: 'Cinzel', serif;
+  font-size: .45rem;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .3s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-copy {
+  font-family: 'Cinzel', serif;
+  font-size: .42rem;
+  letter-spacing: .2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .site-nav { padding: 1.25rem 1.75rem; }
+  .nav-links { display: none; }
+  .pillars-section, .founder-section { padding: 5rem 1.75rem; }
+  .virtues-section { padding: 5rem 1.75rem; }
+  .pillars-grid-expanded { grid-template-columns: 1fr; gap: 3rem; }
+  .virtues-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .page-header { padding: 10rem 1.75rem 3rem; }
+  .newsletter { padding: 5rem 1.75rem; }
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form input { border-right: 1px solid rgba(201,168,76,.35); border-bottom: none; }
+  .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.75rem; }
+  .footer-links { display: none; }
+}
+</style>
+</head>
+<body data-page="about">
+
+<!-- OPERATOR SWAP INSTRUCTIONS
+     Avatar: replace img src='../brand_assets/sun_transparent.png' with real photo path.
+     Name: replace 'THE FOUNDER' in .founder-name with real name.
+     Bio: replace the three .founder-bio paragraphs with real copy.
+     No layout or CSS changes required for any of the above swaps.
+-->
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">SOLEINVICTVS</a>
+  <ul class="nav-links">
+    <li><a href="vault.html">The Vault</a></li>
+    <li><a href="codex.html">The Codex</a></li>
+    <li><a href="about.html">Philosophy</a></li>
+    <li><a href="index.html#newsletter">Join the Legion</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<header class="page-header">
+  <span class="section-eyebrow">Philosophy</span>
+  <h1 class="page-title">THE UNCONQUERED LIFE</h1>
+  <div class="title-rule"></div>
+  <p class="page-sub">Ancient Stoic wisdom. Applied to modern life. No excuses. No shortcuts.</p>
+</header>
+
+<!-- THREE PILLARS -->
+<section class="pillars-section reveal">
+  <div class="pillars-section-header">
+    <span class="section-eyebrow">The Foundation</span>
+    <h2 class="section-title">THREE PILLARS OF THE UNCONQUERED LIFE</h2>
+  </div>
+  <div class="pillars-grid-expanded">
+
+    <div class="pillar-card">
+      <span class="pillar-num">I</span>
+      <span class="pillar-title-lg">Philosophy</span>
+      <span class="pillar-latin">Sapientia et Ratio</span>
+      <p class="pillar-body">Marcus Aurelius ruled an empire and still made time to examine himself. Seneca, one of the wealthiest men in Rome, wrote about the freedom found in voluntary poverty. Epictetus, a former slave, taught the most powerful men of his age how to think clearly. The Stoics were not theorists. They were practitioners — men with everything to lose who chose to live by principle anyway. Their philosophy survived two thousand years because it works: in the arena, in the market, and in the mind of any man willing to apply it honestly.</p>
+    </div>
+
+    <div class="pillar-card">
+      <span class="pillar-num">II</span>
+      <span class="pillar-title-lg">Discipline</span>
+      <span class="pillar-latin">Disciplina et Constantia</span>
+      <p class="pillar-body">Motivation is weather. It shows up uninvited and leaves without warning. Discipline is architecture — built deliberately, maintained daily, indifferent to how you feel in the morning. The Stoics called it the training of the will. Not the suppression of desire but its redirection toward what is worthy and durable. Every day you enforce the standard, you add one more stone to the fortress. Every day you negotiate with the standard, you weaken the wall. There is no neutral ground between the two.</p>
+    </div>
+
+    <div class="pillar-card">
+      <span class="pillar-num">III</span>
+      <span class="pillar-title-lg">Community</span>
+      <span class="pillar-latin">Fraternitas in Virtute</span>
+      <p class="pillar-body">Rome did not build itself. The legions moved as one because every soldier held the line, and the strength of each man multiplied the strength of all. We are building a community of men who hold the line: in their training, their finances, their relationships, and their character. No comfort culture. No empty validation. No applause for mediocrity dressed up as vulnerability. The Legion is a community united by the shared pursuit of an unconquered life, and it is not for everyone. That is not a warning. That is the point.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOUR VIRTUES -->
+<section class="virtues-section">
+  <div class="virtues-section-inner reveal">
+    <div class="virtues-section-header">
+      <span class="section-eyebrow">The Cardinal Virtues</span>
+      <h2 class="section-title">THE FOUR PILLARS OF CHARACTER</h2>
+    </div>
+    <div class="virtues-grid">
+
+      <div class="virtue-card">
+        <span class="virtue-name">SAPIENTIA</span>
+        <span class="virtue-en">Wisdom</span>
+        <p class="virtue-def">The capacity to perceive what is true and act accordingly.</p>
+        <p class="virtue-body">Wisdom is not intelligence. It is not information. It is the ability to see clearly and choose rightly when it matters most, and the Stoics considered it the master virtue because all others flow from it. Without wisdom, courage becomes recklessness, justice becomes rigidity, and moderation becomes cowardice.</p>
+        <blockquote class="virtue-quote">
+          He is a wise man who does not grieve for the things which he has not, but rejoices for those which he has.
+          <span class="virtue-attr">— Epictetus</span>
+        </blockquote>
+      </div>
+
+      <div class="virtue-card">
+        <span class="virtue-name">IUSTITIA</span>
+        <span class="virtue-en">Justice</span>
+        <p class="virtue-def">The commitment to act rightly toward others and toward the world.</p>
+        <p class="virtue-body">Justice is not the law. The Stoics understood justice as an internal standard: the disposition to treat every person, in every circumstance, with the dignity they deserve as a fellow rational being. Your justice is most tested not in courts or public life but in the small private moments when no one is watching and the easier choice is available.</p>
+        <blockquote class="virtue-quote">
+          Never esteem anything as of advantage to you that will make you break your word or lose your self-respect.
+          <span class="virtue-attr">— Marcus Aurelius</span>
+        </blockquote>
+      </div>
+
+      <div class="virtue-card">
+        <span class="virtue-name">FORTITUDO</span>
+        <span class="virtue-en">Courage</span>
+        <p class="virtue-def">The will to act rightly in the face of fear, pain, or opposition.</p>
+        <p class="virtue-body">Courage is not the absence of fear. It is the decision that something else matters more, and that decision must be made repeatedly, in small moments and large ones alike. The Stoics trained for adversity before it arrived — through voluntary hardship, cold, hunger, and discomfort — because what you rehearse under controlled conditions is what you execute under real ones.</p>
+        <blockquote class="virtue-quote">
+          You want to live, but do you know how to live? You are scared to die, and tell me, is the kind of life you lead really living?
+          <span class="virtue-attr">— Seneca</span>
+        </blockquote>
+      </div>
+
+      <div class="virtue-card">
+        <span class="virtue-name">TEMPERANTIA</span>
+        <span class="virtue-en">Moderation</span>
+        <p class="virtue-def">The discipline to govern appetite, impulse, and excess.</p>
+        <p class="virtue-body">Moderation is not weakness or half-measures. It is the Stoic science of limits: knowing exactly how much food, how much pleasure, how much rest serves the higher standard and what begins to erode it. The man who has not learned to govern himself will be governed by his appetites, and an appetite satisfied without judgment is simply a new hunger.</p>
+        <blockquote class="virtue-quote">
+          Seek not the good in external things; seek it in yourself.
+          <span class="virtue-attr">— Epictetus · Discourses</span>
+        </blockquote>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder-section reveal">
+  <span class="section-eyebrow">The Founder</span>
+  <!-- SWAP: replace src below with real founder photo path -->
+  <img src="../brand_assets/sun_transparent.png" alt="Founder" class="founder-avatar">
+  <!-- SWAP: replace 'THE FOUNDER' with real name -->
+  <span class="founder-name">THE FOUNDER</span>
+  <span class="founder-title">Founder · SOLEINVICTVS</span>
+  <div class="title-rule"></div>
+  <!-- SWAP: replace the three paragraphs below with real bio copy -->
+  <p class="founder-bio">I built SOLEINVICTVS because the philosophy that changed my life had no home. Marcus Aurelius was writing to himself. Seneca was writing to a friend. Epictetus was speaking to a small room. None of them expected to be read two thousand years later. But the fact that we still read them tells you everything about the durability of what they were pointing at. I wanted to build something that pointed at the same thing — but for men living right now, in the world as it is.</p>
+  <p class="founder-bio">This is not a motivational brand. Motivation is a feeling, and feelings are unreliable. This is a discipline brand. The difference is that discipline works even when nothing inside you wants to. The Stoics built systems for exactly this: frameworks for the days when everything pulls you toward the easy path. The Fortress Protocol, the Virtue Audit, the Codex — every piece of this is a tool for building something they cannot take from you. The fortress is within.</p>
+  <p class="founder-bio">If you found this, you were looking for it. Something in you recognized that the current cultural conversation about strength and manhood is hollow. That the self-help industry is selling you comfort dressed up as growth. That real philosophy is harder, older, and more demanding — and also far more rewarding. Welcome to the Legion. We rise unconquered. Semper ad meliora.</p>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter reveal" id="newsletter">
+  <p class="section-eyebrow">The Sol Report</p>
+  <h2 class="newsletter-title">JOIN THE LEGION</h2>
+  <p class="newsletter-sub">One Stoic insight. One discipline challenge. One resource. Weekly. No noise. No BS.</p>
+  <form class="newsletter-form" onsubmit="handleSignup(event)">
+    <input type="email" placeholder="your@email.com" required>
+    <button type="submit">Enlist</button>
+  </form>
+</section>
+
+<footer class="site-footer">
+  <span class="footer-brand">SOLEINVICTVS</span>
+  <div class="footer-links">
+    <a href="#">X / Twitter</a>
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+  </div>
+  <span class="footer-copy">© MMXXVI · Semper ad meliora</span>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Newsletter — visual-only placeholder until ConvertKit is configured
+function handleSignup(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = 'Enlisted ✦';
+  btn.style.background = '#8A6F32';
+  e.target.querySelector('input').value = '';
+}
+</script>
+
+</body>
+</html>
