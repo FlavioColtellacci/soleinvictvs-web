@@ -68,7 +68,7 @@ soleinvictvs_web/
 ## Open Operator Blockers / Tasks
 
 - **Substack URL** — Links to `#` in the other sub-pages (now successfully embedded in footer on homepage).
-- **TheSeasons font files** — Need to drop `TheSeasons-Regular.woff2` + `TheSeasons-Italic.woff2` into `soleinvictvs-web/assets/fonts/` (Using `.otf` for now).
+- **TheSeasons font files** — ACTIVE (Loaded as .woff2).
 - **Founder avatar + real bio** — about.html ships with placeholder
 - **Payment solution** (Stripe / Gumroad / Lemon Squeezy) — vault paid CTAs point to newsletter waitlist
 
