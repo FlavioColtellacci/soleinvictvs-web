@@ -13,3 +13,8 @@ Thumbs.db
 
 # Claude Code
 .claude/
+
+# Agent Tooling
+agents/
+Antigravity/
+*.code-workspace
