@@ -1,4 +1,8 @@
-# SOLEINVICTVS — Project Context
+# SOLEINVICTVS — Project Context (DEPRECATED)
+
+> **[ARCHIVED]:** The fleet has been upgraded. All primary operational context has been shifted to `GEMINI.md`. This file is kept exclusively for legacy context and historical blueprints. Please refer to `GEMINI.md` for the single source of truth moving forward.
+
+---
 
 This is the SOLEINVICTVS brand website project.
 Operated by a four-agent waterfall fleet. Operator is the CEO.

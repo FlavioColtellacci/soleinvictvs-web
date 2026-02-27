@@ -3,85 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Fortress Protocol — SOLEINVICTVS</title>
+<title>The Fortress Protocol  SOLEINVICTVS</title>
 
 <style>
 @font-face {
-  font-family: 'The Seasons';
-  src: url('assets/fonts/TheSeasons-Regular.otf') format('opentype');
-  font-weight: 400; font-style: normal; font-display: swap;
+ font-family: 'The Seasons';
+ src: url('assets/fonts/TheSeasons-Regular.otf') format('opentype');
+ font-weight: 400; font-style: normal; font-display: swap;
 }
 @font-face {
-  font-family: 'The Seasons';
-  src: url('assets/fonts/TheSeasons-Italic.otf') format('opentype');
-  font-weight: 400; font-style: italic; font-display: swap;
+ font-family: 'The Seasons';
+ src: url('assets/fonts/TheSeasons-Italic.otf') format('opentype');
+ font-weight: 400; font-style: italic; font-display: swap;
 }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 /* ═══════════════════════════════════════════════════════════
-   SCREEN STYLES
+  SCREEN STYLES
 ═══════════════════════════════════════════════════════════ */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:         #0A0A0A;
-  --surface:    #111111;
-  --surface-2:  #161616;
-  --border:     #1E1E1E;
-  --text:       #F5F0E8;
-  --text-muted: #9A9080;
-  --gold:       #C9A84C;
-  --gold-muted: #8A6F32;
-  --red:        #8B1A1A;
-  --font-display: 'The Seasons', 'Cormorant Garamond', serif;
-  --font-serif:   'Cormorant Garamond', serif;
-  --font-ui:      'Inter', sans-serif;
+ --bg:     #0A0A0A;
+ --surface:  #111111;
+ --surface-2: #161616;
+ --border:   #1E1E1E;
+ --text:    #F5F0E8;
+ --text-muted: #9A9080;
+ --gold:    #C9A84C;
+ --gold-muted: #8A6F32;
+ --red:    #8B1A1A;
+ --font-display: 'The Seasons', 'Cormorant Garamond', serif;
+ --font-serif:  'Cormorant Garamond', serif;
+ --font-ui:   'Inter', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-ui);
-  line-height: 1.6;
-  overflow-x: hidden;
+ background: var(--bg);
+ color: var(--text);
+ font-family: var(--font-ui);
+ line-height: 1.6;
+ overflow-x: hidden;
 }
 
 /* ─── NAV (screen only) ─── */
 .site-nav {
-  position: static;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 3rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  z-index: 100;
+ position: static;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 1.5rem 3rem;
+ border-bottom: 1px solid var(--border);
+ background: var(--bg);
+ z-index: 100;
 }
 .nav-logo {
-  font-family: var(--font-display);
-  font-size: .65rem;
-  letter-spacing: .4em;
-  color: var(--gold);
-  text-decoration: none;
+ font-family: var(--font-display);
+ font-size: .65rem;
+ letter-spacing: .4em;
+ color: var(--gold);
+ text-decoration: none;
 }
 .nav-links {
-  display: flex;
-  gap: 3rem;
-  list-style: none;
+ display: flex;
+ gap: 3rem;
+ list-style: none;
 }
 .nav-links a {
-  font-family: 'Cinzel', serif;
-  font-size: .55rem;
-  letter-spacing: .25em;
-  color: var(--text-muted);
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: color .3s;
+ font-family: 'Cinzel', serif;
+ font-size: .55rem;
+ letter-spacing: .25em;
+ color: var(--text-muted);
+ text-decoration: none;
+ text-transform: uppercase;
+ transition: color .3s;
 }
 .nav-links a:hover { color: var(--gold); }
 body[data-page='vault'] .nav-links a[href='vault.html'],
@@ -90,468 +90,468 @@ body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
 
 /* ─── HERO HEADER ─── */
 .hero-header {
-  text-align: center;
-  padding: 5rem 2rem 4rem;
-  border-bottom: 1px solid var(--border);
-  max-width: 760px;
-  margin: 0 auto;
+ text-align: center;
+ padding: 5rem 2rem 4rem;
+ border-bottom: 1px solid var(--border);
+ max-width: 760px;
+ margin: 0 auto;
 }
 .hero-label {
-  font-family: 'Cinzel', serif;
-  font-size: .42rem;
-  letter-spacing: .65em;
-  color: var(--gold);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 1.5rem;
+ font-family: 'Cinzel', serif;
+ font-size: .42rem;
+ letter-spacing: .65em;
+ color: var(--gold);
+ text-transform: uppercase;
+ display: block;
+ margin-bottom: 1.5rem;
 }
 .hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 6vw, 4.5rem);
-  font-weight: 700;
-  letter-spacing: .08em;
-  color: var(--text);
-  line-height: 1.05;
-  margin-bottom: 1.25rem;
+ font-family: var(--font-display);
+ font-size: clamp(2rem, 6vw, 4.5rem);
+ font-weight: 700;
+ letter-spacing: .08em;
+ color: var(--text);
+ line-height: 1.05;
+ margin-bottom: 1.25rem;
 }
 .hero-rule { width: 40px; height: 1px; background: var(--gold-muted); margin: 0 auto 1.5rem; }
 .hero-sub {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  font-style: italic;
-  color: var(--text-muted);
-  line-height: 1.9;
-  margin-bottom: 1.5rem;
+ font-family: var(--font-serif);
+ font-size: 1.15rem;
+ font-style: italic;
+ color: var(--text-muted);
+ line-height: 1.9;
+ margin-bottom: 1.5rem;
 }
-/* Print button — screen only */
+/* Print button  screen only */
 .print-cta {
-  font-family: 'Cinzel', serif;
-  font-size: .42rem;
-  letter-spacing: .35em;
-  color: var(--text-muted);
-  cursor: pointer;
-  background: none;
-  border: none;
-  transition: color .3s;
+ font-family: 'Cinzel', serif;
+ font-size: .42rem;
+ letter-spacing: .35em;
+ color: var(--text-muted);
+ cursor: pointer;
+ background: none;
+ border: none;
+ transition: color .3s;
 }
 .print-cta:hover { color: var(--gold); }
 
 /* ─── PROTOCOL WRAPPER ─── */
 .protocol-wrapper {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 0 2rem;
+ max-width: 760px;
+ margin: 0 auto;
+ padding: 0 2rem;
 }
 
 /* ─── SECTION HEADER ─── */
 .section-header {
-  padding: 4rem 0 2rem;
-  border-top: 1px solid var(--border);
+ padding: 4rem 0 2rem;
+ border-top: 1px solid var(--border);
 }
 .section-header:first-of-type { border-top: none; padding-top: 4rem; }
 .section-num {
-  font-family: 'Cinzel', serif;
-  font-size: .42rem;
-  letter-spacing: .6em;
-  color: var(--gold);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: .75rem;
+ font-family: 'Cinzel', serif;
+ font-size: .42rem;
+ letter-spacing: .6em;
+ color: var(--gold);
+ text-transform: uppercase;
+ display: block;
+ margin-bottom: .75rem;
 }
 .section-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 4vw, 2.75rem);
-  font-weight: 700;
-  letter-spacing: .08em;
-  color: var(--text);
-  margin-bottom: .75rem;
+ font-family: var(--font-display);
+ font-size: clamp(1.5rem, 4vw, 2.75rem);
+ font-weight: 700;
+ letter-spacing: .08em;
+ color: var(--text);
+ margin-bottom: .75rem;
 }
 .section-sub {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-style: italic;
-  color: var(--text-muted);
-  line-height: 1.85;
+ font-family: var(--font-serif);
+ font-size: 1.05rem;
+ font-style: italic;
+ color: var(--text-muted);
+ line-height: 1.85;
 }
 
 /* ─── DAILY ITEMS ─── */
 .daily-items { padding-bottom: 3rem; }
 .daily-item {
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: 1.5rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--border);
-  align-items: start;
+ display: grid;
+ grid-template-columns: 90px 1fr;
+ gap: 1.5rem;
+ padding: 1.5rem 0;
+ border-bottom: 1px solid var(--border);
+ align-items: start;
 }
 .daily-item:last-child { border-bottom: none; }
 .item-time {
-  font-family: 'Cinzel', serif;
-  font-size: .52rem;
-  letter-spacing: .25em;
-  color: var(--gold);
-  padding-top: .1rem;
+ font-family: 'Cinzel', serif;
+ font-size: .52rem;
+ letter-spacing: .25em;
+ color: var(--gold);
+ padding-top: .1rem;
 }
 .item-body { }
 .item-act {
-  font-family: 'Cinzel', serif;
-  font-size: .48rem;
-  letter-spacing: .45em;
-  color: var(--text);
-  font-weight: 600;
-  display: block;
-  margin-bottom: .5rem;
-  text-transform: uppercase;
+ font-family: 'Cinzel', serif;
+ font-size: .48rem;
+ letter-spacing: .45em;
+ color: var(--text);
+ font-weight: 600;
+ display: block;
+ margin-bottom: .5rem;
+ text-transform: uppercase;
 }
 .item-text {
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  color: var(--text-muted);
-  line-height: 1.85;
+ font-family: var(--font-serif);
+ font-size: 1rem;
+ color: var(--text-muted);
+ line-height: 1.85;
 }
 
 /* ─── WEEKLY QUESTIONS ─── */
 .weekly-questions { padding-bottom: 3rem; }
 .question-item {
-  display: flex;
-  gap: 1.5rem;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--border);
-  align-items: baseline;
+ display: flex;
+ gap: 1.5rem;
+ padding: 1.25rem 0;
+ border-bottom: 1px solid var(--border);
+ align-items: baseline;
 }
 .question-item:last-child { border-bottom: none; }
 .q-num {
-  font-family: 'Cinzel', serif;
-  font-size: .48rem;
-  letter-spacing: .3em;
-  color: var(--gold);
-  flex-shrink: 0;
-  padding-top: .15rem;
+ font-family: 'Cinzel', serif;
+ font-size: .48rem;
+ letter-spacing: .3em;
+ color: var(--gold);
+ flex-shrink: 0;
+ padding-top: .15rem;
 }
 .q-text {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  color: var(--text);
-  line-height: 1.8;
+ font-family: var(--font-serif);
+ font-size: 1.05rem;
+ color: var(--text);
+ line-height: 1.8;
 }
 .review-close {
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--text-muted);
-  margin-top: 1.5rem;
-  line-height: 1.9;
-  padding-bottom: 3rem;
+ font-family: var(--font-serif);
+ font-size: 1rem;
+ font-style: italic;
+ color: var(--text-muted);
+ margin-top: 1.5rem;
+ line-height: 1.9;
+ padding-bottom: 3rem;
 }
 
 /* ─── PRINCIPLES ─── */
 .principles-list { padding-bottom: 2rem; }
 .principle-item {
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--border);
+ padding: 2rem 0;
+ border-bottom: 1px solid var(--border);
 }
 .principle-item:last-child { border-bottom: none; }
 .principle-num {
-  font-family: 'Cinzel', serif;
-  font-size: .42rem;
-  letter-spacing: .5em;
-  color: var(--gold);
-  display: block;
-  margin-bottom: .75rem;
+ font-family: 'Cinzel', serif;
+ font-size: .42rem;
+ letter-spacing: .5em;
+ color: var(--gold);
+ display: block;
+ margin-bottom: .75rem;
 }
 .principle-text {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  color: var(--text);
-  line-height: 1.85;
+ font-family: var(--font-serif);
+ font-size: 1.1rem;
+ color: var(--text);
+ line-height: 1.85;
 }
 /* Closing statement */
 .principle-closing {
-  text-align: center;
-  padding: 3.5rem 0 4rem;
-  border-top: 1px solid var(--border);
+ text-align: center;
+ padding: 3.5rem 0 4rem;
+ border-top: 1px solid var(--border);
 }
 .principle-closing p {
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 3vw, 2rem);
-  font-style: normal;
-  color: var(--gold);
-  letter-spacing: .06em;
-  line-height: 1.4;
+ font-family: var(--font-display);
+ font-size: clamp(1.25rem, 3vw, 2rem);
+ font-style: normal;
+ color: var(--gold);
+ letter-spacing: .06em;
+ line-height: 1.4;
 }
 
 /* ─── EMAIL GATE ─── */
 .gate-wrapper {
-  position: relative;
+ position: relative;
 }
 .gate-wrapper.gated .gateable-content {
-  filter: blur(6px);
-  pointer-events: none;
-  user-select: none;
+ filter: blur(6px);
+ pointer-events: none;
+ user-select: none;
 }
 .gate-overlay {
-  display: none;
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(10,10,10,0) 0%, rgba(10,10,10,.97) 20%);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 6rem 2rem;
-  text-align: center;
-  z-index: 10;
+ display: none;
+ position: absolute;
+ inset: 0;
+ background: linear-gradient(to bottom, rgba(10,10,10,0) 0%, rgba(10,10,10,.97) 20%);
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ padding: 6rem 2rem;
+ text-align: center;
+ z-index: 10;
 }
 .gate-wrapper.gated .gate-overlay { display: flex; }
 .gate-headline {
-  font-family: 'Cinzel', serif;
-  font-size: .52rem;
-  letter-spacing: .5em;
-  color: var(--text);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: .75rem;
+ font-family: 'Cinzel', serif;
+ font-size: .52rem;
+ letter-spacing: .5em;
+ color: var(--text);
+ text-transform: uppercase;
+ display: block;
+ margin-bottom: .75rem;
 }
 .gate-sub {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  font-style: italic;
-  color: var(--text-muted);
-  max-width: 400px;
-  margin: 0 auto 2rem;
-  line-height: 1.85;
+ font-family: var(--font-serif);
+ font-size: 1.1rem;
+ font-style: italic;
+ color: var(--text-muted);
+ max-width: 400px;
+ margin: 0 auto 2rem;
+ line-height: 1.85;
 }
 .gate-form { display: flex; width: 100%; max-width: 420px; }
 .gate-form input {
-  flex: 1;
-  background: transparent;
-  border: 1px solid rgba(201,168,76,.3);
-  border-right: none;
-  color: var(--text);
-  padding: .9rem 1.25rem;
-  font-family: var(--font-ui);
-  font-size: .9rem;
-  outline: none;
-  transition: border-color .3s;
+ flex: 1;
+ background: transparent;
+ border: 1px solid rgba(201,168,76,.3);
+ border-right: none;
+ color: var(--text);
+ padding: .9rem 1.25rem;
+ font-family: var(--font-ui);
+ font-size: .9rem;
+ outline: none;
+ transition: border-color .3s;
 }
 .gate-form input:focus { border-color: var(--gold); }
 .gate-form input::placeholder { color: var(--text-muted); }
 .gate-form button {
-  background: var(--gold);
-  border: none;
-  color: var(--bg);
-  font-family: 'Cinzel', serif;
-  font-size: .45rem;
-  letter-spacing: .2em;
-  padding: .9rem 1.5rem;
-  cursor: pointer;
-  transition: background .3s;
-  white-space: nowrap;
-  text-transform: uppercase;
+ background: var(--gold);
+ border: none;
+ color: var(--bg);
+ font-family: 'Cinzel', serif;
+ font-size: .45rem;
+ letter-spacing: .2em;
+ padding: .9rem 1.5rem;
+ cursor: pointer;
+ transition: background .3s;
+ white-space: nowrap;
+ text-transform: uppercase;
 }
 .gate-form button:hover { background: #e2c06a; }
 .gate-note { font-size: .75rem; color: var(--text-muted); margin-top: 1rem; }
 
 /* ─── UPGRADE TEASER (screen only) ─── */
 .upgrade-teaser {
-  margin: 3rem 0 5rem;
-  padding: 3rem;
-  border: 1px solid var(--gold-muted);
-  text-align: center;
+ margin: 3rem 0 5rem;
+ padding: 3rem;
+ border: 1px solid var(--gold-muted);
+ text-align: center;
 }
 .teaser-label {
-  font-family: 'Cinzel', serif;
-  font-size: .42rem;
-  letter-spacing: .6em;
-  color: var(--gold);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 1rem;
+ font-family: 'Cinzel', serif;
+ font-size: .42rem;
+ letter-spacing: .6em;
+ color: var(--gold);
+ text-transform: uppercase;
+ display: block;
+ margin-bottom: 1rem;
 }
 .teaser-title {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  color: var(--text);
-  margin-bottom: 1rem;
+ font-family: var(--font-display);
+ font-size: 1.5rem;
+ font-weight: 700;
+ letter-spacing: .08em;
+ color: var(--text);
+ margin-bottom: 1rem;
 }
 .teaser-body {
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--text-muted);
-  max-width: 500px;
-  margin: 0 auto 2rem;
-  line-height: 1.9;
+ font-family: var(--font-serif);
+ font-size: 1rem;
+ font-style: italic;
+ color: var(--text-muted);
+ max-width: 500px;
+ margin: 0 auto 2rem;
+ line-height: 1.9;
 }
 .teaser-cta {
-  display: inline-block;
-  font-family: 'Cinzel', serif;
-  font-size: .48rem;
-  letter-spacing: .3em;
-  padding: .9rem 2.25rem;
-  background: var(--gold);
-  color: var(--bg);
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: background .3s;
+ display: inline-block;
+ font-family: 'Cinzel', serif;
+ font-size: .48rem;
+ letter-spacing: .3em;
+ padding: .9rem 2.25rem;
+ background: var(--gold);
+ color: var(--bg);
+ text-decoration: none;
+ text-transform: uppercase;
+ transition: background .3s;
 }
 .teaser-cta:hover { background: #e2c06a; }
 
 /* ─── FOOTER (screen only) ─── */
 .site-footer {
-  padding: 2.5rem 4rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+ padding: 2.5rem 4rem;
+ border-top: 1px solid var(--border);
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
 }
 .footer-brand {
-  font-family: var(--font-display);
-  font-size: .5rem;
-  letter-spacing: .4em;
-  color: var(--text-muted);
-  text-transform: uppercase;
+ font-family: var(--font-display);
+ font-size: .5rem;
+ letter-spacing: .4em;
+ color: var(--text-muted);
+ text-transform: uppercase;
 }
 .footer-links {
-  display: flex;
-  gap: 2rem;
+ display: flex;
+ gap: 2rem;
 }
 .footer-links a {
-  font-family: 'Cinzel', serif;
-  font-size: .45rem;
-  letter-spacing: .2em;
-  color: var(--text-muted);
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: color .3s;
+ font-family: 'Cinzel', serif;
+ font-size: .45rem;
+ letter-spacing: .2em;
+ color: var(--text-muted);
+ text-decoration: none;
+ text-transform: uppercase;
+ transition: color .3s;
 }
 .footer-links a:hover { color: var(--gold); }
 .footer-copy {
-  font-family: 'Cinzel', serif;
-  font-size: .42rem;
-  letter-spacing: .2em;
-  color: var(--text-muted);
-  text-transform: uppercase;
+ font-family: 'Cinzel', serif;
+ font-size: .42rem;
+ letter-spacing: .2em;
+ color: var(--text-muted);
+ text-transform: uppercase;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   PRINT STYLES
-   All --gold elements render as #1A1A1A
-   Nav, gate, teaser, CTAs: hidden
-   Page breaks before section 2 and 3
-   Font sizes: body 11pt, section headers 18pt, time labels 9pt
+  PRINT STYLES
+  All --gold elements render as #1A1A1A
+  Nav, gate, teaser, CTAs: hidden
+  Page breaks before section 2 and 3
+  Font sizes: body 11pt, section headers 18pt, time labels 9pt
 ═══════════════════════════════════════════════════════════ */
 
 @media print {
 
-  /* Print header — only visible in print */
-  .print-header { display: flex !important; }
+ /* Print header  only visible in print */
+ .print-header { display: flex !important; }
 
-  /* Hide screen chrome */
-  .site-nav,
-  .gate-overlay,
-  .gate-wrapper.gated .gate-overlay,
-  .upgrade-teaser,
-  .print-cta,
-  .site-footer,
-  .hero-label {
-    display: none !important;
-  }
+ /* Hide screen chrome */
+ .site-nav,
+ .gate-overlay,
+ .gate-wrapper.gated .gate-overlay,
+ .upgrade-teaser,
+ .print-cta,
+ .site-footer,
+ .hero-label {
+  display: none !important;
+ }
 
-  /* Undo blur in print — show all content */
-  .gate-wrapper.gated .gateable-content {
-    filter: none !important;
-    pointer-events: auto !important;
-    user-select: auto !important;
-  }
+ /* Undo blur in print  show all content */
+ .gate-wrapper.gated .gateable-content {
+  filter: none !important;
+  pointer-events: auto !important;
+  user-select: auto !important;
+ }
 
-  html, body {
-    background: #fff !important;
-    color: #000 !important;
-    font-size: 11pt;
-  }
+ html, body {
+  background: #fff !important;
+  color: #000 !important;
+  font-size: 11pt;
+ }
 
-  :root {
-    --text: #000;
-    --text-muted: #333;
-    --border: #ccc;
-    --bg: #fff;
-    --surface: #fff;
-    --gold: #1A1A1A;
-  }
+ :root {
+  --text: #000;
+  --text-muted: #333;
+  --border: #ccc;
+  --bg: #fff;
+  --surface: #fff;
+  --gold: #1A1A1A;
+ }
 
-  /* Gold → dark in print */
-  .item-time, .section-num, .q-num, .principle-num, .hero-label,
-  .section-title, .hero-title, .item-act {
-    color: #1A1A1A !important;
-  }
+ /* Gold → dark in print */
+ .item-time, .section-num, .q-num, .principle-num, .hero-label,
+ .section-title, .hero-title, .item-act {
+  color: #1A1A1A !important;
+ }
 
-  .hero-rule { background: #1A1A1A !important; }
+ .hero-rule { background: #1A1A1A !important; }
 
-  /* Section headers: 18pt */
-  .section-title { font-size: 18pt !important; }
+ /* Section headers: 18pt */
+ .section-title { font-size: 18pt !important; }
 
-  /* Time labels: 9pt */
-  .item-time { font-size: 9pt !important; }
+ /* Time labels: 9pt */
+ .item-time { font-size: 9pt !important; }
 
-  /* Closing gold statement */
-  .principle-closing p { color: #1A1A1A !important; }
+ /* Closing gold statement */
+ .principle-closing p { color: #1A1A1A !important; }
 
-  /* Page breaks */
-  .section-header.section-2,
-  .section-header.section-3 {
-    page-break-before: always;
-    padding-top: 1rem;
-    border-top: none;
-  }
+ /* Page breaks */
+ .section-header.section-2,
+ .section-header.section-3 {
+  page-break-before: always;
+  padding-top: 1rem;
+  border-top: none;
+ }
 
-  .protocol-wrapper { padding: 0; }
+ .protocol-wrapper { padding: 0; }
 
-  .hero-header { padding: 1rem 0 2rem; }
+ .hero-header { padding: 1rem 0 2rem; }
 }
 
-/* Print header — hidden on screen */
+/* Print header  hidden on screen */
 .print-header {
-  display: none;
-  align-items: center;
-  gap: 1rem;
-  padding: 0 0 1rem;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 1.5rem;
+ display: none;
+ align-items: center;
+ gap: 1rem;
+ padding: 0 0 1rem;
+ border-bottom: 1px solid #ccc;
+ margin-bottom: 1.5rem;
 }
 .print-header img { width: 32px; height: auto; }
 .print-header-text { }
 .print-header-wordmark {
-  font-family: 'Cinzel', serif;
-  font-size: 14pt;
-  font-weight: 600;
-  letter-spacing: .3em;
-  display: block;
+ font-family: 'Cinzel', serif;
+ font-size: 14pt;
+ font-weight: 600;
+ letter-spacing: .3em;
+ display: block;
 }
 .print-header-tagline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 9pt;
-  font-style: italic;
-  letter-spacing: .15em;
-  color: #555;
-  display: block;
+ font-family: 'Cormorant Garamond', serif;
+ font-size: 9pt;
+ font-style: italic;
+ letter-spacing: .15em;
+ color: #555;
+ display: block;
 }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .site-nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
-  .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
-  .footer-links { display: none; }
+ .site-nav { padding: 1rem 1.5rem; }
+ .nav-links { display: none; }
+ .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+ .footer-links { display: none; }
 }
 
 @media (max-width: 600px) {
-  .hero-header { padding: 3rem 1.5rem 2.5rem; }
-  .protocol-wrapper { padding: 0 1.5rem; }
-  .daily-item { grid-template-columns: 72px 1fr; gap: 1rem; }
-  .gate-form { flex-direction: column; }
-  .gate-form input { border-right: 1px solid rgba(201,168,76,.3); border-bottom: none; }
+ .hero-header { padding: 3rem 1.5rem 2.5rem; }
+ .protocol-wrapper { padding: 0 1.5rem; }
+ .daily-item { grid-template-columns: 72px 1fr; gap: 1rem; }
+ .gate-form { flex-direction: column; }
+ .gate-form input { border-right: 1px solid rgba(201,168,76,.3); border-bottom: none; }
 }
 </style>
 <link rel="stylesheet" href="assets/css/main.css">
@@ -560,232 +560,232 @@ body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
 
 <!-- PRINT HEADER (print @media only) -->
 <div class="print-header">
-  <img src="../brand_assets/sun_logo_black.png" alt="SOLEINVICTVS">
-  <div class="print-header-text">
-    <span class="print-header-wordmark">SOLEINVICTVS</span>
-    <span class="print-header-tagline">Semper ad meliora · Always towards better things</span>
-  </div>
+ <img src="../brand_assets/sun_logo_black.png" alt="SOLEINVICTVS">
+ <div class="print-header-text">
+  <span class="print-header-wordmark">SOLEINVICTVS</span>
+  <span class="print-header-tagline">Semper ad meliora · Always towards better things</span>
+ </div>
 </div>
 
 <!-- NAV (screen only) -->
 <nav class="site-nav">
-  <a href="index.html" class="nav-logo">SOLEINVICTVS</a>
-  <ul class="nav-links">
-    <li><a href="vault.html">The Vault</a></li>
-    <li><a href="codex.html">The Codex</a></li>
-    <li><a href="about.html">Philosophy</a></li>
-    <li><a href="index.html#newsletter">Join the Legion</a></li>
-  </ul>
-  <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
-    <span class="nav-toggle__bar"></span>
-    <span class="nav-toggle__bar"></span>
-    <span class="nav-toggle__bar"></span>
-  </button>
+ <a href="index.html" class="nav-logo">SOLEINVICTVS</a>
+ <ul class="nav-links">
+  <li><a href="vault.html">The Vault</a></li>
+  <li><a href="codex.html">The Codex</a></li>
+  <li><a href="about.html">Philosophy</a></li>
+  <li><a href="index.html#newsletter">Join the Legion</a></li>
+ </ul>
+ <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+  <span class="nav-toggle__bar"></span>
+  <span class="nav-toggle__bar"></span>
+  <span class="nav-toggle__bar"></span>
+ </button>
 </nav>
 
 <!-- HERO HEADER -->
 <div class="hero-header">
-  <span class="hero-label">SOLEINVICTVS · 30-Day Protocol</span>
-  <h1 class="hero-title">THE FORTRESS PROTOCOL</h1>
-  <div class="hero-rule"></div>
-  <p class="hero-sub">This is the 30-day standard. Not motivation. Not inspiration. A system you execute daily — without negotiation.</p>
-  <!-- Print prompt — screen only, hidden in print -->
-  <button class="print-cta" onclick="window.print()">↓ Print this page — Cmd+P / Ctrl+P</button>
+ <span class="hero-label">SOLEINVICTVS · 30-Day Protocol</span>
+ <h1 class="hero-title">THE FORTRESS PROTOCOL</h1>
+ <div class="hero-rule"></div>
+ <p class="hero-sub">This is the 30-day standard. Not motivation. Not inspiration. A system you execute daily  without negotiation.</p>
+ <!-- Print prompt  screen only, hidden in print -->
+ <button class="print-cta" onclick="window.print()">↓ Print this page  Cmd+P / Ctrl+P</button>
 </div>
 
 <!-- SECTION 1: Visible above gate (first 3 items unblurred) -->
 <div class="protocol-wrapper">
-  <div class="section-header">
-    <span class="section-num">Section I</span>
-    <h2 class="section-title">THE DAILY STANDARD</h2>
-    <p class="section-sub">What the unconquered man does. Every day. Without negotiation.</p>
-  </div>
+ <div class="section-header">
+  <span class="section-num">Section I</span>
+  <h2 class="section-title">THE DAILY STANDARD</h2>
+  <p class="section-sub">What the unconquered man does. Every day. Without negotiation.</p>
+ </div>
 
-  <!-- First 3 items: always visible, no blur -->
-  <div class="daily-items">
-    <div class="daily-item">
-      <span class="item-time">5:00 AM</span>
-      <div class="item-body">
-        <span class="item-act">Arise</span>
-        <p class="item-text">Wake at the time you chose the night before. Not when the body says ready. Not when the phone pulls you. The day begins on your terms or it doesn't begin on your terms — there is no middle ground.</p>
-      </div>
-    </div>
-    <div class="daily-item">
-      <span class="item-time">5:05 AM</span>
-      <div class="item-body">
-        <span class="item-act">Cold</span>
-        <p class="item-text">Cold water. Three minutes minimum. Do not warm up first. The body becomes what you train it to accept. Train it to accept discomfort as ordinary. This is where the day's first victory lives.</p>
-      </div>
-    </div>
-    <div class="daily-item">
-      <span class="item-time">5:20 AM</span>
-      <div class="item-body">
-        <span class="item-act">Move</span>
-        <p class="item-text">45 minutes. Strength, endurance, or both. The Stoics trained the body because they understood the mind and body are one instrument. A weak instrument produces weak music. There are no exceptions for mood.</p>
-      </div>
-    </div>
+ <!-- First 3 items: always visible, no blur -->
+ <div class="daily-items">
+  <div class="daily-item">
+   <span class="item-time">5:00 AM</span>
+   <div class="item-body">
+    <span class="item-act">Arise</span>
+    <p class="item-text">Wake at the time you chose the night before. Not when the body says ready. Not when the phone pulls you. The day begins on your terms or it doesn't begin on your terms  there is no middle ground.</p>
+   </div>
   </div>
+  <div class="daily-item">
+   <span class="item-time">5:05 AM</span>
+   <div class="item-body">
+    <span class="item-act">Cold</span>
+    <p class="item-text">Cold water. Three minutes minimum. Do not warm up first. The body becomes what you train it to accept. Train it to accept discomfort as ordinary. This is where the day's first victory lives.</p>
+   </div>
+  </div>
+  <div class="daily-item">
+   <span class="item-time">5:20 AM</span>
+   <div class="item-body">
+    <span class="item-act">Move</span>
+    <p class="item-text">45 minutes. Strength, endurance, or both. The Stoics trained the body because they understood the mind and body are one instrument. A weak instrument produces weak music. There are no exceptions for mood.</p>
+   </div>
+  </div>
+ </div>
 </div>
 
 <!-- Gate wrapper: below fold is blurred until email submitted -->
 <div class="gate-wrapper gated" id="gate-wrapper">
-  <!-- Gate overlay -->
-  <div class="gate-overlay">
-    <span class="gate-headline">The Full Fortress Protocol Is Free</span>
-    <p class="gate-sub">It costs one email. Enter yours and the rest unlocks immediately.</p>
-    <form class="gate-form" onsubmit="unlockProtocol(event)">
-      <input type="email" placeholder="Your email address" required>
-      <!-- TODO: operator provides Substack URL — replace '#' in unlockProtocol() -->
-      <button type="submit">Unlock the Protocol</button>
-    </form>
-    <p class="gate-note">No spam. You'll also receive The Sol Report — free weekly Stoic dispatch.</p>
-  </div>
+ <!-- Gate overlay -->
+ <div class="gate-overlay">
+  <span class="gate-headline">The Full Fortress Protocol Is Free</span>
+  <p class="gate-sub">It costs one email. Enter yours and the rest unlocks immediately.</p>
+  <form class="gate-form" onsubmit="unlockProtocol(event)">
+   <input type="email" placeholder="Your email address" required>
+   <!-- TODO: operator provides Substack URL  replace '#' in unlockProtocol() -->
+   <button type="submit">Unlock the Protocol</button>
+  </form>
+  <p class="gate-note">No spam. You'll also receive The Sol Report  free weekly Stoic dispatch.</p>
+ </div>
 
-  <!-- Gateable content: remaining 4 items + sections 2 and 3 -->
-  <div class="gateable-content">
-    <div class="protocol-wrapper">
+ <!-- Gateable content: remaining 4 items + sections 2 and 3 -->
+ <div class="gateable-content">
+  <div class="protocol-wrapper">
 
-      <!-- Remaining daily items -->
-      <div class="daily-items">
-        <div class="daily-item">
-          <span class="item-time">6:05 AM</span>
-          <div class="item-body">
-            <span class="item-act">Read</span>
-            <p class="item-text">30 minutes. Meditations. Letters from a Stoic. Discourses. Plutarch. History of men who built things. Not news. Not social media. Not content. Something that demands you think and remember that you are mortal.</p>
-          </div>
-        </div>
-        <div class="daily-item">
-          <span class="item-time">6:35 AM</span>
-          <div class="item-body">
-            <span class="item-act">Write</span>
-            <p class="item-text">10 minutes. One page. What is in your control today. What is not. What the man you intend to become would do with this particular day. Not journalling for comfort — journalling for clarity.</p>
-          </div>
-        </div>
-        <div class="daily-item">
-          <span class="item-time">6:45 AM</span>
-          <div class="item-body">
-            <span class="item-act">Plan</span>
-            <p class="item-text">15 minutes. Three non-negotiables. Nothing else earns a place on today's list until these are done. No exceptions for mood. No exceptions for circumstances. Three things. Every day.</p>
-          </div>
-        </div>
-        <div class="daily-item">
-          <span class="item-time">7:00 AM</span>
-          <div class="item-body">
-            <span class="item-act">Begin</span>
-            <p class="item-text">Start the first non-negotiable before the world finds you. Before the inbox, the messages, the demands. The morning belongs to you or it belongs to everyone else's priorities. This is where you make that choice permanent.</p>
-          </div>
-        </div>
-      </div>
+   <!-- Remaining daily items -->
+   <div class="daily-items">
+    <div class="daily-item">
+     <span class="item-time">6:05 AM</span>
+     <div class="item-body">
+      <span class="item-act">Read</span>
+      <p class="item-text">30 minutes. Meditations. Letters from a Stoic. Discourses. Plutarch. History of men who built things. Not news. Not social media. Not content. Something that demands you think and remember that you are mortal.</p>
+     </div>
+    </div>
+    <div class="daily-item">
+     <span class="item-time">6:35 AM</span>
+     <div class="item-body">
+      <span class="item-act">Write</span>
+      <p class="item-text">10 minutes. One page. What is in your control today. What is not. What the man you intend to become would do with this particular day. Not journalling for comfort  journalling for clarity.</p>
+     </div>
+    </div>
+    <div class="daily-item">
+     <span class="item-time">6:45 AM</span>
+     <div class="item-body">
+      <span class="item-act">Plan</span>
+      <p class="item-text">15 minutes. Three non-negotiables. Nothing else earns a place on today's list until these are done. No exceptions for mood. No exceptions for circumstances. Three things. Every day.</p>
+     </div>
+    </div>
+    <div class="daily-item">
+     <span class="item-time">7:00 AM</span>
+     <div class="item-body">
+      <span class="item-act">Begin</span>
+      <p class="item-text">Start the first non-negotiable before the world finds you. Before the inbox, the messages, the demands. The morning belongs to you or it belongs to everyone else's priorities. This is where you make that choice permanent.</p>
+     </div>
+    </div>
+   </div>
 
-      <!-- SECTION 2 -->
-      <div class="section-header section-2">
-        <span class="section-num">Section II</span>
-        <h2 class="section-title">THE WEEKLY REVIEW</h2>
-        <p class="section-sub">Every Sunday. One hour. Alone.</p>
-      </div>
-      <div class="weekly-questions">
-        <div class="question-item">
-          <span class="q-num">01</span>
-          <p class="q-text">Where did I act against my stated values this week?</p>
-        </div>
-        <div class="question-item">
-          <span class="q-num">02</span>
-          <p class="q-text">What did I avoid that I should have faced?</p>
-        </div>
-        <div class="question-item">
-          <span class="q-num">03</span>
-          <p class="q-text">What did I consume — food, entertainment, information, opinion — that served no purpose?</p>
-        </div>
-        <div class="question-item">
-          <span class="q-num">04</span>
-          <p class="q-text">What did I do well that I must not allow to become accidental?</p>
-        </div>
-        <div class="question-item">
-          <span class="q-num">05</span>
-          <p class="q-text">What did I want that I did not need?</p>
-        </div>
-        <div class="question-item">
-          <span class="q-num">06</span>
-          <p class="q-text">What would the man I am becoming have done differently?</p>
-        </div>
-      </div>
-      <p class="review-close">Write the answers. Not in your head — on paper. The review is not complete until the writing is complete. One hour. Every Sunday. Without exception.</p>
+   <!-- SECTION 2 -->
+   <div class="section-header section-2">
+    <span class="section-num">Section II</span>
+    <h2 class="section-title">THE WEEKLY REVIEW</h2>
+    <p class="section-sub">Every Sunday. One hour. Alone.</p>
+   </div>
+   <div class="weekly-questions">
+    <div class="question-item">
+     <span class="q-num">01</span>
+     <p class="q-text">Where did I act against my stated values this week?</p>
+    </div>
+    <div class="question-item">
+     <span class="q-num">02</span>
+     <p class="q-text">What did I avoid that I should have faced?</p>
+    </div>
+    <div class="question-item">
+     <span class="q-num">03</span>
+     <p class="q-text">What did I consume  food, entertainment, information, opinion  that served no purpose?</p>
+    </div>
+    <div class="question-item">
+     <span class="q-num">04</span>
+     <p class="q-text">What did I do well that I must not allow to become accidental?</p>
+    </div>
+    <div class="question-item">
+     <span class="q-num">05</span>
+     <p class="q-text">What did I want that I did not need?</p>
+    </div>
+    <div class="question-item">
+     <span class="q-num">06</span>
+     <p class="q-text">What would the man I am becoming have done differently?</p>
+    </div>
+   </div>
+   <p class="review-close">Write the answers. Not in your head  on paper. The review is not complete until the writing is complete. One hour. Every Sunday. Without exception.</p>
 
-      <!-- SECTION 3 -->
-      <div class="section-header section-3">
-        <span class="section-num">Section III</span>
-        <h2 class="section-title">THE FORTRESS PRINCIPLES</h2>
-        <p class="section-sub">The non-negotiables. These do not bend.</p>
-      </div>
-      <div class="principles-list">
-        <div class="principle-item">
-          <span class="principle-num">Principle I</span>
-          <p class="principle-text">Every morning you choose: governed by circumstance or governed by character. The unconquered man makes this choice before the world has made its first demand of him. Make it consciously. Make it well. Make it again tomorrow.</p>
-        </div>
-        <div class="principle-item">
-          <span class="principle-num">Principle II</span>
-          <p class="principle-text">Voluntary hardship is the price of freedom. The man who has never suffered deliberately will be destroyed by suffering that arrives uninvited. Seek the cold. Seek the weight. Seek the difficulty before it seeks you.</p>
-        </div>
-        <div class="principle-item">
-          <span class="principle-num">Principle III</span>
-          <p class="principle-text">The fortress is within. External outcomes — money, status, other people's behaviour — are weather. They come and go. The inner citadel is the only structure worth building, and the only one nothing can touch. Build it first.</p>
-        </div>
-        <div class="principle-item">
-          <span class="principle-num">Principle IV</span>
-          <p class="principle-text">Excellence is not an event. It is not a peak you reach and descend from. It is a practice — done daily, without applause, without witness, without waiting to feel ready. The standard does not move. You move to meet it.</p>
-        </div>
-        <div class="principle-item">
-          <span class="principle-num">Principle V</span>
-          <p class="principle-text">Brotherhood requires standards. The man who accepts mediocrity in himself will attract it in others. The man who refuses it will build, slowly and without compromise, a circle that multiplies his strength. Zero tolerance for excuses. Infinite patience for work.</p>
-        </div>
-      </div>
+   <!-- SECTION 3 -->
+   <div class="section-header section-3">
+    <span class="section-num">Section III</span>
+    <h2 class="section-title">THE FORTRESS PRINCIPLES</h2>
+    <p class="section-sub">The non-negotiables. These do not bend.</p>
+   </div>
+   <div class="principles-list">
+    <div class="principle-item">
+     <span class="principle-num">Principle I</span>
+     <p class="principle-text">Every morning you choose: governed by circumstance or governed by character. The unconquered man makes this choice before the world has made its first demand of him. Make it consciously. Make it well. Make it again tomorrow.</p>
+    </div>
+    <div class="principle-item">
+     <span class="principle-num">Principle II</span>
+     <p class="principle-text">Voluntary hardship is the price of freedom. The man who has never suffered deliberately will be destroyed by suffering that arrives uninvited. Seek the cold. Seek the weight. Seek the difficulty before it seeks you.</p>
+    </div>
+    <div class="principle-item">
+     <span class="principle-num">Principle III</span>
+     <p class="principle-text">The fortress is within. External outcomes  money, status, other people's behaviour  are weather. They come and go. The inner citadel is the only structure worth building, and the only one nothing can touch. Build it first.</p>
+    </div>
+    <div class="principle-item">
+     <span class="principle-num">Principle IV</span>
+     <p class="principle-text">Excellence is not an event. It is not a peak you reach and descend from. It is a practice  done daily, without applause, without witness, without waiting to feel ready. The standard does not move. You move to meet it.</p>
+    </div>
+    <div class="principle-item">
+     <span class="principle-num">Principle V</span>
+     <p class="principle-text">Brotherhood requires standards. The man who accepts mediocrity in himself will attract it in others. The man who refuses it will build, slowly and without compromise, a circle that multiplies his strength. Zero tolerance for excuses. Infinite patience for work.</p>
+    </div>
+   </div>
 
-      <!-- Closing statement (italic gold, large) -->
-      <div class="principle-closing">
-        <p>The sun rises unconquered. So must we.</p>
-      </div>
+   <!-- Closing statement (italic gold, large) -->
+   <div class="principle-closing">
+    <p>The sun rises unconquered. So must we.</p>
+   </div>
 
-    </div><!-- /protocol-wrapper -->
-  </div><!-- /gateable-content -->
+  </div><!-- /protocol-wrapper -->
+ </div><!-- /gateable-content -->
 </div><!-- /gate-wrapper -->
 
 <!-- UPGRADE TEASER (screen only, hidden in print) -->
 <div class="protocol-wrapper">
-  <div class="upgrade-teaser" id="upgrade-teaser">
-    <span class="teaser-label">Coming Soon</span>
-    <h2 class="teaser-title">THE FULL 90-DAY FORTRESS</h2>
-    <p class="teaser-body">The 30-Day Standard is the foundation. The 90-Day Fortress is the build. Three months of escalating voluntary hardship, structured weekly reviews, monthly virtue assessments, and a complete framework for building an unconquered life from the ground up. First access for the list.</p>
-    <!-- TODO: operator provides Substack URL -->
-    <a href="#" class="teaser-cta">Join the Waitlist on Substack</a>
-  </div>
+ <div class="upgrade-teaser" id="upgrade-teaser">
+  <span class="teaser-label">Coming Soon</span>
+  <h2 class="teaser-title">THE FULL 90-DAY FORTRESS</h2>
+  <p class="teaser-body">The 30-Day Standard is the foundation. The 90-Day Fortress is the build. Three months of escalating voluntary hardship, structured weekly reviews, monthly virtue assessments, and a complete framework for building an unconquered life from the ground up. First access for the list.</p>
+  <!-- TODO: operator provides Substack URL -->
+  <a href="#" class="teaser-cta">Join the Waitlist on Substack</a>
+ </div>
 </div>
 
 <!-- FOOTER (screen only) -->
 <footer class="site-footer">
-  <span class="footer-brand">SOLEINVICTVS</span>
-  <div class="footer-links">
-    <a href="#">X / Twitter</a>
-    <a href="#">YouTube</a>
-    <a href="#">Instagram</a>
-  </div>
-  <span class="footer-copy">© MMXXVI · Semper ad meliora</span>
+ <span class="footer-brand">SOLEINVICTVS</span>
+ <div class="footer-links">
+  <a href="#">X / Twitter</a>
+  <a href="#">YouTube</a>
+  <a href="#">Instagram</a>
+ </div>
+ <span class="footer-copy">© MMXXVI · Semper ad meliora</span>
 </footer>
 
 <script>
 // ─── GATE ─────────────────────────────────────────────────────────────────────
 function unlockProtocol(e) {
-  e.preventDefault();
-  localStorage.setItem('si_fortress_unlocked', 'true');
-  // TODO: operator provides Substack URL — replace '#' below
-  window.open('#', '_blank');
-  document.getElementById('gate-wrapper').classList.remove('gated');
+ e.preventDefault();
+ localStorage.setItem('si_fortress_unlocked', 'true');
+ // TODO: operator provides Substack URL  replace '#' below
+ window.open('#', '_blank');
+ document.getElementById('gate-wrapper').classList.remove('gated');
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('si_fortress_unlocked') === 'true') {
-    document.getElementById('gate-wrapper').classList.remove('gated');
-  }
+ if (localStorage.getItem('si_fortress_unlocked') === 'true') {
+  document.getElementById('gate-wrapper').classList.remove('gated');
+ }
 });
 </script>
 <script src="assets/js/main.js" defer></script>
