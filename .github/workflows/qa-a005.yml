@@ -1,0 +1,11 @@
+name: QA A-005 Verification
+on: [push, pull_request]
+jobs:
+  athena-a005:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make script executable
+        run: chmod +x tests/a005-c016.sh
+      - name: Run A-005 tests
+        run: ./tests/a005-c016.sh
