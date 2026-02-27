@@ -46,7 +46,7 @@ soleinvictvs_web/
 
 | Milestone | Description | Status |
 |-----------|-------------|--------|
-| **V-01: Front Door** | Created the new, cinematic monolithic homepage via `CINEMATIC_BUILDER.md`. Removed all hyphens from textual phrasing. Updated footer social channels. | SHIPPED to localhost |
+| **V-01: Front Door** | Created the new, cinematic monolithic homepage via `CINEMATIC_BUILDER.md`. Rebuilt to include pure WOFF2 fonts and no em dashes. | SHIPPED to localhost and committed to main |
 
 ---
 
