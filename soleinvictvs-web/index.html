@@ -1,405 +1,1211 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOLEINVICTVS  Monolith</title>
-<style>
-@font-face {
- font-family: 'The Seasons';
- src: url('assets/fonts/TheSeasons-Regular.woff2') format('woff2');
- font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
- font-family: 'The Seasons';
- src: url('assets/fonts/TheSeasons-Italic.woff2') format('woff2');
- font-weight: 400; font-style: italic; font-display: swap;
-}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLEINVICTVS Monolith</title>
 
-:root {
- --bg:     #0A0A0A;
- --surface:  #111111;
- --surface-2: #161616;
- --border:   #1E1E1E;
- --text:    #F5F0E8;
- --text-muted: #9A9080;
- --gold:    #C9A84C;
- --gold-muted: #8A6F32;
- --red:    #8B1A1A;
- --font-display: 'The Seasons', 'Cormorant Garamond', serif;
- --font-serif:  'Cormorant Garamond', serif;
- --font-ui:   'Inter', sans-serif;
-}
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
-html { scroll-behavior: smooth; }
+    <style>
+        /* THE SEASONS TYPOGRAPHY */
+        @font-face {
+            font-family: 'The Seasons';
+            src: url('assets/fonts/TheSeasons-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
 
-body {
- background: var(--bg);
- color: var(--text);
- font-family: var(--font-ui);
- font-weight: 300;
- line-height: 1.7;
- overflow-x: hidden;
-}
+        @font-face {
+            font-family: 'The Seasons';
+            src: url('assets/fonts/TheSeasons-Italic.woff2') format('woff2');
+            font-weight: 400;
+            font-style: italic;
+            font-display: swap;
+        }
 
-/* NAV */
-.site-nav {
- position: fixed; top: 0; left: 0; right: 0; z-index: 100;
- display: flex; justify-content: space-between; align-items: center;
- padding: 1.75rem 4rem;
- background: linear-gradient(to bottom, rgba(10,10,10,.97) 0%, transparent 100%);
-}
-.nav-logo {
- font-family: var(--font-display); font-size: .65rem;
- letter-spacing: .4em; color: var(--gold); text-decoration: none;
-}
-.nav-links { display: flex; gap: 3rem; list-style: none; }
-.nav-links a {
- font-family: 'Cinzel', serif; font-size: .55rem;
- letter-spacing: .25em; color: var(--text-muted); text-decoration: none;
- text-transform: uppercase; transition: color .3s;
-}
-.nav-links a:hover { color: var(--gold); }
-body[data-page='vault'] .nav-links a[href='vault.html'],
-body[data-page='codex'] .nav-links a[href='codex.html'],
-body[data-page='about'] .nav-links a[href='about.html'] { color: var(--gold); }
+        /* GLOBAL RESET & VARIABLES */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* HERO */
-.hero {
- min-height: 100vh; display: flex; flex-direction: column;
- align-items: center; justify-content: center; text-align: center;
- padding: 2rem; position: relative;
-}
-.hero::before {
- content: ''; position: absolute; inset: 0;
- background: radial-gradient(ellipse 55% 45% at 50% 55%, rgba(201,168,76,.07) 0%, transparent 68%);
- pointer-events: none;
-}
-.hero-eyebrow {
- font-family: 'Cinzel', serif; font-size: .55rem;
- letter-spacing: .55em; color: var(--gold); margin-bottom: 2.5rem;
- text-transform: uppercase;
-}
-.hero-title {
- font-family: var(--font-display); font-weight: 900;
- font-size: clamp(3rem, 9vw, 8rem); letter-spacing: .18em;
- line-height: .95; color: var(--text); margin-bottom: 2.5rem;
-}
-.hero-rule {
- width: 60px; height: 1px; background: var(--gold); margin: 0 auto 2.5rem;
-}
-.hero-tagline {
- font-family: 'Cinzel', serif; font-size: clamp(.7rem, 1.2vw, .9rem);
- letter-spacing: .35em; color: var(--text-muted); margin-bottom: 1.5rem;
- text-transform: uppercase;
-}
-.hero-sub {
- font-size: .82rem; color: var(--text-muted); max-width: 440px;
- margin: 0 auto 3.5rem; line-height: 2.1;
-}
-.hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        :root {
+            --bg: #0A0A0A;
+            --surface: #111111;
+            --surface-2: #161616;
+            --border: #1E1E1E;
+            --text: #F5F0E8;
+            --text-muted: #9A9080;
+            --gold: #C9A84C;
+            --gold-muted: #8A6F32;
+            --red: #8B1A1A;
+            --font-display: 'The Seasons', 'Cormorant Garamond', serif;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-ui: 'Inter', sans-serif;
+        }
 
-.btn {
- font-family: 'Cinzel', serif; font-size: .58rem;
- letter-spacing: .22em; padding: .9rem 2.5rem;
- text-decoration: none; text-transform: uppercase; transition: all .3s;
- display: inline-block;
-}
-.btn-gold { background: var(--gold); color: var(--bg); }
-.btn-gold:hover { background: #d9b85c; }
-.btn-outline { border: 1px solid var(--gold-muted); color: var(--text-muted); }
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* SUN DIVIDER */
-.sun-divider {
- display: flex; align-items: center; gap: 1.5rem;
- max-width: 500px; margin: 0 auto; padding: 0 2rem;
-}
-.sun-divider::before, .sun-divider::after {
- content: ''; flex: 1; height: 1px;
- background: linear-gradient(to right, transparent, var(--gold-muted));
- opacity: .5;
-}
-.sun-divider::after {
- background: linear-gradient(to left, transparent, var(--gold-muted));
-}
-.sun-icon { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-ui);
+            font-weight: 400;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-/* PILLARS */
-.pillars {
- padding: 9rem 4rem; max-width: 1100px; margin: 0 auto;
-}
-.section-eyebrow {
- font-family: 'Cinzel', serif; font-size: .5rem;
- letter-spacing: .55em; color: var(--gold); text-align: center;
- margin-bottom: 5rem; text-transform: uppercase;
-}
-.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5rem; }
-.pillar { text-align: center; }
-.pillar-num {
- font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 900;
- color: rgba(201,168,76,.15); display: block; margin-bottom: 1.25rem;
- letter-spacing: .1em;
-}
-.pillar-title {
- font-family: 'Cinzel', serif; font-size: .72rem;
- letter-spacing: .3em; color: var(--text); margin-bottom: 1rem;
-}
-.pillar-text { font-size: .78rem; color: var(--text-muted); line-height: 2.1; }
+        /* NOISE OVERLAY */
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
 
-/* VAULT */
-.vault { padding: 9rem 4rem; max-width: 1100px; margin: 0 auto; }
-.vault-header { text-align: center; margin-bottom: 5rem; }
-.section-title {
- font-family: 'Cinzel', serif; font-weight: 600;
- font-size: clamp(1.5rem, 3vw, 2.25rem); letter-spacing: .2em;
- color: var(--text); margin-bottom: 1rem;
-}
-.section-sub { font-size: .8rem; color: var(--text-muted); letter-spacing: .1em; }
-.vault-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        /* BUTTONS */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gold);
+            color: var(--bg);
+            padding: 14px 36px;
+            border-radius: 2px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
 
-.card {
- background: var(--surface); padding: 2.5rem;
- border: 1px solid rgba(201,168,76,.08); transition: border-color .4s;
- display: flex; flex-direction: column;
-}
-.card:hover { border-color: rgba(201,168,76,.25); }
-.card-tag {
- font-family: 'Cinzel', serif; font-size: .48rem;
- letter-spacing: .35em; color: var(--gold); margin-bottom: 1.5rem;
- text-transform: uppercase;
-}
-.card-title {
- font-family: 'Cinzel', serif; font-size: .88rem;
- letter-spacing: .08em; color: var(--text);
- margin-bottom: 1rem; line-height: 1.6; flex: 1;
-}
-.card-desc { font-size: .75rem; color: var(--text-muted); line-height: 2; margin-bottom: 2rem; }
-.card-bottom { display: flex; justify-content: space-between; align-items: center; }
-.card-price { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--gold); }
-.card-cta {
- font-family: 'Cinzel', serif; font-size: .5rem;
- letter-spacing: .2em; padding: .6rem 1.25rem;
- border: 1px solid var(--gold-muted); color: var(--text-muted);
- text-decoration: none; text-transform: uppercase; transition: all .3s;
-}
-.card-cta:hover { border-color: var(--gold); color: var(--gold); }
+        .btn-primary:hover {
+            transform: scale(1.02);
+        }
 
-/* QUOTE */
-.quote-wrap {
- padding: 8rem 4rem; text-align: center;
- border-top: 1px solid rgba(154,144,128,.15);
- border-bottom: 1px solid rgba(154,144,128,.15);
-}
-.quote-mark {
- font-family: 'Cinzel', serif; font-size: 4rem;
- color: rgba(201,168,76,.15); line-height: 1; margin-bottom: .5rem;
- display: block;
-}
-.quote-text {
- font-family: 'Cinzel', serif; font-weight: 400;
- font-size: clamp(1rem, 2.2vw, 1.6rem); letter-spacing: .05em;
- color: var(--text); max-width: 680px; margin: 0 auto 2rem;
- line-height: 1.75;
-}
-.quote-attr { font-size: .65rem; color: var(--text-muted); letter-spacing: .25em; }
+        .btn-bg {
+            position: absolute;
+            inset: 0;
+            background: #e3bd5b;
+            transform: translateX(-101%);
+            transition: transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
 
-/* NEWSLETTER */
-.newsletter {
- padding: 7rem 4rem; background: var(--surface); text-align: center;
-}
-.newsletter-title {
- font-family: 'Cinzel', serif; font-weight: 600;
- font-size: clamp(1.1rem, 2.2vw, 1.75rem); letter-spacing: .2em;
- margin-bottom: .75rem;
-}
-.newsletter-sub { font-size: .78rem; color: var(--text-muted); margin-bottom: 2.5rem; }
-.newsletter-form {
- display: flex; max-width: 460px; margin: 0 auto;
-}
-.newsletter-form input {
- flex: 1; background: var(--bg); border: 1px solid var(--gold-muted);
- border-right: none; color: var(--text); padding: .9rem 1.25rem;
- font-family: var(--font-ui); font-size: .78rem; outline: none;
-}
-.newsletter-form input::placeholder { color: var(--text-muted); }
-.newsletter-form button {
- background: var(--gold); border: none; color: var(--bg);
- font-family: 'Cinzel', serif; font-size: .55rem;
- letter-spacing: .2em; padding: .9rem 1.75rem; cursor: pointer;
- transition: background .3s; white-space: nowrap;
-}
-.newsletter-form button:hover { background: #d9b85c; }
+        .btn-primary:hover .btn-bg {
+            transform: translateX(0);
+        }
 
-/* FOOTER */
-.site-footer {
- padding: 2.5rem 4rem; display: flex;
- justify-content: space-between; align-items: center;
- border-top: 1px solid rgba(154,144,128,.15);
-}
-.footer-brand { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .35em; color: var(--text-muted); }
-.footer-copy { font-size: .6rem; color: var(--text-muted); letter-spacing: .1em; }
-.footer-links { display: flex; gap: 1.5rem; }
-.footer-links a { font-size: .6rem; color: var(--text-muted); text-decoration: none; letter-spacing: .1em; transition: color .3s; }
-.footer-links a:hover { color: var(--gold); }
+        .btn-label {
+            position: relative;
+            z-index: 1;
+        }
 
-/* SCROLL REVEAL */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.visible { opacity: 1; transform: none; }
+        /* NAVBAR */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 64px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            background: transparent;
+            transition: background 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease;
+        }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
- .site-nav { padding: 1.25rem 1.75rem; }
- .nav-links { display: none; }
- .pillars, .vault { padding: 5rem 1.75rem; }
- .pillars-grid, .vault-grid { grid-template-columns: 1fr; gap: 2.5rem; }
- .quote-wrap, .newsletter { padding: 5rem 1.75rem; }
- .newsletter-form { flex-direction: column; }
- .newsletter-form input { border-right: 1px solid var(--gold-muted); border-bottom: none; }
- .site-footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.75rem; }
- .footer-links { display: none; }
-}
-</style>
-<link rel="stylesheet" href="assets/css/main.css">
+        .site-nav.nav-scrolled {
+            background: rgba(17, 17, 17, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            height: 28px;
+        }
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            letter-spacing: 0.06em;
+            color: var(--text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            font-variant: small-caps;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 200ms ease, transform 200ms ease;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+            transform: translateY(-1px);
+        }
+
+        .site-nav.nav-scrolled .nav-links a {
+            color: var(--text-muted);
+        }
+
+        .site-nav.nav-scrolled .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--bg);
+            padding: 10px 24px;
+            border-radius: 2px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.02);
+        }
+
+        /* HERO */
+        .hero {
+            height: 100dvh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg) 0%, rgba(10, 10, 10, 0.75) 55%, transparent 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 8%;
+            left: 6%;
+            max-width: 760px;
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-ui);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 8vw, 8.5rem);
+            line-height: 1.0;
+            color: var(--text);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .hero-sub {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
+            margin-top: 1.25rem;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .hero-cta-btn {
+            margin-top: 2.5rem;
+            align-self: flex-start;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            padding: 6rem 2.5rem;
+            background: var(--bg);
+            position: relative;
+            z-index: 5;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2rem;
+            min-height: 340px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: transform 300ms ease, box-shadow 300ms ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-heading {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+        }
+
+        /* Shuffler */
+        .shuffler-container {
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+
+        .sub-card {
+            position: absolute;
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: var(--surface-2);
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--text-muted);
+            transition: transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 420ms ease, z-index 420ms step-end;
+        }
+
+        /* Signal Feed */
+        .signal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .signal-label {
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+        }
+
+        .signal-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: pulse-dot 2s infinite ease-out;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 var(--gold-muted);
+            }
+
+            50% {
+                box-shadow: 0 0 0 6px transparent;
+            }
+        }
+
+        .signal-display-area {
+            font-family: 'JetBrains Mono', monospace, sans-serif;
+            font-size: 0.9rem;
+            color: var(--text);
+            min-height: 80px;
+            line-height: 1.6;
+        }
+
+        .cursor-blink {
+            border-right: 2px solid var(--gold);
+            margin-left: 2px;
+            animation: blink 600ms step-end infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Tracker */
+        .tracker-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 38px);
+            gap: 8px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .tracker-cell {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            transition: all 200ms ease;
+        }
+
+        .tracker-cell.active {
+            background: var(--gold-muted);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        #tracker-cursor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .tracker-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            padding: 8px 20px;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            background: transparent;
+            color: var(--text-muted);
+            margin-top: 10px;
+            transition: all 200ms ease;
+        }
+
+        .tracker-btn.active {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .tracker-desc {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* PHILOSOPHY */
+        .philosophy {
+            width: 100%;
+            background: var(--bg);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phil-texture {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.06;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .phil-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2.5rem;
+            text-align: center;
+        }
+
+        .phil-line1 {
+            font-family: var(--font-ui);
+            font-weight: 500;
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .phil-line2 {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            line-height: 1.05;
+            color: var(--text);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* PROTOCOL */
+        .protocol-wrapper {
+            position: relative;
+            width: 100%;
+            background: var(--bg);
+            overflow: hidden;
+        }
+
+        .protocol-card {
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 40% 60%;
+            align-items: center;
+            padding: 4rem 6rem;
+            gap: 4rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            will-change: transform, opacity, filter;
+        }
+
+        .p-card-1 {
+            background: var(--surface-2);
+            z-index: 1;
+        }
+
+        .p-card-2 {
+            background: var(--surface);
+            z-index: 2;
+            transform: translateY(100%);
+        }
+
+        .p-card-3 {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            z-index: 3;
+            transform: translateY(100%);
+        }
+
+        .protocol-visual {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .protocol-visual svg {
+            width: 200px;
+            height: 200px;
+        }
+
+        .protocol-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .protocol-step {
+            font-family: monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .protocol-heading {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .protocol-desc {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        /* VAULT CTA */
+        .vault-cta-section {
+            width: 100%;
+            background: var(--surface);
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2.5rem;
+            text-align: center;
+        }
+
+        .vault-heading {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            color: var(--text);
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .vault-sub {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .vault-primary {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .vault-primary button {
+            padding: 18px 52px;
+            font-size: 1rem;
+        }
+
+        .vault-secondary {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: color 200ms ease;
+        }
+
+        .vault-secondary:hover {
+            text-decoration: underline;
+            color: var(--gold);
+        }
+
+        /* FOOTER */
+        .site-footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 4rem 6rem 3rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .f-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .f-logo-wrap img {
+            height: 24px;
+        }
+
+        .f-brand-text {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .f-tagline {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .f-motto {
+            font-family: var(--font-ui);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .footer-col-nav a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col-nav a:hover {
+            color: var(--gold);
+            transform: translateY(-1px);
+        }
+
+        .footer-col-social a {
+            font-family: var(--font-ui);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col-social a:hover {
+            color: var(--gold);
+        }
+
+        .f-copyright {
+            font-family: var(--font-ui);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            width: 100%;
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #2ECC71;
+            animation: pulse-status 1.6s infinite;
+        }
+
+        @keyframes pulse-status {
+            0% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+            }
+
+            100% {
+                box-shadow: 0 0 0 6px transparent;
+            }
+        }
+
+        .status-label {
+            font-family: var(--font-ui);
+            font-weight: 500;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .site-nav {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                padding: 4rem 1.5rem;
+            }
+
+            .protocol-card {
+                grid-template-columns: 1fr;
+                padding: 3rem 1.5rem;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .protocol-text {
+                align-items: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .site-footer {
+                padding: 3rem 1.5rem 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
+
 <body data-page="home">
 
-<nav class="site-nav">
- <a href="/" class="nav-logo">SOLEINVICTVS</a>
- <ul class="nav-links">
-  <li><a href="vault.html">The Vault</a></li>
-  <li><a href="codex.html">The Codex</a></li>
-  <li><a href="about.html">Philosophy</a></li>
-  <li><a href="#newsletter">Join the Legion</a></li>
- </ul>
- <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
-  <span class="nav-toggle__bar"></span>
-  <span class="nav-toggle__bar"></span>
-  <span class="nav-toggle__bar"></span>
- </button>
-</nav>
+    <nav class="site-nav" id="main-nav">
+        <a href="/" class="nav-left">
+            <img src="../brand_assets/sun_transparent.png" alt="" class="nav-logo-img" onerror="this.src='';">
+            <span class="nav-logo-text">SOLEINVICTVS</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="vault.html">The Vault</a></li>
+            <li><a href="codex.html">The Codex</a></li>
+            <li><a href="about.html">Philosophy</a></li>
+            <li><a href="#vault-cta">Join the Legion</a></li>
+        </ul>
+        <a href="#vault-cta" class="nav-cta">ENTER THE LEGION</a>
+    </nav>
 
-<section class="hero">
- <p class="hero-eyebrow">Sol Invictus · The Unconquered Sun</p>
- <h1 class="hero-title">SOLEINVICTVS</h1>
- <div class="hero-rule"></div>
- <p class="hero-tagline">Semper ad meliora · Always towards better things</p>
- <p class="hero-sub">Ancient Stoic wisdom for modern life. Discipline over motivation. The fortress is within.</p>
- <div class="hero-ctas">
-  <a href="#vault" class="btn btn-gold">Enter the Vault</a>
-  <a href="#newsletter" class="btn btn-outline">Join the Legion</a>
- </div>
-</section>
+    <section class="hero" id="hero">
+        <img src="../brand_assets/2k_wallpaper_sun.png" alt="" class="hero-bg" onerror="this.src='';">
+        <div class="hero-gradient"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Front Door</div>
+            <h1 class="hero-title">Semper ad meliora.</h1>
+            <p class="hero-sub">The sun rises unconquered. So must we.</p>
+            <a href="#vault-cta" class="btn-primary hero-cta-btn">
+                <span class="btn-bg"></span>
+                <span class="btn-label">ENTER THE LEGION</span>
+            </a>
+        </div>
+    </section>
 
-<div class="sun-divider"><span class="sun-icon">✦</span></div>
+    <section class="features">
+        <!-- Card 1 -->
+        <div class="feature-card">
+            <h3 class="card-heading">THE INHERITANCE</h3>
+            <div class="shuffler-container" id="shuffler">
+                <div class="sub-card" style="transform: translateY(0) scale(1); opacity: 1; z-index: 3;">Ancient Stoic
+                    and Catholic virtue</div>
+                <div class="sub-card" style="transform: translateY(8px) scale(0.96); opacity: 0.6; z-index: 2;">Wisdom
+                    that built civilisations</div>
+                <div class="sub-card" style="transform: translateY(16px) scale(0.92); opacity: 0.3; z-index: 1;">Applied
+                    to a single life</div>
+            </div>
+        </div>
 
-<section class="pillars reveal" id="about">
- <p class="section-eyebrow">The Three Pillars</p>
- <div class="pillars-grid">
-  <div class="pillar">
-   <span class="pillar-num">I</span>
-   <p class="pillar-title">Philosophy</p>
-   <p class="pillar-text">Marcus Aurelius. Seneca. Epictetus. Ancient wisdom that has outlasted empires  distilled for deliberate modern living.</p>
-  </div>
-  <div class="pillar">
-   <span class="pillar-num">II</span>
-   <p class="pillar-title">Discipline</p>
-   <p class="pillar-text">Motivation fades. Systems endure. We build the frameworks that make excellence a daily habit, not a fleeting feeling.</p>
-  </div>
-  <div class="pillar">
-   <span class="pillar-num">III</span>
-   <p class="pillar-title">Community</p>
-   <p class="pillar-text">A legion of unconquered individuals. United by virtue. Built on excellence. No noise, no comfort culture.</p>
-  </div>
- </div>
-</section>
+        <!-- Card 2 -->
+        <div class="feature-card">
+            <h3 class="card-heading">THE FORTRESS</h3>
+            <div class="signal-header">
+                <span class="signal-label">LIVE SIGNAL</span>
+                <div class="signal-dot"></div>
+            </div>
+            <div class="signal-display-area">
+                <span id="signal-text"></span><span class="cursor-blink"></span>
+            </div>
+        </div>
 
-<div class="sun-divider"><span class="sun-icon">✦</span></div>
+        <!-- Card 3 -->
+        <div class="feature-card">
+            <h3 class="card-heading">THE LEGION</h3>
+            <div class="tracker-grid">
+                <div class="tracker-cell" id="tc-0">S</div>
+                <div class="tracker-cell" id="tc-1">M</div>
+                <div class="tracker-cell" id="tc-2">T</div>
+                <div class="tracker-cell" id="tc-3">W</div>
+                <div class="tracker-cell" id="tc-4">T</div>
+                <div class="tracker-cell" id="tc-5">F</div>
+                <div class="tracker-cell" id="tc-6">S</div>
+                <svg id="tracker-cursor" width="38" height="38" viewBox="0 0 38 38">
+                    <circle cx="19" cy="19" r="6" stroke="var(--gold)" fill="none" stroke-width="1.5" />
+                </svg>
+            </div>
+            <button class="tracker-btn" id="tracker-btn">COMMIT</button>
+            <p class="tracker-desc">A brotherhood pursuing the same unconquered life. Built together. No excuses.</p>
+        </div>
+    </section>
 
-<section class="vault reveal" id="vault">
- <div class="vault-header">
-  <p class="section-eyebrow">Digital Products</p>
-  <h2 class="section-title">THE VAULT</h2>
-  <p class="section-sub">Frameworks built on ancient wisdom. Applied today.</p>
- </div>
- <div class="vault-grid">
-  <div class="card">
-   <p class="card-tag">Protocol · PDF Guide</p>
-   <h3 class="card-title">The Stoic Morning Protocol</h3>
-   <p class="card-desc">Own your first hour. A proven morning system built on Aurelius's own daily practice  adapted for the modern unconquered man.</p>
-   <div class="card-bottom">
-    <span class="card-price">$9</span>
-    <a href="#newsletter" class="card-cta">Join Waitlist</a>
-   </div>
-  </div>
-  <div class="card">
-   <p class="card-tag">Framework · PDF Guide</p>
-   <h3 class="card-title">The Marcus Method Daily System</h3>
-   <p class="card-desc">A complete decision-making and productivity framework. Think clearly. Act decisively. Waste nothing. Live with intent.</p>
-   <div class="card-bottom">
-    <span class="card-price">$17</span>
-    <a href="#newsletter" class="card-cta">Join Waitlist</a>
-   </div>
-  </div>
-  <div class="card">
-   <p class="card-tag">Challenge · 30-Day Program</p>
-   <h3 class="card-title">30 Days of Deliberate Hardship</h3>
-   <p class="card-desc">Comfort is the enemy of strength. Thirty structured days of voluntary difficulty  physical, mental, financial. Come out unconquered.</p>
-   <div class="card-bottom">
-    <span class="card-price">$27</span>
-    <a href="#newsletter" class="card-cta">Join Waitlist</a>
-   </div>
-  </div>
- </div>
-</section>
+    <section class="philosophy" id="philosophy">
+        <img src="../brand_assets/twitter_header.png" alt="" class="phil-texture" onerror="this.src='';">
+        <div class="phil-content">
+            <p class="phil-line1">Most modern culture promotes comfortable complacency.</p>
+            <h2 class="phil-line2">SOLEINVICTVS demands <span style="color: var(--gold)">the unconquered life</span>.
+            </h2>
+        </div>
+    </section>
 
-<section class="quote-wrap reveal">
- <span class="quote-mark">"</span>
- <p class="quote-text">The impediment to action advances action. What stands in the way becomes the way.</p>
- <p class="quote-attr"> Marcus Aurelius · Meditations</p>
-</section>
+    <section class="protocol-wrapper" id="protocol">
+        <div class="protocol-cards-container" style="height: 100vh; position: relative; width: 100%;">
+            <!-- Card 1 -->
+            <div class="protocol-card p-card-1" id="pc-1">
+                <div class="protocol-text">
+                    <span class="protocol-step">01 / 03</span>
+                    <h2 class="protocol-heading">THE INHERITANCE</h2>
+                    <p class="protocol-desc">Rooted in Roman Stoicism, Catholic tradition, and Italian heritage. Ancient
+                        wisdom applied to a single life.</p>
+                </div>
+                <div class="protocol-visual">
+                    <svg viewBox="0 0 100 100" id="svg-sun">
+                        <circle cx="50" cy="50" r="15" stroke="var(--gold)" fill="none" stroke-width="1.5" />
+                        <g stroke="var(--gold)" stroke-width="1.5" id="sun-rays">
+                            <line x1="50" y1="10" x2="50" y2="25" />
+                            <line x1="50" y1="75" x2="50" y2="90" />
+                            <line x1="10" y1="50" x2="25" y2="50" />
+                            <line x1="75" y1="50" x2="90" y2="50" />
+                            <line x1="21.7" y1="21.7" x2="32.3" y2="32.3" />
+                            <line x1="67.7" y1="67.7" x2="78.3" y2="78.3" />
+                            <line x1="21.7" y1="78.3" x2="32.3" y2="67.7" />
+                            <line x1="67.7" y1="32.3" x2="78.3" y2="21.7" />
+                            <line x1="34.6" y1="13.4" x2="40.2" y2="27.0" />
+                            <line x1="65.4" y1="86.6" x2="59.8" y2="73.0" />
+                            <line x1="13.4" y1="34.6" x2="27.0" y2="40.2" />
+                            <line x1="86.6" y1="65.4" x2="73.0" y2="59.8" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="protocol-card p-card-2" id="pc-2">
+                <div class="protocol-text">
+                    <span class="protocol-step">02 / 03</span>
+                    <h2 class="protocol-heading">THE FORTRESS</h2>
+                    <p class="protocol-desc">Discipline systems, protocols, and tools for men who build themselves
+                        deliberately, without shortcuts.</p>
+                </div>
+                <div class="protocol-visual">
+                    <svg viewBox="0 0 100 100" id="svg-scanner">
+                        <!-- populated by JS -->
+                    </svg>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="protocol-card p-card-3" id="pc-3">
+                <div class="protocol-text">
+                    <span class="protocol-step">03 / 03</span>
+                    <h2 class="protocol-heading">THE LEGION</h2>
+                    <p class="protocol-desc">A brotherhood pursuing the same unconquered life. Built together. No
+                        excuses.</p>
+                </div>
+                <div class="protocol-visual">
+                    <svg viewBox="0 0 100 50" id="svg-pulse">
+                        <path d="M 0 25 L 30 25 L 40 5 L 50 45 L 60 25 L 100 25" stroke="var(--gold)" fill="none"
+                            stroke-width="1.5" id="pulse-path" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="newsletter reveal" id="newsletter">
- <p class="section-eyebrow">The Sol Report</p>
- <h2 class="newsletter-title">JOIN THE LEGION</h2>
- <p class="newsletter-sub">One Stoic insight. One discipline challenge. One resource. Weekly. No noise. No BS.</p>
- <form class="newsletter-form" onsubmit="handleSignup(event)">
-  <input type="email" placeholder="your@email.com" required>
-  <button type="submit">Enlist</button>
- </form>
-</section>
+    <section class="vault-cta-section" id="vault-cta">
+        <h2 class="vault-heading">CROSS THE THRESHOLD AND ENTER THE LEGION.</h2>
+        <p class="vault-sub">For men who build themselves deliberately, without shortcuts.</p>
+        <a href="#" class="btn-primary vault-primary">
+            <span class="btn-bg"></span>
+            <span class="btn-label">ENTER THE LEGION</span>
+        </a>
+        <a href="codex.html" class="vault-secondary">Read the Codex →</a>
+    </section>
 
-<footer class="site-footer">
- <span class="footer-brand">SOLEINVICTVS</span>
- <div class="footer-links">
-  <a href="#">X / Twitter</a>
-  <a href="#">YouTube</a>
-  <a href="#">Instagram</a>
- </div>
- <span class="footer-copy">© MMXXVI · Semper ad meliora</span>
-</footer>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col footer-col-info">
+                <div class="f-logo-wrap">
+                    <img src="../brand_assets/sun_transparent.png" alt="" onerror="this.src='';">
+                    <span class="f-brand-text">SOLEINVICTVS</span>
+                </div>
+                <p class="f-tagline">Western civilisational brand rooted in tradition.</p>
+                <p class="f-motto">Semper ad meliora.</p>
+            </div>
+            <div class="footer-col footer-col-nav">
+                <a href="codex.html">The Codex</a>
+                <a href="fortress-protocol.html">The Fortress</a>
+                <a href="vault.html">The Vault</a>
+                <a href="about.html">Manifesto</a>
+            </div>
+            <div class="footer-col footer-col-social">
+                <a href="https://x.com/soleinvictvs" target="_blank" rel="noopener">X / Twitter</a>
+                <a href="https://www.youtube.com/@SOLEINVICTVS" target="_blank" rel="noopener">YouTube</a>
+                <a href="https://substack.com/@soleinvictvs" target="_blank" rel="noopener">Substack</a>
+                <a href="#">Privacy Protocol</a>
+                <a href="#">Terms of Legion</a>
+                <p class="f-copyright">© 2026 SOLEINVICTVS.</p>
+            </div>
+        </div>
+        <div class="status-indicator">
+            <div class="status-dot"></div>
+            <span class="status-label">SYSTEM OPERATIONAL</span>
+        </div>
+    </footer>
 
-<script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
- entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    <div class="noise-overlay"></div>
 
-// Newsletter  visual-only placeholder until ConvertKit is configured
-function handleSignup(e) {
- e.preventDefault();
- const btn = e.target.querySelector('button');
- btn.textContent = 'Enlisted ✦';
- btn.style.background = '#8A6F32';
- e.target.querySelector('input').value = '';
-}
-</script>
-<script src="assets/js/main.js" defer></script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
 
+            // Hero Animation
+            gsap.to('.hero-eyebrow, .hero-title, .hero-sub, .hero-cta-btn', {
+                y: 0,
+                opacity: 1,
+                stagger: 0.1,
+                ease: 'power3.out',
+                delay: 0.2,
+                duration: 0.8
+            });
+
+            // Navbar scroll
+            const nav = document.getElementById('main-nav');
+            const hero = document.getElementById('hero');
+            const navObserver = new IntersectionObserver((entries) => {
+                if (!entries[0].isIntersecting) {
+                    nav.classList.add('nav-scrolled');
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                }
+            }, { threshold: 0.8 });
+            navObserver.observe(hero);
+
+            // Features Cards
+            gsap.to('.feature-card', {
+                scrollTrigger: {
+                    trigger: '.features',
+                    start: 'top 80%'
+                },
+                y: 0,
+                opacity: 1,
+                stagger: 0.15,
+                ease: 'power3.out',
+                duration: 0.8
+            });
+
+            // Shuffler
+            const shufflerContainer = document.getElementById('shuffler');
+            const cards = [...shufflerContainer.querySelectorAll('.sub-card')];
+            const transforms = [
+                'translateY(0) scale(1)',
+                'translateY(8px) scale(0.96)',
+                'translateY(16px) scale(0.92)'
+            ];
+            const opacities = [1, 0.6, 0.3];
+            const zIndices = [3, 2, 1];
+            setInterval(() => {
+                cards.unshift(cards.pop());
+                cards.forEach((card, i) => {
+                    card.style.transform = transforms[i];
+                    card.style.opacity = opacities[i];
+                    card.style.zIndex = zIndices[i];
+                });
+            }, 3000);
+
+            // Signal Feed Typewriter
+            const display = document.getElementById('signal-text');
+            const strings = ["Discipline systems.", "Protocols and tools.", "Build deliberately.", "No shortcuts."];
+            let stringIndex = 0, charIndex = 0;
+
+            function typeNext() {
+                if (charIndex < strings[stringIndex].length) {
+                    display.textContent += strings[stringIndex][charIndex++];
+                    setTimeout(typeNext, 40);
+                } else {
+                    setTimeout(() => {
+                        display.textContent = '';
+                        charIndex = 0;
+                        stringIndex = (stringIndex + 1) % strings.length;
+                        typeNext();
+                    }, 2000);
+                }
+            }
+            setTimeout(typeNext, 1000);
+
+            // Tracker SVG Animation
+            const tCells = [];
+            for (let i = 0; i < 7; i++) tCells.push(document.getElementById('tc-' + i));
+            const tCursor = document.getElementById('tracker-cursor');
+            const tBtn = document.getElementById('tracker-btn');
+
+            const tPositions = tCells.map(c => ({ x: c.offsetLeft, y: c.offsetTop }));
+            const tl = gsap.timeline({ repeat: -1 });
+
+            for (let i = 0; i < 5; i++) {
+                tl.to(tCursor, { x: tPositions[i].x, y: tPositions[i].y, duration: 0.5, ease: 'power2.inOut' })
+                    .to(tCursor, { scale: 0.8, duration: 0.1, ease: 'power1.inOut', yoyo: true, repeat: 1 })
+                    .call(() => tCells[i].classList.add('active'))
+                    .to({}, { duration: 0.3 });
+            }
+            tl.to(tCursor, { x: tBtn.offsetLeft + 10, y: tBtn.offsetTop - 5, duration: 0.6, ease: 'power2.inOut' })
+                .call(() => tBtn.classList.add('active'))
+                .to({}, { duration: 0.8 })
+                .call(() => {
+                    tCells.forEach(c => c.classList.remove('active'));
+                    tBtn.classList.remove('active');
+                })
+                .to({}, { duration: 0.2 });
+
+            // Philosophy Animation
+            gsap.to('.phil-line1', {
+                scrollTrigger: { trigger: '#philosophy', start: 'top 70%' },
+                y: 0, opacity: 1, duration: 0.6, ease: 'power3.out'
+            });
+            gsap.to('.phil-line2', {
+                scrollTrigger: { trigger: '#philosophy', start: 'top 70%' },
+                y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.2
+            });
+
+            // Protocol Stacking
+            const pCards = document.querySelectorAll('.protocol-card');
+            const pWrapper = document.querySelector('.protocol-wrapper');
+
+            const pTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: pWrapper,
+                    start: 'top top',
+                    end: '+=2000',
+                    scrub: true,
+                    pin: true
+                }
+            });
+
+            pTl.to(pCards[1], { y: 0, duration: 1, ease: 'none' });
+            pTl.to(pCards[0], { scale: 0.93, opacity: 0.4, filter: 'blur(8px)', duration: 1, ease: 'none' }, '<');
+
+            pTl.to(pCards[2], { y: 0, duration: 1, ease: 'none' });
+            pTl.to(pCards[1], { scale: 0.93, opacity: 0.4, filter: 'blur(8px)', duration: 1, ease: 'none' }, '<');
+
+            // Card 1 Sun SVG
+            gsap.to('#sun-rays', { rotation: 360, transformOrigin: '50% 50%', duration: 24, repeat: -1, ease: 'none' });
+
+            // Card 2 Scanner SVG
+            const svgScanner = document.getElementById('svg-scanner');
+            for (let r = 0; r < 10; r++) {
+                for (let c = 0; c < 10; c++) {
+                    const cir = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    cir.setAttribute('cx', 5 + c * 10);
+                    cir.setAttribute('cy', 5 + r * 10);
+                    cir.setAttribute('r', 2);
+                    cir.setAttribute('fill', 'var(--border)');
+                    cir.setAttribute('class', 'scan-dot');
+                    svgScanner.appendChild(cir);
+                }
+            }
+            const sLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            sLine.setAttribute('x1', 0); sLine.setAttribute('y1', 0);
+            sLine.setAttribute('x2', 100); sLine.setAttribute('y2', 0);
+            sLine.setAttribute('stroke', 'var(--gold)');
+            sLine.setAttribute('opacity', '0.6');
+            sLine.setAttribute('stroke-width', '1');
+            svgScanner.appendChild(sLine);
+
+            gsap.to(sLine, {
+                y: 100,
+                duration: 3,
+                yoyo: true,
+                repeat: -1,
+                ease: 'power1.inOut',
+                onUpdate: function () {
+                    const currentY = gsap.getProperty(sLine, 'y');
+                    document.querySelectorAll('.scan-dot').forEach(dot => {
+                        const cy = parseFloat(dot.getAttribute('cy'));
+                        if (Math.abs(cy - currentY) < 5) {
+                            dot.style.fill = 'var(--gold)';
+                        } else {
+                            dot.style.fill = 'var(--border)';
+                        }
+                    });
+                }
+            });
+
+            // Card 3 Pulse SVG
+            const pulsePath = document.getElementById('pulse-path');
+            const len = pulsePath.getTotalLength();
+            pulsePath.style.strokeDasharray = len;
+            pulsePath.style.strokeDashoffset = len;
+            gsap.to(pulsePath, { strokeDashoffset: 0, duration: 2.2, repeat: -1, ease: 'none' });
+
+            // Vault CTA reveal
+            gsap.to('.vault-heading, .vault-sub, .vault-primary, .vault-secondary', {
+                scrollTrigger: {
+                    trigger: '#vault-cta',
+                    start: 'top 75%'
+                },
+                y: 0,
+                opacity: 1,
+                stagger: 0.12,
+                ease: 'power3.out'
+            });
+
+        });
+    </script>
 </body>
+
 </html>
