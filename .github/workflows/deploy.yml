@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Deploy root: the soleinvictvs-web/ subfolder
-          path: '.'
+          path: 'soleinvictvs-web'
 
       - name: Deploy to GitHub Pages
         if: ${{ github.event.inputs.dry_run != 'true' }}
